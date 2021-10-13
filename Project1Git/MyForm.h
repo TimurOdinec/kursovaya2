@@ -114,6 +114,7 @@ namespace Project1Git {
 			private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				MessageBox::Show("HELLO TIMUR");
+				MessageBox::Show("HELLO FATHER");
 				//this->Hide();
 				Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 				myForm1->Show();
