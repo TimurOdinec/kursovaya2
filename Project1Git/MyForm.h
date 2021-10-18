@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm1.h"
+#include <string>
 
 namespace Project1Git {
 
@@ -23,7 +24,7 @@ namespace Project1Git {
 				//TODO: добавьте код конструктора
 				//
 			}
-
+			
 		protected:
 			/// <summary>
 			/// ќсвободить все используемые ресурсы.
@@ -39,16 +40,16 @@ namespace Project1Git {
 
 
 
-	private: System::Windows::Forms::Button^ button3;
-	protected:
-
+		public: System::Windows::Forms::Button^ button3;
+		private: System::Windows::Forms::Label^ label1;
+		
 		private:
 			/// <summary>
 			/// ќб€зательна€ переменна€ конструктора.
 			/// </summary>
 			System::ComponentModel::Container ^components;
 
-	#pragma region Windows Form Designer generated code
+		#pragma region Windows Form Designer generated code
 			/// <summary>
 			/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
 			/// содержимое этого метода с помощью редактора кода.
@@ -56,6 +57,7 @@ namespace Project1Git {
 			void InitializeComponent(void)
 			{
 				this->button3 = (gcnew System::Windows::Forms::Button());
+				this->label1 = (gcnew System::Windows::Forms::Label());
 				this->SuspendLayout();
 				// 
 				// button3
@@ -68,31 +70,52 @@ namespace Project1Git {
 				this->button3->UseVisualStyleBackColor = true;
 				this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 				// 
+				// label1
+				// 
+				this->label1->AutoSize = true;
+				this->label1->Location = System::Drawing::Point(34, 38);
+				this->label1->Name = L"label1";
+				this->label1->Size = System::Drawing::Size(46, 17);
+				this->label1->TabIndex = 5;
+				this->label1->Text = L"label1";
+				// 
 				// MyForm
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->ClientSize = System::Drawing::Size(1135, 544);
+				this->Controls->Add(this->label1);
 				this->Controls->Add(this->button3);
 				this->Name = L"MyForm";
 				this->Text = L"MyForm";
 				this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 				this->ResumeLayout(false);
+				this->PerformLayout();
 
 			}
-	#pragma endregion
+		#pragma endregion
 			
 			private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 			{
 				this->BackColor = System::Drawing::Color::Aqua;
+				this->button3->Text = "Exit";
+
 				Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 				myForm1->ShowDialog();
+				if ((myForm1->login)->Length == 0)
+				{
+					this->label1->Text = "јвторизаци€ не прошла";
+				}
+				else
+				{
+					this->label1->Text = "ƒобро пожаловать!" + (myForm1->login);
+				}
 			}
 			
 			private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->Close();
 			}
-};
+	};
 
 }

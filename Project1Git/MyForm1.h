@@ -43,7 +43,7 @@ namespace Project1Git {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::String^ test;
+	public: System::String^ login;
 	protected:
 
 	private:
@@ -116,20 +116,22 @@ namespace Project1Git {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(54, 70);
+			this->label1->Location = System::Drawing::Point(80, 75);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(46, 17);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"label1";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::BottomRight;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(57, 124);
+			this->label2->Location = System::Drawing::Point(52, 129);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(46, 17);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"label2";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::BottomRight;
 			// 
 			// MyForm1
 			// 
@@ -156,17 +158,16 @@ namespace Project1Git {
 			this->BackColor = System::Drawing::Color::Aqua;
 			this->button1->Text = "Sign in";
 			this->button2->Text = "Sign up";
-			
+			this->button3->Text = "Exit";
+			this->label1->Text = "Login:";
+			this->label2->Text = "Password:";
+			login = "";
 		}
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 			
-			test = this->textBox1->Text;
-			MessageBox::Show(this->textBox1->Text->ToString());
-			//this->ParentForm->Close();
-			//bool b = this->IsDisposed;
-			//MessageBox::Show(b.ToString());
-			
+			login = this->textBox1->Text;
+			this->Close();
 		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
@@ -174,12 +175,11 @@ namespace Project1Git {
 		}
 		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
-			
 			this->Close();
 		}
 		private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) 
 		{
 			
 		}
-};
+	};
 }
