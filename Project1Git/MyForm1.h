@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm.h"
+#include "MyForm2.h"
 #include <string>
 
 namespace Project1Git {
@@ -44,6 +45,7 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	public: System::String^ login;
+	public: void createUser(System::String^);
 	protected:
 
 	private:
@@ -104,7 +106,6 @@ namespace Project1Git {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(290, 22);
 			this->textBox1->TabIndex = 3;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -155,6 +156,7 @@ namespace Project1Git {
 #pragma endregion
 		private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) 
 		{
+			this->Location = Point(20, 20);
 			this->BackColor = System::Drawing::Color::Aqua;
 			this->button1->Text = "Sign in";
 			this->button2->Text = "Sign up";
@@ -167,19 +169,19 @@ namespace Project1Git {
 		{
 			
 			login = this->textBox1->Text;
+			createUser(login);
 			this->Close();
 		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
-
+			Project1Git::MyForm2^ myForm2 = gcnew Project1Git::MyForm2();
+			myForm2->ShowDialog();
+			this->Close();
 		}
 		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 			this->Close();
 		}
-		private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) 
-		{
-			
-		}
+		
 	};
 }

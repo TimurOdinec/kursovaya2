@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm1.h"
+#include "MyForm2.h"
 #include <string>
 
 namespace Project1Git {
@@ -36,9 +37,6 @@ namespace Project1Git {
 					delete components;
 				}
 			}
-
-
-
 
 		public: System::Windows::Forms::Button^ button3;
 		private: System::Windows::Forms::Label^ label1;
@@ -97,6 +95,7 @@ namespace Project1Git {
 			
 			private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 			{
+				this->Location = Point(20, 20);
 				this->BackColor = System::Drawing::Color::Aqua;
 				this->button3->Text = "Exit";
 
