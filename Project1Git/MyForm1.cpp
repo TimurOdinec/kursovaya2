@@ -15,7 +15,7 @@ void MyForm1::createUser(System::String^ login)
 	System::String^ mes = gcnew String(message.data());
 	MessageBox::Show(mes);
 
-	User* user = new User();
+	User* user = new User("");
 	msclr::interop::marshal_context context;
 	std::string standardString = context.marshal_as<std::string>(login);
 	user->setLogin(standardString);

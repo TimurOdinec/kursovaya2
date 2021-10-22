@@ -12,11 +12,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::Run(gcnew MyForm);
 
-	User *user = new User();
+	/*User *user = new User();
 	std::string login = "after run myForm";
 	user->setLogin(login);
 	System::String^ t = gcnew String((user->getLogin()).data());
-	MessageBox::Show(t);
+	MessageBox::Show(t);*/
 	
 	return 0;
 }

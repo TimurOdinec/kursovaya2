@@ -27,6 +27,12 @@
     <ClCompile Include="User.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="ListUsers.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkWithFiles.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -39,6 +45,12 @@
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ListUsers.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkWithFiles.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
