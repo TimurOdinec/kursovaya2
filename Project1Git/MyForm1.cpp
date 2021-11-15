@@ -5,17 +5,21 @@
 #include "MyForm1.h"
 #include "MyForm2.h"
 #include "User.h"
+#include "ListUsers.h"
 
 
 using namespace Project1Git;
 
-void MyForm1::createUser(System::String^ login)
+void MyForm1::checkUser(System::String^ login)
 {
 	std::string message = "after run button1_Click";
 	System::String^ mes = gcnew String(message.data());
 	MessageBox::Show(mes);
 
-	User* user = new User("");
+	ListUsers *listUsers = new ListUsers();
+
+
+	User *user = new User("");
 	msclr::interop::marshal_context context;
 	std::string standardString = context.marshal_as<std::string>(login);
 	user->setLogin(standardString);

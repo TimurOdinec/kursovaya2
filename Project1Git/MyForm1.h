@@ -45,7 +45,7 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	public: System::String^ login;
-	public: void createUser(System::String^);
+	public: void checkUser(System::String^);
 	protected:
 
 	private:
@@ -169,7 +169,7 @@ namespace Project1Git {
 		{
 			
 			login = this->textBox1->Text;
-			createUser(login);
+			checkUser(login);
 			this->Close();
 		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 

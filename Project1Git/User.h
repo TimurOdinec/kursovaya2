@@ -3,18 +3,22 @@
 
 namespace Project1Git 
 {
-	class User
+	public class User
 	{
+	private:
+		std::string login;
+		int id;
 	public:
+		User();
 		//конструктор
 		User(std::string);
 		void setLogin(std::string);
 		std::string getLogin();
+		void setId(int);
+		int getId();
 		//деструктор
 		~User();
-
-	private:
-		std::string login;
+	
 	};
 
 }

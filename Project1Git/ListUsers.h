@@ -1,17 +1,19 @@
 #pragma once
 #include "User.h"
-#include "User.cpp"
 
-namespace ProjectGit1
+namespace Project1Git
 {
+	using namespace System::Windows::Forms;
+
 	class ListUsers
 	{
+	private:
+		int size;
+		User *user;
+
 	public:
 		ListUsers();
 		User getUserByLogin(std::string login);
 		~ListUsers();
-	private:
-		int id;
-		User* user;
 	};
 }
