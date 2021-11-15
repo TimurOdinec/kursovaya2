@@ -13,7 +13,9 @@ namespace Project1Git
 
 	public:
 		ListUsers();
-		User getUserByLogin(std::string login);
+		User getUserByLogin(std::string);
 		~ListUsers();
+		int getSize();
+		User getUserByIndex(int);
 	};
 }

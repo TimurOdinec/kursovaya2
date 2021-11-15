@@ -118,6 +118,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Authorization.cpp" />
     <ClCompile Include="ListUsers.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
@@ -126,6 +127,7 @@
     <ClCompile Include="WorkWithFiles.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Authorization.h" />
     <ClInclude Include="ListUsers.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>

@@ -154,6 +154,9 @@ namespace Project1Git {
 
 		}
 #pragma endregion
+		/// <summary>
+		/// загрузка формы с авторизацией
+		/// </summary>
 		private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) 
 		{
 			this->Location = Point(20, 20);
@@ -165,6 +168,9 @@ namespace Project1Git {
 			this->label2->Text = "Password:";
 			login = "";
 		}
+		/// <summary>
+		/// нажатие на кнопку sign in
+		/// </summary>
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 			
@@ -172,12 +178,18 @@ namespace Project1Git {
 			checkUser(login);
 			this->Close();
 		}
+		/// <summary>
+		/// нажатие на кнопку sign up
+		/// </summary>
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 			Project1Git::MyForm2^ myForm2 = gcnew Project1Git::MyForm2();
 			myForm2->ShowDialog();
 			this->Close();
 		}
+		/// <summary>
+		/// нажатие на кнопку exit
+		/// </summary>
 		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 			this->Close();

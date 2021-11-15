@@ -40,7 +40,9 @@ namespace Project1Git {
 
 		public: System::Windows::Forms::Button^ button3;
 		private: System::Windows::Forms::Label^ label1;
-		
+		private: System::Windows::Forms::DataGridView^ dataGridView1;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+
 		private:
 			/// <summary>
 			/// ќб€зательна€ переменна€ конструктора.
@@ -56,6 +58,9 @@ namespace Project1Git {
 			{
 				this->button3 = (gcnew System::Windows::Forms::Button());
 				this->label1 = (gcnew System::Windows::Forms::Label());
+				this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+				this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 				this->SuspendLayout();
 				// 
 				// button3
@@ -77,30 +82,57 @@ namespace Project1Git {
 				this->label1->TabIndex = 5;
 				this->label1->Text = L"label1";
 				// 
+				// dataGridView1
+				// 
+				this->dataGridView1->AllowUserToAddRows = false;
+				this->dataGridView1->AllowUserToDeleteRows = false;
+				this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+				this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
+				this->dataGridView1->Location = System::Drawing::Point(37, 86);
+				this->dataGridView1->Name = L"dataGridView1";
+				this->dataGridView1->ReadOnly = true;
+				this->dataGridView1->RowHeadersWidth = 51;
+				this->dataGridView1->RowTemplate->Height = 24;
+				this->dataGridView1->Size = System::Drawing::Size(1018, 271);
+				this->dataGridView1->TabIndex = 6;
+				// 
+				// Column1
+				// 
+				this->Column1->HeaderText = L"Column1";
+				this->Column1->MinimumWidth = 6;
+				this->Column1->Name = L"Column1";
+				this->Column1->ReadOnly = true;
+				this->Column1->Width = 125;
+				// 
 				// MyForm
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->ClientSize = System::Drawing::Size(1135, 544);
+				this->Controls->Add(this->dataGridView1);
 				this->Controls->Add(this->label1);
 				this->Controls->Add(this->button3);
 				this->Name = L"MyForm";
 				this->Text = L"MyForm";
 				this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 				this->ResumeLayout(false);
 				this->PerformLayout();
 
 			}
 		#pragma endregion
-			
+			/// <summary>
+			/// загрузка основной формы
+			/// </summary>
 			private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 			{
-				this->Location = Point(20, 20);
-				this->BackColor = System::Drawing::Color::Aqua;
-				this->button3->Text = "Exit";
-
+				this->Location = Point(20, 20);					//верхний угол формы
+				this->BackColor = System::Drawing::Color::Aqua;	//цвет фона формы
+				this->button3->Text = "Exit";					//название кнопки
+				//создание новой формы авторизации
 				Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
-				myForm1->ShowDialog();
+				myForm1->ShowDialog();	//передача фокуса форме авторизации
+				//провер€ем была ли введена строка в поле login
 				if ((myForm1->login)->Length == 0)
 				{
 					this->label1->Text = "јвторизаци€ не прошла";
@@ -110,10 +142,12 @@ namespace Project1Git {
 					this->label1->Text = "ƒобро пожаловать!" + (myForm1->login);
 				}
 			}
-			
+			/// <summary>
+			/// нажатие на кнопку Exit
+			/// </summary>
 			private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
-				this->Close();
+				this->Close();	//закрытие формы
 			}
 	};
 
