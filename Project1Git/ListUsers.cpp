@@ -31,8 +31,10 @@ ListUsers::ListUsers()
 		if (!rowData.empty())
 		{
 			int previousPosition = 0;
+			//кол-во параметров в файле: id, login, typeUser, password
+			int countParameters = 4;
 			//каждую строку режем по специальному разделителю
-			for (int j = 0; j < 2; j++)
+			for (int j = 0; j < countParameters; j++)
 			{
 				int newPosition = rowData.find(";", previousPosition);     //определ€ем индекс вхождени€ символа ";"
 				tempRow = rowData.substr(previousPosition, newPosition - previousPosition);   //вырезаем из строки подстроку начина€ с позиции previousPosition, с количеством символов в ней (newPosition - previousPosition)
@@ -47,6 +49,14 @@ ListUsers::ListUsers()
 					{
 						user[ind].setLogin(tempRow);
 					}
+					if (j == 2)
+					{
+						user[ind].setUserType(std::stoi(tempRow));
+					}
+					if (j == 3)
+					{
+						user[ind].setPassword(tempRow);
+					}
 				}
 			}
 		}
@@ -57,17 +67,15 @@ ListUsers::ListUsers()
 		ind++;
 	}
 	
-	/*for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
-		std::string t = "E" + std::to_string(i);
-		user[i].setLogin(t);
-	}*/
-	/*for (int i = 0; i < size; i++)
-	{
-		std::string t = std::to_string(user[i].getId()) + ";" + user[i].getLogin();
+		std::string t = std::to_string(user[i].getId()) + ";" 
+			+ user[i].getLogin() + ";" 
+			+ std::to_string(user[i].getUserType()) + ";"
+			+ user[i].getPassword();
 		System::String^ tt = gcnew System::String(t.data());
 		MessageBox::Show("tt : " + tt);
-	}*/
+	}
 }
 ListUsers::~ListUsers()
 {
@@ -75,6 +83,7 @@ ListUsers::~ListUsers()
 }
 User ListUsers::getUserByLogin(std::string login)
 {
+	//TO DO
 	return *user;
 }
 int ListUsers::getSize()

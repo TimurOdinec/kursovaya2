@@ -7,12 +7,14 @@ namespace Project1Git
 	{
 	private:
 		std::string currentLogin;
+		std::string currentPassword;
 		User currentUser;
 	public:
 		Authorization();
-		Authorization(std::string);
+		Authorization(std::string, std::string);
 		~Authorization();
 		bool checkCurrentUser();
 		User getCurrentUser();
+		void setCurrentUser(User);
 	};
 }

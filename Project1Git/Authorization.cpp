@@ -7,9 +7,10 @@ Authorization::Authorization()
 {
 
 }
-Authorization::Authorization(std::string currentLogin)
+Authorization::Authorization(std::string currentLogin, std::string currentPassword)
 {
 	this->currentLogin = currentLogin;
+	this->currentPassword = currentPassword;
 }
 Authorization::~Authorization()
 {
@@ -25,23 +26,28 @@ bool Authorization::checkCurrentUser()
 	{
 		User user = listUsers->getUserByIndex(i);
 
-		std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+		/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
 		System::String^ tt = gcnew System::String(t.data());
-		MessageBox::Show("tt : " + tt);
+		MessageBox::Show("tt : " + tt);*/
 
 
 		std::string login = user.getLogin();
-		if (login == currentLogin)
+		std::string password = user.getPassword();
+		if (login == currentLogin && password == currentPassword)
 		{
 			isRegistredUser = true;
+			this->currentUser = user;
+			this->currentPassword = password;
 		}
 	}
-
-	
 
 	return isRegistredUser;
 }
 User Authorization::getCurrentUser()
 {
 	return this->currentUser;
+}
+void Authorization::setCurrentUser(User user)
+{
+	this->currentUser = user;
 }

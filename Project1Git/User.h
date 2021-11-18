@@ -8,6 +8,8 @@ namespace Project1Git
 	private:
 		std::string login;
 		int id;
+		int userType;
+		std::string password;
 	public:
 		User();
 		//конструктор
@@ -16,6 +18,10 @@ namespace Project1Git
 		std::string getLogin();
 		void setId(int);
 		int getId();
+		void setUserType(int);
+		int getUserType();
+		void setPassword(std::string);
+		std::string getPassword();
 		//деструктор
 		~User();
 	

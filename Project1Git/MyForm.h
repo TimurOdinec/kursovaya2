@@ -2,6 +2,7 @@
 #include "MyForm1.h"
 #include "MyForm2.h"
 #include <string>
+#include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
 
@@ -42,6 +43,29 @@ namespace Project1Git {
 		private: System::Windows::Forms::Label^ label1;
 		private: System::Windows::Forms::DataGridView^ dataGridView1;
 		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+		private: System::Windows::Forms::MenuStrip^ menuStrip1;
+		private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem1;
+		private: System::Windows::Forms::ToolStripMenuItem^ p1ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p2ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p3ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p11ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p12ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p13ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p21ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p22ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p23ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p14ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p15ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p24ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p25ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p26ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p251ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p252ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p253ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p254ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p151ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p152ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p4ToolStripMenuItem;
 
 		private:
 			/// <summary>
@@ -60,7 +84,31 @@ namespace Project1Git {
 				this->label1 = (gcnew System::Windows::Forms::Label());
 				this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 				this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+				this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p1ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p11ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p12ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p13ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p14ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p15ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p151ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p152ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p2ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p21ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p22ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p23ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p24ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p25ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p251ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p252ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p253ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p254ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p26ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p3ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p4ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+				this->menuStrip1->SuspendLayout();
 				this->SuspendLayout();
 				// 
 				// button3
@@ -76,7 +124,7 @@ namespace Project1Git {
 				// label1
 				// 
 				this->label1->AutoSize = true;
-				this->label1->Location = System::Drawing::Point(34, 38);
+				this->label1->Location = System::Drawing::Point(34, 101);
 				this->label1->Name = L"label1";
 				this->label1->Size = System::Drawing::Size(46, 17);
 				this->label1->TabIndex = 5;
@@ -88,7 +136,7 @@ namespace Project1Git {
 				this->dataGridView1->AllowUserToDeleteRows = false;
 				this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 				this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
-				this->dataGridView1->Location = System::Drawing::Point(37, 86);
+				this->dataGridView1->Location = System::Drawing::Point(37, 174);
 				this->dataGridView1->Name = L"dataGridView1";
 				this->dataGridView1->ReadOnly = true;
 				this->dataGridView1->RowHeadersWidth = 51;
@@ -104,6 +152,170 @@ namespace Project1Git {
 				this->Column1->ReadOnly = true;
 				this->Column1->Width = 125;
 				// 
+				// menuStrip1
+				// 
+				this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+				this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripMenuItem1 });
+				this->menuStrip1->Location = System::Drawing::Point(0, 0);
+				this->menuStrip1->Name = L"menuStrip1";
+				this->menuStrip1->Size = System::Drawing::Size(1135, 28);
+				this->menuStrip1->TabIndex = 7;
+				this->menuStrip1->Text = L"menuStrip1";
+				// 
+				// toolStripMenuItem1
+				// 
+				this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+					this->p1ToolStripMenuItem,
+						this->p2ToolStripMenuItem, this->p3ToolStripMenuItem, this->p4ToolStripMenuItem
+				});
+				this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
+				this->toolStripMenuItem1->Size = System::Drawing::Size(156, 24);
+				this->toolStripMenuItem1->Text = L"toolStripMenuItem1";
+				// 
+				// p1ToolStripMenuItem
+				// 
+				this->p1ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+					this->p11ToolStripMenuItem,
+						this->p12ToolStripMenuItem, this->p13ToolStripMenuItem, this->p14ToolStripMenuItem, this->p15ToolStripMenuItem
+				});
+				this->p1ToolStripMenuItem->Name = L"p1ToolStripMenuItem";
+				this->p1ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p1ToolStripMenuItem->Text = L"p1";
+				// 
+				// p11ToolStripMenuItem
+				// 
+				this->p11ToolStripMenuItem->Name = L"p11ToolStripMenuItem";
+				this->p11ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p11ToolStripMenuItem->Text = L"p11";
+				// 
+				// p12ToolStripMenuItem
+				// 
+				this->p12ToolStripMenuItem->Name = L"p12ToolStripMenuItem";
+				this->p12ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p12ToolStripMenuItem->Text = L"p12";
+				// 
+				// p13ToolStripMenuItem
+				// 
+				this->p13ToolStripMenuItem->Name = L"p13ToolStripMenuItem";
+				this->p13ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p13ToolStripMenuItem->Text = L"p13";
+				// 
+				// p14ToolStripMenuItem
+				// 
+				this->p14ToolStripMenuItem->Name = L"p14ToolStripMenuItem";
+				this->p14ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p14ToolStripMenuItem->Text = L"p14";
+				// 
+				// p15ToolStripMenuItem
+				// 
+				this->p15ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+					this->p151ToolStripMenuItem,
+						this->p152ToolStripMenuItem
+				});
+				this->p15ToolStripMenuItem->Name = L"p15ToolStripMenuItem";
+				this->p15ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p15ToolStripMenuItem->Text = L"p15";
+				// 
+				// p151ToolStripMenuItem
+				// 
+				this->p151ToolStripMenuItem->Name = L"p151ToolStripMenuItem";
+				this->p151ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p151ToolStripMenuItem->Text = L"p151";
+				// 
+				// p152ToolStripMenuItem
+				// 
+				this->p152ToolStripMenuItem->Name = L"p152ToolStripMenuItem";
+				this->p152ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p152ToolStripMenuItem->Text = L"p152";
+				// 
+				// p2ToolStripMenuItem
+				// 
+				this->p2ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
+					this->p21ToolStripMenuItem,
+						this->p22ToolStripMenuItem, this->p23ToolStripMenuItem, this->p24ToolStripMenuItem, this->p25ToolStripMenuItem, this->p26ToolStripMenuItem
+				});
+				this->p2ToolStripMenuItem->Name = L"p2ToolStripMenuItem";
+				this->p2ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p2ToolStripMenuItem->Text = L"p2";
+				// 
+				// p21ToolStripMenuItem
+				// 
+				this->p21ToolStripMenuItem->Name = L"p21ToolStripMenuItem";
+				this->p21ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p21ToolStripMenuItem->Text = L"p21";
+				// 
+				// p22ToolStripMenuItem
+				// 
+				this->p22ToolStripMenuItem->Name = L"p22ToolStripMenuItem";
+				this->p22ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p22ToolStripMenuItem->Text = L"p22";
+				// 
+				// p23ToolStripMenuItem
+				// 
+				this->p23ToolStripMenuItem->Name = L"p23ToolStripMenuItem";
+				this->p23ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p23ToolStripMenuItem->Text = L"p23";
+				// 
+				// p24ToolStripMenuItem
+				// 
+				this->p24ToolStripMenuItem->Name = L"p24ToolStripMenuItem";
+				this->p24ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p24ToolStripMenuItem->Text = L"p24";
+				// 
+				// p25ToolStripMenuItem
+				// 
+				this->p25ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+					this->p251ToolStripMenuItem,
+						this->p252ToolStripMenuItem, this->p253ToolStripMenuItem, this->p254ToolStripMenuItem
+				});
+				this->p25ToolStripMenuItem->Name = L"p25ToolStripMenuItem";
+				this->p25ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p25ToolStripMenuItem->Text = L"p25";
+				// 
+				// p251ToolStripMenuItem
+				// 
+				this->p251ToolStripMenuItem->Name = L"p251ToolStripMenuItem";
+				this->p251ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p251ToolStripMenuItem->Text = L"p251";
+				// 
+				// p252ToolStripMenuItem
+				// 
+				this->p252ToolStripMenuItem->Name = L"p252ToolStripMenuItem";
+				this->p252ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p252ToolStripMenuItem->Text = L"p252";
+				// 
+				// p253ToolStripMenuItem
+				// 
+				this->p253ToolStripMenuItem->Name = L"p253ToolStripMenuItem";
+				this->p253ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p253ToolStripMenuItem->Text = L"p253";
+				// 
+				// p254ToolStripMenuItem
+				// 
+				this->p254ToolStripMenuItem->Name = L"p254ToolStripMenuItem";
+				this->p254ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p254ToolStripMenuItem->Text = L"p254";
+				// 
+				// p26ToolStripMenuItem
+				// 
+				this->p26ToolStripMenuItem->Name = L"p26ToolStripMenuItem";
+				this->p26ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p26ToolStripMenuItem->Text = L"p26";
+				// 
+				// p3ToolStripMenuItem
+				// 
+				this->p3ToolStripMenuItem->Name = L"p3ToolStripMenuItem";
+				this->p3ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p3ToolStripMenuItem->Text = L"p3";
+				this->p3ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p3ToolStripMenuItem_Click);
+				// 
+				// p4ToolStripMenuItem
+				// 
+				this->p4ToolStripMenuItem->Name = L"p4ToolStripMenuItem";
+				this->p4ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p4ToolStripMenuItem->Text = L"p4";
+				this->p4ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p4ToolStripMenuItem_Click);
+				// 
 				// MyForm
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -112,10 +324,14 @@ namespace Project1Git {
 				this->Controls->Add(this->dataGridView1);
 				this->Controls->Add(this->label1);
 				this->Controls->Add(this->button3);
+				this->Controls->Add(this->menuStrip1);
+				this->MainMenuStrip = this->menuStrip1;
 				this->Name = L"MyForm";
 				this->Text = L"MyForm";
 				this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+				this->menuStrip1->ResumeLayout(false);
+				this->menuStrip1->PerformLayout();
 				this->ResumeLayout(false);
 				this->PerformLayout();
 
@@ -139,13 +355,152 @@ namespace Project1Git {
 				}
 				else
 				{
-					this->label1->Text = "Добро пожаловать!" + (myForm1->login);
+					this->label1->Text = "Добро пожаловать!  " + (myForm1->login);
 				}
+
+				System::String^ test =  myForm1->currentLogin;
+				msclr::interop::marshal_context context;
+				std::string loginTest = context.marshal_as<std::string>(test);
+				
+				int currentTypeTest = myForm1->currentType;
+
+				if (currentTypeTest == 1)
+				{
+					this->toolStripMenuItem1->Text = "Меню администратора";
+
+					this->p1ToolStripMenuItem->Text = "Работа с учетными данными";
+					this->p11ToolStripMenuItem->Text = "Просмотр учетных данных";
+					this->p12ToolStripMenuItem->Text = "Добавление учетных данных";
+					this->p13ToolStripMenuItem->Text = "Удаление учетных данных";
+					this->p14ToolStripMenuItem->Text = "Редактирование учетных данных";
+					this->p15ToolStripMenuItem->Text = "Поиск учетных данных";
+					this->p151ToolStripMenuItem->Text = "Поиск по логину";
+					this->p152ToolStripMenuItem->Text = "Поиск незарегистрированных пользователей";
+
+					this->p2ToolStripMenuItem->Text = "Работа с данными по автопарку";
+					this->p21ToolStripMenuItem->Text = "Просмотр данных";
+					this->p22ToolStripMenuItem->Text = "Добавление данных";
+					this->p23ToolStripMenuItem->Text = "Удаление данных";
+					this->p24ToolStripMenuItem->Text = "Редактирование данных";
+					this->p25ToolStripMenuItem->Text = "Поиск данных";
+					this->p251ToolStripMenuItem->Text = "Поиск свободных машин";
+					this->p252ToolStripMenuItem->Text = "Поиск занятых машин";
+					this->p253ToolStripMenuItem->Text = "Поиск ремонтируемых машин";
+					this->p254ToolStripMenuItem->Text = "Поиск списанных машин";
+					this->p26ToolStripMenuItem->Text = "Сортировка данных";
+					this->p3ToolStripMenuItem->Text = "Сменить пользователя";
+					this->p4ToolStripMenuItem->Text = "Выход";
+				}
+				else
+				{
+					if (currentTypeTest == 2)
+					{
+						this->toolStripMenuItem1->Text = "Меню пользователя";
+						this->p1ToolStripMenuItem->Available = false;
+						this->p11ToolStripMenuItem->Available = false;
+						this->p12ToolStripMenuItem->Available = false;
+						this->p13ToolStripMenuItem->Available = false;
+						this->p14ToolStripMenuItem->Available = false;
+						this->p15ToolStripMenuItem->Available = false;
+
+						this->p2ToolStripMenuItem->Text = "Работа с данными по автопарку";
+						this->p21ToolStripMenuItem->Text = "Просмотр данных";
+						this->p22ToolStripMenuItem->Available = false;
+						this->p23ToolStripMenuItem->Available = false;
+						this->p24ToolStripMenuItem->Available = false;
+						this->p25ToolStripMenuItem->Text = "Поиск данных";
+						this->p26ToolStripMenuItem->Text = "Сортировка данных";
+						this->p3ToolStripMenuItem->Text = "Сменить пользователя";
+						this->p4ToolStripMenuItem->Text = "Выход";
+					}
+					else
+					{
+						MessageBox::Show("Вы не авторизированы.");
+						myForm1->ShowDialog();	//передача фокуса форме авторизации
+					}
+				}
+				
+				
 			}
 			/// <summary>
 			/// нажатие на кнопку Exit
 			/// </summary>
 			private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->Close();	//закрытие формы
+			}
+			/// <summary>
+			/// выход в окно авторизации
+			/// </summary>
+			private: System::Void p3ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				this->SetVisibleCore(false);	//скрытие формы
+				//создание новой формы авторизации
+				Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
+				myForm1->ShowDialog();			//передача фокуса форме авторизации
+				this->SetVisibleCore(true);	//скрытие формы
+				int currentTypeTest = myForm1->currentType;
+
+				if (currentTypeTest == 1)
+				{
+					this->toolStripMenuItem1->Text = "Меню администратора";
+
+					this->p1ToolStripMenuItem->Text = "Работа с учетными данными";
+					this->p11ToolStripMenuItem->Text = "Просмотр учетных данных";
+					this->p12ToolStripMenuItem->Text = "Добавление учетных данных";
+					this->p13ToolStripMenuItem->Text = "Удаление учетных данных";
+					this->p14ToolStripMenuItem->Text = "Редактирование учетных данных";
+					this->p15ToolStripMenuItem->Text = "Поиск учетных данных";
+					this->p151ToolStripMenuItem->Text = "Поиск по логину";
+					this->p152ToolStripMenuItem->Text = "Поиск незарегистрированных пользователей";
+
+					this->p2ToolStripMenuItem->Text = "Работа с данными по автопарку";
+					this->p21ToolStripMenuItem->Text = "Просмотр данных";
+					this->p22ToolStripMenuItem->Text = "Добавление данных";
+					this->p23ToolStripMenuItem->Text = "Удаление данных";
+					this->p24ToolStripMenuItem->Text = "Редактирование данных";
+					this->p25ToolStripMenuItem->Text = "Поиск данных";
+					this->p251ToolStripMenuItem->Text = "Поиск свободных машин";
+					this->p252ToolStripMenuItem->Text = "Поиск занятых машин";
+					this->p253ToolStripMenuItem->Text = "Поиск ремонтируемых машин";
+					this->p254ToolStripMenuItem->Text = "Поиск списанных машин";
+					this->p26ToolStripMenuItem->Text = "Сортировка данных";
+					this->p3ToolStripMenuItem->Text = "Сменить пользователя";
+					this->p4ToolStripMenuItem->Text = "Выход";
+				}
+				else
+				{
+					if (currentTypeTest == 2)
+					{
+						this->toolStripMenuItem1->Text = "Меню пользователя";
+						this->p1ToolStripMenuItem->Available = false;
+						this->p11ToolStripMenuItem->Available = false;
+						this->p12ToolStripMenuItem->Available = false;
+						this->p13ToolStripMenuItem->Available = false;
+						this->p14ToolStripMenuItem->Available = false;
+						this->p15ToolStripMenuItem->Available = false;
+
+						this->p2ToolStripMenuItem->Text = "Работа с данными по автопарку";
+						this->p21ToolStripMenuItem->Text = "Просмотр данных";
+						this->p22ToolStripMenuItem->Available = false;
+						this->p23ToolStripMenuItem->Available = false;
+						this->p24ToolStripMenuItem->Available = false;
+						this->p25ToolStripMenuItem->Text = "Поиск данных";
+						this->p26ToolStripMenuItem->Text = "Сортировка данных";
+						this->p3ToolStripMenuItem->Text = "Сменить пользователя";
+						this->p4ToolStripMenuItem->Text = "Выход";
+					}
+					else
+					{
+						MessageBox::Show("Вы не авторизированы.");
+						myForm1->ShowDialog();	//передача фокуса форме авторизации
+					}
+				}
+			}
+				   /// <summary>
+			/// выбор пункта меню "Выход"
+			/// </summary>
+			private: System::Void p4ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 			{
 				this->Close();	//закрытие формы
 			}

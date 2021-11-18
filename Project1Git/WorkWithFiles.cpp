@@ -16,8 +16,8 @@ WorkWithFiles::~WorkWithFiles()
 void WorkWithFiles::createFile()
 {
 	std::ofstream fileOut;
-	fileOut.open("users.txt");	//создание или перезапись существующего файла
-	fileOut << "1;admin;";		//запись строки:id=1;login=admin;
+	fileOut.open("users.txt");		//создание или перезапись существующего файла
+	fileOut << "1;admin;1;@dmin";	//запись строки:id=1;login=admin;
 	fileOut.close();
 }
 bool WorkWithFiles::isExistsFile()
@@ -40,8 +40,8 @@ void WorkWithFiles::readFile()
 	{
 		std::string temp = "";
 		std::getline(fileIn, temp); //считали строку из файла
-		System::String^ t = gcnew System::String(temp.data());
-		MessageBox::Show(t);
+		//System::String^ t = gcnew System::String(temp.data());
+		//MessageBox::Show(t);
 		i++;
 	}
 	fileIn.close();

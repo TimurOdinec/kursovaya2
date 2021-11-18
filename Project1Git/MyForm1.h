@@ -1,6 +1,7 @@
 #pragma once
 #include "MyForm.h"
 #include "MyForm2.h"
+#include "User.h"
 #include <string>
 
 namespace Project1Git {
@@ -23,7 +24,8 @@ namespace Project1Git {
 			InitializeComponent();
 			//
 			//TODO: добавьте код конструктора
-			//
+			currentLogin = "";
+			currentType = 0;
 		}
 
 	protected:
@@ -45,7 +47,11 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	public: System::String^ login;
-	public: void checkUser(System::String^);
+	public: System::String^ currentLogin;
+	public: System::String^ password;
+	public: System::String^ currentPassword;
+	public: int currentType;
+	public: void checkUser(System::String^, System::String^);
 	protected:
 
 	private:
@@ -111,6 +117,7 @@ namespace Project1Git {
 			// 
 			this->textBox2->Location = System::Drawing::Point(132, 124);
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->PasswordChar = '*';
 			this->textBox2->Size = System::Drawing::Size(290, 22);
 			this->textBox2->TabIndex = 4;
 			// 
@@ -175,7 +182,8 @@ namespace Project1Git {
 		{
 			
 			login = this->textBox1->Text;
-			checkUser(login);
+			password = this->textBox2->Text;
+			checkUser(login, password);
 			this->Close();
 		}
 		/// <summary>

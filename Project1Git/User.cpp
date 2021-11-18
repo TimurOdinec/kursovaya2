@@ -27,6 +27,22 @@ int User::getId()
 {
 	return this->id;
 }
+void User::setUserType(int userType)
+{
+	this->userType = userType;
+}
+int User::getUserType()
+{
+	return this->userType;
+}
+void User::setPassword(std::string password)
+{
+	this->password = password;
+}
+std::string User::getPassword()
+{
+	return this->password;
+}
 //деструктор
 User::~User()
 {
