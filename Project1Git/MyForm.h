@@ -1,6 +1,9 @@
 #pragma once
 #include "MyForm1.h"
 #include "MyForm2.h"
+#include "MyForm3.h"
+#include "MyForm4.h"
+#include "ListUsers.h"
 #include <string>
 #include <msclr\marshal_cppstd.h>
 
@@ -42,7 +45,7 @@ namespace Project1Git {
 		public: System::Windows::Forms::Button^ button3;
 		private: System::Windows::Forms::Label^ label1;
 		private: System::Windows::Forms::DataGridView^ dataGridView1;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+
 		private: System::Windows::Forms::MenuStrip^ menuStrip1;
 		private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem1;
 		private: System::Windows::Forms::ToolStripMenuItem^ p1ToolStripMenuItem;
@@ -83,7 +86,6 @@ namespace Project1Git {
 				this->button3 = (gcnew System::Windows::Forms::Button());
 				this->label1 = (gcnew System::Windows::Forms::Label());
 				this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-				this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 				this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->p1ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -135,7 +137,6 @@ namespace Project1Git {
 				this->dataGridView1->AllowUserToAddRows = false;
 				this->dataGridView1->AllowUserToDeleteRows = false;
 				this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-				this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
 				this->dataGridView1->Location = System::Drawing::Point(37, 174);
 				this->dataGridView1->Name = L"dataGridView1";
 				this->dataGridView1->ReadOnly = true;
@@ -143,14 +144,6 @@ namespace Project1Git {
 				this->dataGridView1->RowTemplate->Height = 24;
 				this->dataGridView1->Size = System::Drawing::Size(1018, 271);
 				this->dataGridView1->TabIndex = 6;
-				// 
-				// Column1
-				// 
-				this->Column1->HeaderText = L"Column1";
-				this->Column1->MinimumWidth = 6;
-				this->Column1->Name = L"Column1";
-				this->Column1->ReadOnly = true;
-				this->Column1->Width = 125;
 				// 
 				// menuStrip1
 				// 
@@ -185,26 +178,30 @@ namespace Project1Git {
 				// p11ToolStripMenuItem
 				// 
 				this->p11ToolStripMenuItem->Name = L"p11ToolStripMenuItem";
-				this->p11ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p11ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p11ToolStripMenuItem->Text = L"p11";
+				this->p11ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p11ToolStripMenuItem_Click);
 				// 
 				// p12ToolStripMenuItem
 				// 
 				this->p12ToolStripMenuItem->Name = L"p12ToolStripMenuItem";
-				this->p12ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p12ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p12ToolStripMenuItem->Text = L"p12";
+				this->p12ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p12ToolStripMenuItem_Click);
 				// 
 				// p13ToolStripMenuItem
 				// 
 				this->p13ToolStripMenuItem->Name = L"p13ToolStripMenuItem";
-				this->p13ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p13ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p13ToolStripMenuItem->Text = L"p13";
+				this->p13ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p13ToolStripMenuItem_Click);
 				// 
 				// p14ToolStripMenuItem
 				// 
 				this->p14ToolStripMenuItem->Name = L"p14ToolStripMenuItem";
-				this->p14ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p14ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p14ToolStripMenuItem->Text = L"p14";
+				this->p14ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p14ToolStripMenuItem_Click);
 				// 
 				// p15ToolStripMenuItem
 				// 
@@ -213,7 +210,7 @@ namespace Project1Git {
 						this->p152ToolStripMenuItem
 				});
 				this->p15ToolStripMenuItem->Name = L"p15ToolStripMenuItem";
-				this->p15ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p15ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p15ToolStripMenuItem->Text = L"p15";
 				// 
 				// p151ToolStripMenuItem
@@ -345,6 +342,7 @@ namespace Project1Git {
 				this->Location = Point(20, 20);					//верхний угол формы
 				this->BackColor = System::Drawing::Color::Aqua;	//цвет фона формы
 				this->button3->Text = "Exit";					//название кнопки
+				this->dataGridView1->Visible = false;			//прячем твблицу
 				//создание новой формы авторизации
 				Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 				myForm1->ShowDialog();	//передача фокуса форме авторизации
@@ -497,7 +495,104 @@ namespace Project1Git {
 					}
 				}
 			}
-				   /// <summary>
+			/// <summary>
+			/// просмотр учетных записей
+			/// </summary>
+			private: System::Void p11ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				//MessageBox::Show("Просомтр уч.данных.");
+				this->dataGridView1->Visible = true;
+
+				//не изменяемый блок ячеек-заголовков
+				/*DataGridViewColumn^ columnFullName = gcnew DataGridViewColumn;
+				columnFullName->Name = "id";
+				DataGridViewCell^ celFullName = gcnew DataGridViewTextBoxCell;
+				columnFullName->CellTemplate = celFullName;
+				this->dataGridView1->Columns->Add(columnFullName);
+				DataGridViewColumn^ columnFullName1 = gcnew DataGridViewColumn;
+				columnFullName1->Name = "Login";
+				DataGridViewCell^ celFullName1 = gcnew DataGridViewTextBoxCell;
+				columnFullName1->CellTemplate = celFullName1;
+				this->dataGridView1->Columns->Add(columnFullName1);
+				DataGridViewColumn^ columnFullName2 = gcnew DataGridViewColumn;
+				columnFullName2->Name = "User type";
+				DataGridViewCell^ celFullName2 = gcnew DataGridViewTextBoxCell;
+				columnFullName2->CellTemplate = celFullName2;
+				this->dataGridView1->Columns->Add(columnFullName2);
+				DataGridViewColumn^ columnFullName3 = gcnew DataGridViewColumn;
+				columnFullName3->Name = "Password";
+				DataGridViewCell^ celFullName3 = gcnew DataGridViewTextBoxCell;
+				columnFullName3->CellTemplate = celFullName3;
+				this->dataGridView1->Columns->Add(columnFullName3);*/
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "Login";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "User type";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "Password";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				//берем список пользователей
+				ListUsers* listUsers = new ListUsers();
+				int sizeList = listUsers->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					User user = listUsers->getUserByIndex(i);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(user.getId()).data());
+					System::String^ login = gcnew System::String(user.getLogin().data());
+					System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					System::String^ password = gcnew System::String(user.getPassword().data());
+					array<String^>^ userRecord = { id, login, userType, password };
+					this->dataGridView1->Rows->Add(userRecord);
+				}
+
+
+				//наполнение строк через массив строк
+				/*array<String^>^ AHRecord = {"1", "admin", "1", "@dmin"};
+				array<String^>^ AHRecord1 = { "2", "user", "2", "u$er" };
+				this->dataGridView1->Rows->Add(AHRecord);
+				this->dataGridView1->Rows->Add(AHRecord1);*/
+			}
+			/// <summary>
+			/// добавление уч.записи
+			/// </summary>
+			private: System::Void p12ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				MessageBox::Show("Добавление уч.данных.");
+				Project1Git::MyForm3^ myForm3 = gcnew Project1Git::MyForm3();
+				myForm3->ShowDialog();	//передача фокуса форме авторизации
+			}
+			/// <summary>
+			/// удаление уч.записи
+			/// </summary>
+			private: System::Void p13ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				MessageBox::Show("Удаление уч.данных.");
+				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				myForm4->ShowDialog();	//передача фокуса форме идентификации
+			}
+			/// <summary>
+			/// редактирование уч.записи
+			/// </summary>
+			private: System::Void p14ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				MessageBox::Show("Редактирование уч.данных.");
+				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				myForm4->ShowDialog();	//передача фокуса форме идентификации
+			}
+			/// <summary>
 			/// выбор пункта меню "Выход"
 			/// </summary>
 			private: System::Void p4ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)

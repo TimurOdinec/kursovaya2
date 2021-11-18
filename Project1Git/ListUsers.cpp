@@ -61,9 +61,6 @@ ListUsers::ListUsers()
 			}
 		}
 
-
-
-		
 		ind++;
 	}
 	
