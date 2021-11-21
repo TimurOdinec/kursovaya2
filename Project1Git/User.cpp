@@ -11,6 +11,13 @@ User::User(std::string login)
 {
 	this->setLogin(login);
 }
+User::User(int id, std::string login, int userType, std::string password)
+{
+	this->id = id;
+	this->login = login;
+	this->userType = userType;
+	this->password = password;
+}
 void User::setLogin(std::string login)
 {
 	this->login = login;

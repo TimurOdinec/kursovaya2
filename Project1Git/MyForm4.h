@@ -60,9 +60,9 @@ namespace Project1Git {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(101, 206);
+			this->button1->Location = System::Drawing::Point(87, 187);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(95, 42);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;

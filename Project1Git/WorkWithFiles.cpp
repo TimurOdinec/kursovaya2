@@ -75,3 +75,19 @@ std::vector<std::string> WorkWithFiles::arrString()
 
 	return r;
 }
+void WorkWithFiles::saveDataFile(std::vector<std::string> vr)
+{
+	//запись в файл
+	//создаем объект для записи в файл
+	std::ofstream fileOut;
+	fileOut.open("users.txt");   //создание или перезапись существующего файла
+	for (std::string rowData : vr)
+	{
+		if (!rowData.empty())
+		{
+			fileOut << rowData;
+		}
+	}
+	
+	fileOut.close();            //закрываем файл
+}

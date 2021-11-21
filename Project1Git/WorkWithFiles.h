@@ -18,6 +18,7 @@ namespace Project1Git
 		void readFile();
 		int countRowInFile();
 		std::vector<std::string> arrString();
+		void saveDataFile(std::vector<std::string>);
 	};
 
 }

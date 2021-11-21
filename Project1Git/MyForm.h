@@ -552,18 +552,24 @@ namespace Project1Git {
 
 					System::String^ id = gcnew System::String(std::to_string(user.getId()).data());
 					System::String^ login = gcnew System::String(user.getLogin().data());
-					System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int userTypeStr = user.getUserType();
+					System::String^ userType = "";
+					if (userTypeStr == 1)
+					{
+						userType = "администратор";
+					}
+					else 
+					{
+						if (userTypeStr == 2)
+						{
+							userType = "пользователь";
+						}
+					}
 					System::String^ password = gcnew System::String(user.getPassword().data());
 					array<String^>^ userRecord = { id, login, userType, password };
 					this->dataGridView1->Rows->Add(userRecord);
 				}
-
-
-				//наполнение строк через массив строк
-				/*array<String^>^ AHRecord = {"1", "admin", "1", "@dmin"};
-				array<String^>^ AHRecord1 = { "2", "user", "2", "u$er" };
-				this->dataGridView1->Rows->Add(AHRecord);
-				this->dataGridView1->Rows->Add(AHRecord1);*/
 			}
 			/// <summary>
 			/// добавление уч.записи
@@ -572,6 +578,8 @@ namespace Project1Git {
 			{
 				MessageBox::Show("Добавление уч.данных.");
 				Project1Git::MyForm3^ myForm3 = gcnew Project1Git::MyForm3();
+				std::string editMode = "add";
+				myForm3->editMode = &editMode;
 				myForm3->ShowDialog();	//передача фокуса форме авторизации
 			}
 			/// <summary>

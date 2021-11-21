@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include "ListUsers.h"
+#include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
 
@@ -44,6 +47,8 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
+	public: int idRowListUsers;
+	public: std::string *editMode;
 	protected:
 
 	private:
@@ -144,6 +149,7 @@ namespace Project1Git {
 			this->button1->TabIndex = 8;
 			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm3::button1_Click);
 			// 
 			// button2
 			// 
@@ -190,6 +196,50 @@ namespace Project1Git {
 			this->button2->Text = "Закрыть";
 			this->comboBox1->Items->Add("администратор");
 			this->comboBox1->Items->Add("пользователь");
+			/*std::string ss = *(this->editMode);
+			System::String^ t = gcnew String(ss.data());
+			MessageBox::Show("tt : " + t);*/
+			if (*(this->editMode) == "add")
+			{
+				ListUsers* listUsers = new ListUsers();
+				int newId = listUsers->getNewId();
+				this->textBox1->Text = gcnew String(std::to_string(newId).data());
+				this->textBox1->ReadOnly = true;
+			}
+		}
+		/// <summary>
+		/// вызов режима: добавление редактирование удаление
+		/// </summary>
+		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			if (*(this->editMode) == "add")
+			{
+				MessageBox::Show("ДОБАВИТЬ");
+
+				msclr::interop::marshal_context context;
+				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+				int id = std::stoi(idStr);
+				std::string login = context.marshal_as<std::string>(this->textBox2->Text);
+				std::string userTypeStr = context.marshal_as<std::string>(this->comboBox1->Text);
+				int userType = 0;
+				if (userTypeStr == "администратор")
+				{
+					userType = 1;
+				}
+				else
+				{
+					if (userTypeStr == "пользователь")
+					{
+						userType = 2;
+					}
+				}
+				std::string password = context.marshal_as<std::string>(this->textBox3->Text);
+
+
+				User user(id, login, userType, password);
+				ListUsers* listUsers = new ListUsers();
+				listUsers->addNewUser(user);
+			}
 		}
 		/// <summary>
 		/// закрыть

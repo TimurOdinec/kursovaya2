@@ -91,3 +91,28 @@ User ListUsers::getUserByIndex(int index)
 {
 	return this->user[index];
 }
+int ListUsers::getNewId()
+{
+	int lastId = user[size - 1].getId();
+	return lastId + 1;
+}
+void ListUsers::addNewUser(User user)
+{
+	std::vector<std::string> vr;
+	for (int i = 0; i < this->size; i++)
+	{
+		std::string row = std::to_string(this->user[i].getId()) + ";" +
+							this->user[i].getLogin() + ";" +
+							std::to_string(this->user[i].getUserType()) + ";" +
+							this->user[i].getPassword() + "\n";
+		vr.push_back(row);
+	}
+	std::string newRow = std::to_string(user.getId()) + ";" +
+							user.getLogin() + ";" +
+							std::to_string(user.getUserType()) + ";" +
+							user.getPassword();
+	vr.push_back(newRow);
+	WorkWithFiles workWithFile;
+	workWithFile.saveDataFile(vr);
+}
+

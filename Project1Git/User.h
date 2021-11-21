@@ -14,6 +14,7 @@ namespace Project1Git
 		User();
 		//конструктор
 		User(std::string);
+		User(int, std::string, int, std::string);
 		void setLogin(std::string);
 		std::string getLogin();
 		void setId(int);
