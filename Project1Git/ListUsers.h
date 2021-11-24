@@ -19,5 +19,7 @@ namespace Project1Git
 		User getUserByIndex(int);
 		int getNewId();	//получить id для новой записи
 		void addNewUser(User);
+		void deleteUserById(int);
+		void updateUser(User);
 	};
 }

@@ -9,7 +9,7 @@ using namespace Project1Git;
 
 ListUsers::ListUsers()
 {
-	MessageBox::Show("ListUsers()");
+	//MessageBox::Show("ListUsers()");
 	WorkWithFiles workWithFile;
 	if (!workWithFile.isExistsFile())
 	{
@@ -64,7 +64,7 @@ ListUsers::ListUsers()
 		ind++;
 	}
 	
-	for (int i = 0; i < size; i++)
+	/*for (int i = 0; i < size; i++)
 	{
 		std::string t = std::to_string(user[i].getId()) + ";" 
 			+ user[i].getLogin() + ";" 
@@ -72,7 +72,7 @@ ListUsers::ListUsers()
 			+ user[i].getPassword();
 		System::String^ tt = gcnew System::String(t.data());
 		MessageBox::Show("tt : " + tt);
-	}
+	}*/
 }
 ListUsers::~ListUsers()
 {
@@ -112,6 +112,61 @@ void ListUsers::addNewUser(User user)
 							std::to_string(user.getUserType()) + ";" +
 							user.getPassword();
 	vr.push_back(newRow);
+	WorkWithFiles workWithFile;
+	workWithFile.saveDataFile(vr);
+}
+void ListUsers::deleteUserById(int indexUser)
+{
+	std::vector<std::string> vr;
+	for (int i = 0; i < this->size; i++)
+	{
+		int idUser = this->user[i].getId();
+		if (idUser == indexUser)
+		{
+			continue;
+		}
+		std::string row = std::to_string(this->user[i].getId()) + ";" +
+			this->user[i].getLogin() + ";" +
+			std::to_string(this->user[i].getUserType()) + ";" +
+			this->user[i].getPassword();
+		if (i != (this->size - 1))
+		{
+			row += "\n";
+		}
+		vr.push_back(row);
+	}
+	WorkWithFiles workWithFile;
+	workWithFile.saveDataFile(vr);
+}
+void ListUsers::updateUser(User user)
+{
+	std::vector<std::string> vr;
+	for (int i = 0; i < this->size; i++)
+	{
+		int idUser = this->user[i].getId();
+		int idUserUpd = user.getId();
+		std::string row = "";
+		if (idUser == idUserUpd)
+		{
+			row = std::to_string(user.getId()) + ";" +
+				user.getLogin() + ";" +
+				std::to_string(user.getUserType()) + ";" +
+				user.getPassword();
+		}
+		else
+		{
+			row = std::to_string(this->user[i].getId()) + ";" +
+				this->user[i].getLogin() + ";" +
+				std::to_string(this->user[i].getUserType()) + ";" +
+				this->user[i].getPassword();
+		}
+		
+		if (i != (this->size - 1))
+		{
+			row += "\n";
+		}
+		vr.push_back(row);
+	}
 	WorkWithFiles workWithFile;
 	workWithFile.saveDataFile(vr);
 }

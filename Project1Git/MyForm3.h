@@ -190,6 +190,7 @@ namespace Project1Git {
 			this->BackColor = System::Drawing::Color::Aqua;
 			this->label1->Text = "id";
 			this->label2->Text = "Логин:";
+			this->textBox2->Select();
 			this->label3->Text = "Пароль:";
 			this->label4->Text = "Тип пользователя:";
 			this->button1->Text = "Добавить";
@@ -206,40 +207,94 @@ namespace Project1Git {
 				this->textBox1->Text = gcnew String(std::to_string(newId).data());
 				this->textBox1->ReadOnly = true;
 			}
+			if (*(this->editMode) == "del")
+			{
+				this->button1->Text = "Удалить";
+				ListUsers* listUsers = new ListUsers();
+				User user = listUsers->getUserByIndex(this->idRowListUsers);
+
+				this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());
+				this->textBox2->Text = gcnew String((user.getLogin()).data());
+				this->textBox3->Text = gcnew String((user.getPassword()).data());
+				int userType = user.getUserType();
+				if (userType == 1)
+				{
+					this->comboBox1->Text = "администратор";
+				}
+				if (userType ==2)
+				{
+					this->comboBox1->Text = "пользователь";
+				}
+				
+			}
+			if (*(this->editMode) == "upd")
+			{
+				this->button1->Text = "Редактировать";
+				ListUsers* listUsers = new ListUsers();
+				User user = listUsers->getUserByIndex(this->idRowListUsers);
+
+				this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());
+				this->textBox2->Text = gcnew String((user.getLogin()).data());
+				this->textBox3->Text = gcnew String((user.getPassword()).data());
+				int userType = user.getUserType();
+				if (userType == 1)
+				{
+					this->comboBox1->Text = "администратор";
+				}
+				if (userType == 2)
+				{
+					this->comboBox1->Text = "пользователь";
+				}
+			}
 		}
 		/// <summary>
 		/// вызов режима: добавление редактирование удаление
 		/// </summary>
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 		{
+			msclr::interop::marshal_context context;
+			std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+			int id = std::stoi(idStr);
+			std::string login = context.marshal_as<std::string>(this->textBox2->Text);
+			std::string userTypeStr = context.marshal_as<std::string>(this->comboBox1->Text);
+			int userType = 0;
+			if (userTypeStr == "администратор")
+			{
+				userType = 1;
+			}
+			else
+			{
+				if (userTypeStr == "пользователь")
+				{
+					userType = 2;
+				}
+			}
+			std::string password = context.marshal_as<std::string>(this->textBox3->Text);
 			if (*(this->editMode) == "add")
 			{
 				MessageBox::Show("ДОБАВИТЬ");
-
-				msclr::interop::marshal_context context;
-				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
-				int id = std::stoi(idStr);
-				std::string login = context.marshal_as<std::string>(this->textBox2->Text);
-				std::string userTypeStr = context.marshal_as<std::string>(this->comboBox1->Text);
-				int userType = 0;
-				if (userTypeStr == "администратор")
-				{
-					userType = 1;
-				}
-				else
-				{
-					if (userTypeStr == "пользователь")
-					{
-						userType = 2;
-					}
-				}
-				std::string password = context.marshal_as<std::string>(this->textBox3->Text);
-
 
 				User user(id, login, userType, password);
 				ListUsers* listUsers = new ListUsers();
 				listUsers->addNewUser(user);
 			}
+			if (*(this->editMode) == "del")
+			{
+				MessageBox::Show("УДАЛИТЬ");
+
+				User user(id, login, userType, password);
+				ListUsers* listUsers = new ListUsers();
+				listUsers->deleteUserById(id);
+			}
+			if (*(this->editMode) == "upd")
+			{
+				MessageBox::Show("РЕДАКТИРОВАТЬ");
+
+				User user(id, login, userType, password);
+				ListUsers* listUsers = new ListUsers();
+				listUsers->updateUser(user);
+			}
+			this->Close();
 		}
 		/// <summary>
 		/// закрыть

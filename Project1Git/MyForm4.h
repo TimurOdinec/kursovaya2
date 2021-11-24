@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm3.h"
+#include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
 
@@ -38,6 +39,8 @@ namespace Project1Git {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	public: int idRowListUsers;
+	public: std::string* editMode;
 	protected:
 
 	private:
@@ -104,12 +107,27 @@ namespace Project1Git {
 		{
 			this->Location = Point(20, 20);
 			this->BackColor = System::Drawing::Color::Aqua;
-			this->label1->Text = "Укажите id учетной записи:";
+			
 			this->button1->Text = "OK";
+			if (*(this->editMode) == "del")
+			{
+				this->label1->Text = "Укажите id учетной записи для удаления:";
+			}
+			if (*(this->editMode) == "upd")
+			{
+				this->label1->Text = "Укажите id учетной записи для редактирования:";
+			}
 		}
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 		{
+			msclr::interop::marshal_context context;
+			std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+			int id = std::stoi(idStr);
+			this->idRowListUsers = id - 1;
 			Project1Git::MyForm3^ myForm3 = gcnew Project1Git::MyForm3();
+			myForm3->editMode = this->editMode;
+			myForm3->idRowListUsers = this->idRowListUsers;
+			this->Visible = false;
 			myForm3->ShowDialog();	
 			this->Close();
 		}

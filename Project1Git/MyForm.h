@@ -581,6 +581,8 @@ namespace Project1Git {
 				std::string editMode = "add";
 				myForm3->editMode = &editMode;
 				myForm3->ShowDialog();	//передача фокуса форме авторизации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
 			}
 			/// <summary>
 			/// удаление уч.записи
@@ -589,7 +591,11 @@ namespace Project1Git {
 			{
 				MessageBox::Show("”даление уч.данных.");
 				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				std::string editMode = "del";
+				myForm4->editMode = &editMode;
 				myForm4->ShowDialog();	//передача фокуса форме идентификации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
 			}
 			/// <summary>
 			/// редактирование уч.записи
@@ -598,7 +604,11 @@ namespace Project1Git {
 			{
 				MessageBox::Show("–едактирование уч.данных.");
 				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				std::string editMode = "upd";
+				myForm4->editMode = &editMode;
 				myForm4->ShowDialog();	//передача фокуса форме идентификации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
 			}
 			/// <summary>
 			/// выбор пункта меню "¬ыход"
