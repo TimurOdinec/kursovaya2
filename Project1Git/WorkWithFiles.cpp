@@ -17,7 +17,7 @@ void WorkWithFiles::createFile()
 {
 	std::ofstream fileOut;
 	fileOut.open("users.txt");		//создание или перезапись существующего файла
-	fileOut << "1;admin;1;@dmin";	//запись строки:id=1;login=admin;
+	fileOut << "1;admin;1;1;@dmin";	//запись строки:id=1;login=admin;
 	fileOut.close();
 }
 bool WorkWithFiles::isExistsFile()

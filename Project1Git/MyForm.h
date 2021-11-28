@@ -216,14 +216,16 @@ namespace Project1Git {
 				// p151ToolStripMenuItem
 				// 
 				this->p151ToolStripMenuItem->Name = L"p151ToolStripMenuItem";
-				this->p151ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p151ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p151ToolStripMenuItem->Text = L"p151";
+				this->p151ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p151ToolStripMenuItem_Click);
 				// 
 				// p152ToolStripMenuItem
 				// 
 				this->p152ToolStripMenuItem->Name = L"p152ToolStripMenuItem";
-				this->p152ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p152ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p152ToolStripMenuItem->Text = L"p152";
+				this->p152ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p152ToolStripMenuItem_Click);
 				// 
 				// p2ToolStripMenuItem
 				// 
@@ -436,7 +438,7 @@ namespace Project1Git {
 				//создание новой формы авторизации
 				Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 				myForm1->ShowDialog();			//передача фокуса форме авторизации
-				this->SetVisibleCore(true);	//скрытие формы
+				this->SetVisibleCore(true);		//скрытие формы
 				int currentTypeTest = myForm1->currentType;
 
 				if (currentTypeTest == 1)
@@ -503,27 +505,9 @@ namespace Project1Git {
 				//MessageBox::Show("Просомтр уч.данных.");
 				this->dataGridView1->Visible = true;
 
-				//не изменяемый блок ячеек-заголовков
-				/*DataGridViewColumn^ columnFullName = gcnew DataGridViewColumn;
-				columnFullName->Name = "id";
-				DataGridViewCell^ celFullName = gcnew DataGridViewTextBoxCell;
-				columnFullName->CellTemplate = celFullName;
-				this->dataGridView1->Columns->Add(columnFullName);
-				DataGridViewColumn^ columnFullName1 = gcnew DataGridViewColumn;
-				columnFullName1->Name = "Login";
-				DataGridViewCell^ celFullName1 = gcnew DataGridViewTextBoxCell;
-				columnFullName1->CellTemplate = celFullName1;
-				this->dataGridView1->Columns->Add(columnFullName1);
-				DataGridViewColumn^ columnFullName2 = gcnew DataGridViewColumn;
-				columnFullName2->Name = "User type";
-				DataGridViewCell^ celFullName2 = gcnew DataGridViewTextBoxCell;
-				columnFullName2->CellTemplate = celFullName2;
-				this->dataGridView1->Columns->Add(columnFullName2);
-				DataGridViewColumn^ columnFullName3 = gcnew DataGridViewColumn;
-				columnFullName3->Name = "Password";
-				DataGridViewCell^ celFullName3 = gcnew DataGridViewTextBoxCell;
-				columnFullName3->CellTemplate = celFullName3;
-				this->dataGridView1->Columns->Add(columnFullName3);*/
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
 
 				//вариант с ячейками столбца и направлением сортировки
 				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
@@ -536,15 +520,19 @@ namespace Project1Git {
 				colFullName2->Name = "User type";
 				this->dataGridView1->Columns->Add(colFullName2);
 				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
-				colFullName3->Name = "Password";
+				colFullName3->Name = "User registered";
 				this->dataGridView1->Columns->Add(colFullName3);
+				DataGridViewTextBoxColumn^ colFullName4 = gcnew DataGridViewTextBoxColumn;
+				colFullName4->Name = "Password";
+				this->dataGridView1->Columns->Add(colFullName4);
 
 				//берем список пользователей
 				ListUsers* listUsers = new ListUsers();
 				int sizeList = listUsers->getSize();
 				for (int i = 0; i < sizeList; i++)
 				{
-					User user = listUsers->getUserByIndex(i);
+					int index = listUsers->getUserIndex(i);
+					User user = listUsers->getUserByIndex(index);
 
 					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
 					System::String^ tt = gcnew System::String(t.data());
@@ -566,8 +554,21 @@ namespace Project1Git {
 							userType = "пользователь";
 						}
 					}
+					int userRegisterStr = user.getUserRegister();
+					System::String^ userRegister = "";
+					if (userRegisterStr == 1)
+					{
+						userRegister = "зарегистрирован";
+					}
+					else
+					{
+						if (userRegisterStr == 0)
+						{
+							userRegister = "не зарегистрирован";
+						}
+					}
 					System::String^ password = gcnew System::String(user.getPassword().data());
-					array<String^>^ userRecord = { id, login, userType, password };
+					array<String^>^ userRecord = { id, login, userType, userRegister, password };
 					this->dataGridView1->Rows->Add(userRecord);
 				}
 			}
@@ -610,6 +611,158 @@ namespace Project1Git {
 				this->dataGridView1->Rows->Clear();
 				this->dataGridView1->Columns->Clear();
 			}
+			private: System::Void p151ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				MessageBox::Show("Поиск по логину");
+				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				std::string editMode = "search";
+				myForm4->editMode = &editMode;
+				myForm4->ShowDialog();	//передача фокуса форме идентификации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+				
+
+				System::String^ loginSearchUser = myForm4->loginSearchUser;
+				msclr::interop::marshal_context context;
+				std::string loginUserSearch = context.marshal_as<std::string>(loginSearchUser);
+				MessageBox::Show("loginSearchUser:" + loginSearchUser);
+
+				ListUsers* listUsers = new ListUsers();
+				User user = listUsers->getUserByLogin(loginUserSearch);
+				if (user.getId() == -1)
+				{
+					MessageBox::Show("User not found");
+				}
+				else
+				{
+					MessageBox::Show("testing2");
+					//вариант с ячейками столбца и направлением сортировки
+					DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+					colFullName->Name = "id";
+					this->dataGridView1->Columns->Add(colFullName);
+					DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+					colFullName1->Name = "Login";
+					this->dataGridView1->Columns->Add(colFullName1);
+					DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+					colFullName2->Name = "User type";
+					this->dataGridView1->Columns->Add(colFullName2);
+					DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+					colFullName3->Name = "User registered";
+					this->dataGridView1->Columns->Add(colFullName3);
+					DataGridViewTextBoxColumn^ colFullName4 = gcnew DataGridViewTextBoxColumn;
+					colFullName4->Name = "Password";
+					this->dataGridView1->Columns->Add(colFullName4);
+
+					System::String^ id = gcnew System::String(std::to_string(user.getId()).data());
+					System::String^ login = gcnew System::String(user.getLogin().data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int userTypeStr = user.getUserType();
+					System::String^ userType = "";
+					if (userTypeStr == 1)
+					{
+						userType = "администратор";
+					}
+					else
+					{
+						if (userTypeStr == 2)
+						{
+							userType = "пользователь";
+						}
+					}
+					int userRegisterStr = user.getUserRegister();
+					System::String^ userRegister = "";
+					if (userRegisterStr == 1)
+					{
+						userRegister = "зарегистрирован";
+					}
+					else
+					{
+						if (userRegisterStr == 0)
+						{
+							userRegister = "не зарегистрирован";
+						}
+					}
+					System::String^ password = gcnew System::String(user.getPassword().data());
+					array<String^>^ userRecord = { id, login, userType, userRegister, password };
+					this->dataGridView1->Rows->Add(userRecord);
+				}
+				
+			}
+			private: System::Void p152ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				MessageBox::Show("Поиск незарегистр.пользователей");
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "Login";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "User type";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "User registered";
+				this->dataGridView1->Columns->Add(colFullName3);
+				DataGridViewTextBoxColumn^ colFullName4 = gcnew DataGridViewTextBoxColumn;
+				colFullName4->Name = "Password";
+				this->dataGridView1->Columns->Add(colFullName4);
+
+				//берем список пользователей
+				ListUsers* listUsers = new ListUsers();
+				int sizeList = listUsers->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = listUsers->getUserIndex(i);
+					User user = listUsers->getUserByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(user.getId()).data());
+					System::String^ login = gcnew System::String(user.getLogin().data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int userTypeStr = user.getUserType();
+					System::String^ userType = "";
+					if (userTypeStr == 1)
+					{
+						userType = "администратор";
+					}
+					else
+					{
+						if (userTypeStr == 2)
+						{
+							userType = "пользователь";
+						}
+					}
+					int userRegisterStr = user.getUserRegister();
+					System::String^ userRegister = "";
+					if (userRegisterStr == 1)
+					{
+						userRegister = "зарегистрирован";
+					}
+					else
+					{
+						if (userRegisterStr == 0)
+						{
+							userRegister = "не зарегистрирован";
+						}
+					}
+					System::String^ password = gcnew System::String(user.getPassword().data());
+					array<String^>^ userRecord = { id, login, userType, userRegister, password };
+					if (userRegisterStr == 0)
+					{
+						this->dataGridView1->Rows->Add(userRecord);
+					}
+				}
+			}
+				   
 			/// <summary>
 			/// выбор пункта меню "Выход"
 			/// </summary>
@@ -618,5 +771,4 @@ namespace Project1Git {
 				this->Close();	//закрытие формы
 			}
 	};
-
 }

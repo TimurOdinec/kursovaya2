@@ -7,15 +7,16 @@ User::User()
 	login = "";
 }
 //конструктор
-User::User(std::string login) 
-{
-	this->setLogin(login);
-}
-User::User(int id, std::string login, int userType, std::string password)
+//User::User(std::string login) 
+//{
+//	this->setLogin(login);
+//}
+User::User(int id, std::string login, int userType, int userRegister, std::string password)
 {
 	this->id = id;
 	this->login = login;
 	this->userType = userType;
+	this->userRegister = userRegister;
 	this->password = password;
 }
 void User::setLogin(std::string login)
@@ -41,6 +42,14 @@ void User::setUserType(int userType)
 int User::getUserType()
 {
 	return this->userType;
+}
+void User::setUserRegister(int userRegister)
+{
+	this->userRegister = userRegister;
+}
+int User::getUserRegister()
+{
+	return this->userRegister;
 }
 void User::setPassword(std::string password)
 {

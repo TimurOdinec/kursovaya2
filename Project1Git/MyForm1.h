@@ -193,7 +193,6 @@ namespace Project1Git {
 		{
 			Project1Git::MyForm2^ myForm2 = gcnew Project1Git::MyForm2();
 			myForm2->ShowDialog();
-			this->Close();
 		}
 		/// <summary>
 		/// нажатие на кнопку exit

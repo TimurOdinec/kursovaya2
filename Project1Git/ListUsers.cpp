@@ -24,6 +24,8 @@ ListUsers::ListUsers()
 	user = new User[size];
 	std::vector<std::string> vr = workWithFile.arrString();
 	int ind = 0;
+	
+
 	for (std::string rowData : vr)
 	{
 		//режем строку по ;
@@ -31,8 +33,8 @@ ListUsers::ListUsers()
 		if (!rowData.empty())
 		{
 			int previousPosition = 0;
-			//кол-во параметров в файле: id, login, typeUser, password
-			int countParameters = 4;
+			//кол-во параметров в файле: id, login, typeUser, userRegister, password
+			int countParameters = 5;
 			//каждую строку режем по специальному разделителю
 			for (int j = 0; j < countParameters; j++)
 			{
@@ -55,6 +57,10 @@ ListUsers::ListUsers()
 					}
 					if (j == 3)
 					{
+						user[ind].setUserRegister(std::stoi(tempRow));
+					}
+					if (j == 4)
+					{
 						user[ind].setPassword(tempRow);
 					}
 				}
@@ -69,6 +75,7 @@ ListUsers::ListUsers()
 		std::string t = std::to_string(user[i].getId()) + ";" 
 			+ user[i].getLogin() + ";" 
 			+ std::to_string(user[i].getUserType()) + ";"
+			+ std::to_string(user[i].getUserRegister()) + ";"
 			+ user[i].getPassword();
 		System::String^ tt = gcnew System::String(t.data());
 		MessageBox::Show("tt : " + tt);
@@ -80,16 +87,46 @@ ListUsers::~ListUsers()
 }
 User ListUsers::getUserByLogin(std::string login)
 {
-	//TO DO
-	return *user;
+	User user(-1, "", -1, -1, "");
+	System::String^ tt = gcnew System::String(login.data());
+	MessageBox::Show("tt : " + tt);
+	for (int i = 0; i < this->size; i++)
+	{
+		std::string loginRow = this->user[i].getLogin();
+		System::String^ tt = gcnew System::String(loginRow.data());
+		MessageBox::Show("tt : " + tt);
+		if (loginRow == login)
+		{
+			return this->user[i];
+		}
+	}
+	return user;
 }
 int ListUsers::getSize()
 {
 	return this->size;
 }
+int ListUsers::getUserIndex(int index)
+{
+	return this->user[index].getId();
+}
 User ListUsers::getUserByIndex(int index)
 {
-	return this->user[index];
+	User user(-1, "", -1, -1, "");
+	//System::String^ tt = gcnew System::String(std::to_string(index).data());
+	//MessageBox::Show("getUserByIndex tt : " + tt);
+	for (int i = 0; i < this->size; i++)
+	{
+		int idRow = this->user[i].getId();
+		//System::String^ tt = gcnew System::String(std::to_string(idRow).data());
+		//MessageBox::Show("tt : " + tt);
+		if (idRow == index)
+		{
+			return this->user[i];
+		}
+	}
+	return user;
+	//return this->user[index];
 }
 int ListUsers::getNewId()
 {
@@ -104,12 +141,14 @@ void ListUsers::addNewUser(User user)
 		std::string row = std::to_string(this->user[i].getId()) + ";" +
 							this->user[i].getLogin() + ";" +
 							std::to_string(this->user[i].getUserType()) + ";" +
+							std::to_string(this->user[i].getUserRegister()) + ";" +
 							this->user[i].getPassword() + "\n";
 		vr.push_back(row);
 	}
 	std::string newRow = std::to_string(user.getId()) + ";" +
 							user.getLogin() + ";" +
 							std::to_string(user.getUserType()) + ";" +
+							std::to_string(user.getUserRegister()) + ";" +
 							user.getPassword();
 	vr.push_back(newRow);
 	WorkWithFiles workWithFile;
@@ -128,6 +167,7 @@ void ListUsers::deleteUserById(int indexUser)
 		std::string row = std::to_string(this->user[i].getId()) + ";" +
 			this->user[i].getLogin() + ";" +
 			std::to_string(this->user[i].getUserType()) + ";" +
+			std::to_string(this->user[i].getUserRegister()) + ";" +
 			this->user[i].getPassword();
 		if (i != (this->size - 1))
 		{
@@ -151,6 +191,7 @@ void ListUsers::updateUser(User user)
 			row = std::to_string(user.getId()) + ";" +
 				user.getLogin() + ";" +
 				std::to_string(user.getUserType()) + ";" +
+				std::to_string(user.getUserRegister()) + ";" +
 				user.getPassword();
 		}
 		else
@@ -158,6 +199,7 @@ void ListUsers::updateUser(User user)
 			row = std::to_string(this->user[i].getId()) + ";" +
 				this->user[i].getLogin() + ";" +
 				std::to_string(this->user[i].getUserType()) + ";" +
+				std::to_string(this->user[i].getUserRegister()) + ";" +
 				this->user[i].getPassword();
 		}
 		

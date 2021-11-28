@@ -19,7 +19,7 @@ Authorization::~Authorization()
 bool Authorization::checkCurrentUser()
 {
 	bool isRegistredUser = false;
-
+	
 	ListUsers *listUsers = new ListUsers();
 	int sizeList = listUsers->getSize();
 	for (int i = 0; i < sizeList; i++)
@@ -30,14 +30,18 @@ bool Authorization::checkCurrentUser()
 		System::String^ tt = gcnew System::String(t.data());
 		MessageBox::Show("tt : " + tt);*/
 
-
 		std::string login = user.getLogin();
 		std::string password = user.getPassword();
 		if (login == currentLogin && password == currentPassword)
 		{
-			isRegistredUser = true;
-			this->currentUser = user;
-			this->currentPassword = password;
+			//проверяем зарегистрирован пользователь или нет
+			int registered = user.getUserRegister();
+			if (registered == 1)
+			{
+				isRegistredUser = true;
+				this->currentUser = user;
+				this->currentPassword = password;
+			}
 		}
 	}
 

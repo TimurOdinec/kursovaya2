@@ -48,7 +48,9 @@ namespace Project1Git {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	public: int idRowListUsers;
-	public: std::string *editMode;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
+	public: std::string* editMode;
 	protected:
 
 	private:
@@ -74,35 +76,37 @@ namespace Project1Git {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(187, 34);
+			this->textBox1->Location = System::Drawing::Point(268, 31);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(144, 22);
+			this->textBox1->Size = System::Drawing::Size(207, 22);
 			this->textBox1->TabIndex = 0;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(187, 89);
+			this->textBox2->Location = System::Drawing::Point(268, 86);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(144, 22);
+			this->textBox2->Size = System::Drawing::Size(207, 22);
 			this->textBox2->TabIndex = 1;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(187, 146);
+			this->textBox3->Location = System::Drawing::Point(268, 143);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(144, 22);
+			this->textBox3->Size = System::Drawing::Size(207, 22);
 			this->textBox3->TabIndex = 2;
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(187, 206);
+			this->comboBox1->Location = System::Drawing::Point(268, 203);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(144, 24);
+			this->comboBox1->Size = System::Drawing::Size(207, 24);
 			this->comboBox1->TabIndex = 3;
 			// 
 			// label1
@@ -143,9 +147,9 @@ namespace Project1Git {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(73, 289);
+			this->button1->Location = System::Drawing::Point(73, 317);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(104, 31);
+			this->button1->Size = System::Drawing::Size(162, 42);
 			this->button1->TabIndex = 8;
 			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
@@ -153,19 +157,38 @@ namespace Project1Git {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(212, 289);
+			this->button2->Location = System::Drawing::Point(311, 317);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(108, 31);
+			this->button2->Size = System::Drawing::Size(153, 42);
 			this->button2->TabIndex = 9;
 			this->button2->Text = L"button2";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm3::button2_Click);
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(46, 261);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(46, 17);
+			this->label5->TabIndex = 11;
+			this->label5->Text = L"label5";
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Location = System::Drawing::Point(268, 258);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(207, 24);
+			this->comboBox2->TabIndex = 10;
+			// 
 			// MyForm3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(412, 358);
+			this->ClientSize = System::Drawing::Size(533, 404);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label4);
@@ -193,10 +216,13 @@ namespace Project1Git {
 			this->textBox2->Select();
 			this->label3->Text = "Пароль:";
 			this->label4->Text = "Тип пользователя:";
+			this->label5->Text = "Регистрация пользователя:";
 			this->button1->Text = "Добавить";
 			this->button2->Text = "Закрыть";
 			this->comboBox1->Items->Add("администратор");
 			this->comboBox1->Items->Add("пользователь");
+			this->comboBox2->Items->Add("зарегистрирован");
+			this->comboBox2->Items->Add("не зарегистрирован");
 			/*std::string ss = *(this->editMode);
 			System::String^ t = gcnew String(ss.data());
 			MessageBox::Show("tt : " + t);*/
@@ -212,7 +238,7 @@ namespace Project1Git {
 				this->button1->Text = "Удалить";
 				ListUsers* listUsers = new ListUsers();
 				User user = listUsers->getUserByIndex(this->idRowListUsers);
-
+				
 				this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());
 				this->textBox2->Text = gcnew String((user.getLogin()).data());
 				this->textBox3->Text = gcnew String((user.getPassword()).data());
@@ -225,7 +251,15 @@ namespace Project1Git {
 				{
 					this->comboBox1->Text = "пользователь";
 				}
-				
+				int userRegister = user.getUserRegister();
+				if (userRegister == 1)
+				{
+					this->comboBox2->Text = "зарегистрирован";
+				}
+				if (userRegister == 0)
+				{
+					this->comboBox2->Text = "не зарегистрирован";
+				}
 			}
 			if (*(this->editMode) == "upd")
 			{
@@ -244,6 +278,15 @@ namespace Project1Git {
 				if (userType == 2)
 				{
 					this->comboBox1->Text = "пользователь";
+				}
+				int userRegister = user.getUserRegister();
+				if (userRegister == 1)
+				{
+					this->comboBox2->Text = "зарегистрирован";
+				}
+				if (userRegister == 0)
+				{
+					this->comboBox2->Text = "не зарегистрирован";
 				}
 			}
 		}
@@ -269,12 +312,25 @@ namespace Project1Git {
 					userType = 2;
 				}
 			}
+			std::string userRegisterStr = context.marshal_as<std::string>(this->comboBox2->Text);
+			int userRegister = 0;
+			if (userRegisterStr == "зарегистрирован")
+			{
+				userRegister = 1;
+			}
+			else
+			{
+				if (userRegisterStr == "не зарегистрирован")
+				{
+					userRegister = 0;
+				}
+			}
 			std::string password = context.marshal_as<std::string>(this->textBox3->Text);
 			if (*(this->editMode) == "add")
 			{
 				MessageBox::Show("ДОБАВИТЬ");
 
-				User user(id, login, userType, password);
+				User user(id, login, userType, userRegister, password);
 				ListUsers* listUsers = new ListUsers();
 				listUsers->addNewUser(user);
 			}
@@ -282,7 +338,7 @@ namespace Project1Git {
 			{
 				MessageBox::Show("УДАЛИТЬ");
 
-				User user(id, login, userType, password);
+				User user(id, login, userType, userRegister, password);
 				ListUsers* listUsers = new ListUsers();
 				listUsers->deleteUserById(id);
 			}
@@ -290,7 +346,7 @@ namespace Project1Git {
 			{
 				MessageBox::Show("РЕДАКТИРОВАТЬ");
 
-				User user(id, login, userType, password);
+				User user(id, login, userType, userRegister, password);
 				ListUsers* listUsers = new ListUsers();
 				listUsers->updateUser(user);
 			}

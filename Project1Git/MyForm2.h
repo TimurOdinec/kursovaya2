@@ -1,7 +1,9 @@
 #pragma once
 #include "MyForm.h"
 #include "MyForm1.h"
+#include "ListUsers.h"
 #include <string>
+#include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
 
@@ -37,7 +39,7 @@ namespace Project1Git {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Label^ label1;
@@ -61,7 +63,6 @@ namespace Project1Git {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -70,13 +71,6 @@ namespace Project1Git {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(203, 48);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(227, 22);
-			this->textBox1->TabIndex = 0;
 			// 
 			// textBox2
 			// 
@@ -89,6 +83,7 @@ namespace Project1Git {
 			// 
 			this->textBox3->Location = System::Drawing::Point(203, 164);
 			this->textBox3->Name = L"textBox3";
+			this->textBox3->PasswordChar = '*';
 			this->textBox3->Size = System::Drawing::Size(227, 22);
 			this->textBox3->TabIndex = 2;
 			// 
@@ -130,6 +125,7 @@ namespace Project1Git {
 			this->button1->TabIndex = 6;
 			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm2::button1_Click);
 			// 
 			// button2
 			// 
@@ -153,7 +149,6 @@ namespace Project1Git {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
 			this->Name = L"MyForm2";
 			this->Text = L"MyForm2";
 			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm2_Load);
@@ -165,14 +160,28 @@ namespace Project1Git {
 		private: System::Void MyForm2_Load(System::Object^ sender, System::EventArgs^ e) 
 		{
 			this->Location = Point(20, 20);
-			this->label1->Text = "Name:";
+			this->label1->Text = "Введите данные (для нового пользователя)";
 			this->label2->Text = "Login:";
 			this->label3->Text = "Password:";
 			this->BackColor = System::Drawing::Color::Aqua;
 			this->button1->Text = "Sign up";
 			this->button2->Text = "Exit";
 		}
-
+		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			msclr::interop::marshal_context context;
+			ListUsers* listUsers = new ListUsers();
+			int newId = listUsers->getNewId();
+			int id = newId;
+			std::string login = context.marshal_as<std::string>(this->textBox2->Text);
+			int userType = 2;
+			int userRegister = 0;
+			std::string password = context.marshal_as<std::string>(this->textBox3->Text);
+			User user(id, login, userType, userRegister, password);
+			listUsers->addNewUser(user);
+			MessageBox::Show("Новый пользователь отправлен на регистрацию.");
+			this->Close();
+		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 		{
 			this->Close();

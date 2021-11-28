@@ -5,7 +5,7 @@ namespace Project1Git
 {
 	using namespace System::Windows::Forms;
 
-	class ListUsers
+	public class ListUsers
 	{
 	private:
 		int size;
@@ -13,9 +13,10 @@ namespace Project1Git
 
 	public:
 		ListUsers();
-		User getUserByLogin(std::string);
 		~ListUsers();
 		int getSize();
+		int getUserIndex(int);
+		User getUserByLogin(std::string);
 		User getUserByIndex(int);
 		int getNewId();	//получить id для новой записи
 		void addNewUser(User);

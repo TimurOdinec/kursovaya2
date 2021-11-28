@@ -41,6 +41,8 @@ namespace Project1Git {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	public: int idRowListUsers;
 	public: std::string* editMode;
+	//public: std::string* loginSearchUser;
+	public: System::String^ loginSearchUser;
 	protected:
 
 	private:
@@ -63,7 +65,7 @@ namespace Project1Git {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(87, 187);
+			this->button1->Location = System::Drawing::Point(137, 183);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(95, 42);
 			this->button1->TabIndex = 0;
@@ -84,14 +86,14 @@ namespace Project1Git {
 			// 
 			this->textBox1->Location = System::Drawing::Point(46, 101);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 22);
+			this->textBox1->Size = System::Drawing::Size(287, 22);
 			this->textBox1->TabIndex = 2;
 			// 
 			// MyForm4
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(282, 253);
+			this->ClientSize = System::Drawing::Size(390, 253);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
@@ -117,18 +119,31 @@ namespace Project1Git {
 			{
 				this->label1->Text = "”кажите id учетной записи дл€ редактировани€:";
 			}
+			if (*(this->editMode) == "search")
+			{
+				this->label1->Text = "”кажите login пользовател€:";
+			}
 		}
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-			msclr::interop::marshal_context context;
-			std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
-			int id = std::stoi(idStr);
-			this->idRowListUsers = id - 1;
-			Project1Git::MyForm3^ myForm3 = gcnew Project1Git::MyForm3();
-			myForm3->editMode = this->editMode;
-			myForm3->idRowListUsers = this->idRowListUsers;
-			this->Visible = false;
-			myForm3->ShowDialog();	
+			if (*(this->editMode) == "search")
+			{
+				loginSearchUser = this->textBox1->Text;
+				//MessageBox::Show("loginSearchUser : "+ loginSearchUser);
+			}
+			else
+			{
+				msclr::interop::marshal_context context;
+				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+				int id = std::stoi(idStr);
+				//this->idRowListUsers = id - 1;
+				this->idRowListUsers = id;
+				Project1Git::MyForm3^ myForm3 = gcnew Project1Git::MyForm3();
+				myForm3->editMode = this->editMode;
+				myForm3->idRowListUsers = this->idRowListUsers;
+				this->Visible = false;
+				myForm3->ShowDialog();
+			}
 			this->Close();
 		}
 	};
