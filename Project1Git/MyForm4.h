@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm3.h"
+#include "MyForm5.h"
 #include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
@@ -40,6 +41,7 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	public: int idRowListUsers;
+	public: int idRowCars;
 	public: std::string* editMode;
 	//public: std::string* loginSearchUser;
 	public: System::String^ loginSearchUser;
@@ -123,6 +125,14 @@ namespace Project1Git {
 			{
 				this->label1->Text = "”кажите login пользовател€:";
 			}
+			if (*(this->editMode) == "delCar")
+			{
+				this->label1->Text = "”кажите id авто удалени€:";
+			}
+			if (*(this->editMode) == "updCar")
+			{
+				this->label1->Text = "”кажите id авто дл€ редактировани€:";
+			}
 		}
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 		{
@@ -131,7 +141,7 @@ namespace Project1Git {
 				loginSearchUser = this->textBox1->Text;
 				//MessageBox::Show("loginSearchUser : "+ loginSearchUser);
 			}
-			else
+			if ((*(this->editMode) == "del") || (*(this->editMode) == "upd"))
 			{
 				msclr::interop::marshal_context context;
 				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
@@ -143,6 +153,19 @@ namespace Project1Git {
 				myForm3->idRowListUsers = this->idRowListUsers;
 				this->Visible = false;
 				myForm3->ShowDialog();
+			}
+			if ((*(this->editMode) == "delCar") || (*(this->editMode) == "updCar"))
+			{
+				msclr::interop::marshal_context context;
+				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+				int id = std::stoi(idStr);
+				//this->idRowListUsers = id - 1;
+				this->idRowCars = id;
+				Project1Git::MyForm5^ myForm5 = gcnew Project1Git::MyForm5();
+				myForm5->editMode = this->editMode;
+				myForm5->idRowCars = this->idRowCars;
+				this->Visible = false;
+				myForm5->ShowDialog();
 			}
 			this->Close();
 		}

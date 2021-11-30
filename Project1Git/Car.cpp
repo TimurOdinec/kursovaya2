@@ -7,10 +7,28 @@ Car::Car()
 {
 
 }
-Car::Car(std::string typeCar, double capacityCar)
+Car::Car(int id, int conditionCar, std::string typeCar, double capacityCar)
 {
+	this->id = id;
+	this->conditionCar = conditionCar;
 	this->typeCar = typeCar;
 	this->capacityCar = capacityCar;
+}
+void Car::setId(int id)
+{
+	this->id = id;
+}
+int Car::getId()
+{
+	return this->id;
+}
+void Car::setConditionCar(int conditionCar)
+{
+	this->conditionCar = conditionCar;
+}
+int Car::getConditionCar()
+{
+	return this->conditionCar;
 }
 void Car::setTypeCar(std::string typeCar)
 {

@@ -3,9 +3,11 @@
 #include "MyForm2.h"
 #include "MyForm3.h"
 #include "MyForm4.h"
+#include "MyForm5.h"
 #include "ListUsers.h"
 #include <string>
 #include <msclr\marshal_cppstd.h>
+#include "Carpark.h"
 
 namespace Project1Git {
 
@@ -69,6 +71,9 @@ namespace Project1Git {
 		private: System::Windows::Forms::ToolStripMenuItem^ p151ToolStripMenuItem;
 		private: System::Windows::Forms::ToolStripMenuItem^ p152ToolStripMenuItem;
 		private: System::Windows::Forms::ToolStripMenuItem^ p4ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p261ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p262ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ p263ToolStripMenuItem;
 
 		private:
 			/// <summary>
@@ -109,6 +114,9 @@ namespace Project1Git {
 				this->p26ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->p3ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->p4ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p261ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p262ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->p263ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 				this->menuStrip1->SuspendLayout();
 				this->SuspendLayout();
@@ -178,28 +186,28 @@ namespace Project1Git {
 				// p11ToolStripMenuItem
 				// 
 				this->p11ToolStripMenuItem->Name = L"p11ToolStripMenuItem";
-				this->p11ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p11ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
 				this->p11ToolStripMenuItem->Text = L"p11";
 				this->p11ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p11ToolStripMenuItem_Click);
 				// 
 				// p12ToolStripMenuItem
 				// 
 				this->p12ToolStripMenuItem->Name = L"p12ToolStripMenuItem";
-				this->p12ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p12ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
 				this->p12ToolStripMenuItem->Text = L"p12";
 				this->p12ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p12ToolStripMenuItem_Click);
 				// 
 				// p13ToolStripMenuItem
 				// 
 				this->p13ToolStripMenuItem->Name = L"p13ToolStripMenuItem";
-				this->p13ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p13ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
 				this->p13ToolStripMenuItem->Text = L"p13";
 				this->p13ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p13ToolStripMenuItem_Click);
 				// 
 				// p14ToolStripMenuItem
 				// 
 				this->p14ToolStripMenuItem->Name = L"p14ToolStripMenuItem";
-				this->p14ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p14ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
 				this->p14ToolStripMenuItem->Text = L"p14";
 				this->p14ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p14ToolStripMenuItem_Click);
 				// 
@@ -210,20 +218,20 @@ namespace Project1Git {
 						this->p152ToolStripMenuItem
 				});
 				this->p15ToolStripMenuItem->Name = L"p15ToolStripMenuItem";
-				this->p15ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p15ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
 				this->p15ToolStripMenuItem->Text = L"p15";
 				// 
 				// p151ToolStripMenuItem
 				// 
 				this->p151ToolStripMenuItem->Name = L"p151ToolStripMenuItem";
-				this->p151ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p151ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
 				this->p151ToolStripMenuItem->Text = L"p151";
 				this->p151ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p151ToolStripMenuItem_Click);
 				// 
 				// p152ToolStripMenuItem
 				// 
 				this->p152ToolStripMenuItem->Name = L"p152ToolStripMenuItem";
-				this->p152ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p152ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
 				this->p152ToolStripMenuItem->Text = L"p152";
 				this->p152ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p152ToolStripMenuItem_Click);
 				// 
@@ -240,26 +248,30 @@ namespace Project1Git {
 				// p21ToolStripMenuItem
 				// 
 				this->p21ToolStripMenuItem->Name = L"p21ToolStripMenuItem";
-				this->p21ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p21ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p21ToolStripMenuItem->Text = L"p21";
+				this->p21ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p21ToolStripMenuItem_Click);
 				// 
 				// p22ToolStripMenuItem
 				// 
 				this->p22ToolStripMenuItem->Name = L"p22ToolStripMenuItem";
-				this->p22ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p22ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p22ToolStripMenuItem->Text = L"p22";
+				this->p22ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p22ToolStripMenuItem_Click);
 				// 
 				// p23ToolStripMenuItem
 				// 
 				this->p23ToolStripMenuItem->Name = L"p23ToolStripMenuItem";
-				this->p23ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p23ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p23ToolStripMenuItem->Text = L"p23";
+				this->p23ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p23ToolStripMenuItem_Click);
 				// 
 				// p24ToolStripMenuItem
 				// 
 				this->p24ToolStripMenuItem->Name = L"p24ToolStripMenuItem";
-				this->p24ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p24ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p24ToolStripMenuItem->Text = L"p24";
+				this->p24ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p24ToolStripMenuItem_Click);
 				// 
 				// p25ToolStripMenuItem
 				// 
@@ -268,37 +280,45 @@ namespace Project1Git {
 						this->p252ToolStripMenuItem, this->p253ToolStripMenuItem, this->p254ToolStripMenuItem
 				});
 				this->p25ToolStripMenuItem->Name = L"p25ToolStripMenuItem";
-				this->p25ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p25ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p25ToolStripMenuItem->Text = L"p25";
 				// 
 				// p251ToolStripMenuItem
 				// 
 				this->p251ToolStripMenuItem->Name = L"p251ToolStripMenuItem";
-				this->p251ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p251ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p251ToolStripMenuItem->Text = L"p251";
+				this->p251ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p251ToolStripMenuItem_Click);
 				// 
 				// p252ToolStripMenuItem
 				// 
 				this->p252ToolStripMenuItem->Name = L"p252ToolStripMenuItem";
-				this->p252ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p252ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p252ToolStripMenuItem->Text = L"p252";
+				this->p252ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p252ToolStripMenuItem_Click);
 				// 
 				// p253ToolStripMenuItem
 				// 
 				this->p253ToolStripMenuItem->Name = L"p253ToolStripMenuItem";
-				this->p253ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p253ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p253ToolStripMenuItem->Text = L"p253";
+				this->p253ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p253ToolStripMenuItem_Click);
 				// 
 				// p254ToolStripMenuItem
 				// 
 				this->p254ToolStripMenuItem->Name = L"p254ToolStripMenuItem";
-				this->p254ToolStripMenuItem->Size = System::Drawing::Size(125, 26);
+				this->p254ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p254ToolStripMenuItem->Text = L"p254";
+				this->p254ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p254ToolStripMenuItem_Click);
 				// 
 				// p26ToolStripMenuItem
 				// 
+				this->p26ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+					this->p261ToolStripMenuItem,
+						this->p262ToolStripMenuItem, this->p263ToolStripMenuItem
+				});
 				this->p26ToolStripMenuItem->Name = L"p26ToolStripMenuItem";
-				this->p26ToolStripMenuItem->Size = System::Drawing::Size(117, 26);
+				this->p26ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p26ToolStripMenuItem->Text = L"p26";
 				// 
 				// p3ToolStripMenuItem
@@ -314,6 +334,27 @@ namespace Project1Git {
 				this->p4ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 				this->p4ToolStripMenuItem->Text = L"p4";
 				this->p4ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p4ToolStripMenuItem_Click);
+				// 
+				// p261ToolStripMenuItem
+				// 
+				this->p261ToolStripMenuItem->Name = L"p261ToolStripMenuItem";
+				this->p261ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p261ToolStripMenuItem->Text = L"p261";
+				this->p261ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p261ToolStripMenuItem_Click);
+				// 
+				// p262ToolStripMenuItem
+				// 
+				this->p262ToolStripMenuItem->Name = L"p262ToolStripMenuItem";
+				this->p262ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p262ToolStripMenuItem->Text = L"p262";
+				this->p262ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p262ToolStripMenuItem_Click);
+				// 
+				// p263ToolStripMenuItem
+				// 
+				this->p263ToolStripMenuItem->Name = L"p263ToolStripMenuItem";
+				this->p263ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p263ToolStripMenuItem->Text = L"p263";
+				this->p263ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p263ToolStripMenuItem_Click);
 				// 
 				// MyForm
 				// 
@@ -388,6 +429,9 @@ namespace Project1Git {
 					this->p253ToolStripMenuItem->Text = "Поиск ремонтируемых машин";
 					this->p254ToolStripMenuItem->Text = "Поиск списанных машин";
 					this->p26ToolStripMenuItem->Text = "Сортировка данных";
+					this->p261ToolStripMenuItem->Text = "Сортировка по состоянию машин";
+					this->p262ToolStripMenuItem->Text = "Сортировка по типу машин";
+					this->p263ToolStripMenuItem->Text = "Сортировка по грузоподъемности";
 					this->p3ToolStripMenuItem->Text = "Сменить пользователя";
 					this->p4ToolStripMenuItem->Text = "Выход";
 				}
@@ -409,7 +453,14 @@ namespace Project1Git {
 						this->p23ToolStripMenuItem->Available = false;
 						this->p24ToolStripMenuItem->Available = false;
 						this->p25ToolStripMenuItem->Text = "Поиск данных";
+						this->p251ToolStripMenuItem->Text = "Поиск свободных машин";
+						this->p252ToolStripMenuItem->Text = "Поиск занятых машин";
+						this->p253ToolStripMenuItem->Text = "Поиск ремонтируемых машин";
+						this->p254ToolStripMenuItem->Text = "Поиск списанных машин";
 						this->p26ToolStripMenuItem->Text = "Сортировка данных";
+						this->p261ToolStripMenuItem->Text = "Сортировка по состоянию машин";
+						this->p262ToolStripMenuItem->Text = "Сортировка по типу машин";
+						this->p263ToolStripMenuItem->Text = "Сортировка по грузоподъемности";
 						this->p3ToolStripMenuItem->Text = "Сменить пользователя";
 						this->p4ToolStripMenuItem->Text = "Выход";
 					}
@@ -465,6 +516,9 @@ namespace Project1Git {
 					this->p253ToolStripMenuItem->Text = "Поиск ремонтируемых машин";
 					this->p254ToolStripMenuItem->Text = "Поиск списанных машин";
 					this->p26ToolStripMenuItem->Text = "Сортировка данных";
+					this->p261ToolStripMenuItem->Text = "Сортировка по состоянию машин";
+					this->p262ToolStripMenuItem->Text = "Сортировка по типу машин";
+					this->p263ToolStripMenuItem->Text = "Сортировка по грузоподъемности";
 					this->p3ToolStripMenuItem->Text = "Сменить пользователя";
 					this->p4ToolStripMenuItem->Text = "Выход";
 				}
@@ -486,7 +540,14 @@ namespace Project1Git {
 						this->p23ToolStripMenuItem->Available = false;
 						this->p24ToolStripMenuItem->Available = false;
 						this->p25ToolStripMenuItem->Text = "Поиск данных";
+						this->p251ToolStripMenuItem->Text = "Поиск свободных машин";
+						this->p252ToolStripMenuItem->Text = "Поиск занятых машин";
+						this->p253ToolStripMenuItem->Text = "Поиск ремонтируемых машин";
+						this->p254ToolStripMenuItem->Text = "Поиск списанных машин";
 						this->p26ToolStripMenuItem->Text = "Сортировка данных";
+						this->p261ToolStripMenuItem->Text = "Сортировка по состоянию машин";
+						this->p262ToolStripMenuItem->Text = "Сортировка по типу машин";
+						this->p263ToolStripMenuItem->Text = "Сортировка по грузоподъемности";
 						this->p3ToolStripMenuItem->Text = "Сменить пользователя";
 						this->p4ToolStripMenuItem->Text = "Выход";
 					}
@@ -769,6 +830,601 @@ namespace Project1Git {
 			private: System::Void p4ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 			{
 				this->Close();	//закрытие формы
+			}
+			/// <summary>
+			/// просмотр автопарка
+			/// </summary>
+			private: System::Void p21ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+				
+				//берем список auto
+				Carpark *carpark = new Carpark();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					this->dataGridView1->Rows->Add(carRecord);
+				}
+			}
+			/// <summary>
+			/// добавление авто
+			/// </summary>
+			private: System::Void p22ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				MessageBox::Show("Добавление авто");
+				Project1Git::MyForm5^ myForm5 = gcnew Project1Git::MyForm5();
+				std::string editMode = "add";
+				myForm5->editMode = &editMode;
+				myForm5->ShowDialog();	//передача фокуса форме авторизации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+			}
+			/// <summary>
+			/// удаление авто
+			/// </summary>
+			private: System::Void p23ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				MessageBox::Show("Удаление авто");
+				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				std::string editMode = "delCar";
+				myForm4->editMode = &editMode;
+				myForm4->ShowDialog();	//передача фокуса форме идентификации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+			}
+			private: System::Void p24ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				MessageBox::Show("Редактирование авто");
+				Project1Git::MyForm4^ myForm4 = gcnew Project1Git::MyForm4();
+				std::string editMode = "updCar";
+				myForm4->editMode = &editMode;
+				myForm4->ShowDialog();	//передача фокуса форме идентификации
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+			}
+			private: System::Void p251ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					if (conditionCar == 3)
+					{
+						this->dataGridView1->Rows->Add(carRecord);
+					}
+					
+				}
+			}
+			private: System::Void p252ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					if (conditionCar == 4)
+					{
+						this->dataGridView1->Rows->Add(carRecord);
+					}
+
+				}
+			}
+			private: System::Void p253ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					if (conditionCar == 1)
+					{
+						this->dataGridView1->Rows->Add(carRecord);
+					}
+
+				}
+			}
+			private: System::Void p254ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					if (conditionCar == 2)
+					{
+						this->dataGridView1->Rows->Add(carRecord);
+					}
+
+				}
+			}
+			private: System::Void p261ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				carpark->sortByConditionCar();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					this->dataGridView1->Rows->Add(carRecord);
+				}
+			}
+			private: System::Void p262ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				carpark->sortByTypeCar();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					this->dataGridView1->Rows->Add(carRecord);
+				}
+			}
+			private: System::Void p263ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с ячейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				carpark->sortByCapacityCar();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
+
+					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
+					System::String^ tt = gcnew System::String(t.data());
+					MessageBox::Show("tt : " + tt);*/
+
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, занята
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "занята";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					this->dataGridView1->Rows->Add(carRecord);
+				}
 			}
 	};
 }

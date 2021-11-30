@@ -11,21 +11,20 @@ ListUsers::ListUsers()
 {
 	//MessageBox::Show("ListUsers()");
 	WorkWithFiles workWithFile;
-	if (!workWithFile.isExistsFile())
+	if (!workWithFile.isExistsFile("users"))
 	{
 		//создаем файл
 		MessageBox::Show("File not found");
-		workWithFile.createFile();
+		workWithFile.createFile("users");
 		MessageBox::Show("File created");
 	}
 	//считываем файл
-	workWithFile.readFile();
-	size = workWithFile.countRowInFile();
+	workWithFile.readFile("users");
+	size = workWithFile.countRowInFile("users");
 	user = new User[size];
-	std::vector<std::string> vr = workWithFile.arrString();
+	std::vector<std::string> vr = workWithFile.arrString("users");
 	int ind = 0;
 	
-
 	for (std::string rowData : vr)
 	{
 		//режем строку по ;
@@ -152,7 +151,7 @@ void ListUsers::addNewUser(User user)
 							user.getPassword();
 	vr.push_back(newRow);
 	WorkWithFiles workWithFile;
-	workWithFile.saveDataFile(vr);
+	workWithFile.saveDataFile(vr, "users");
 }
 void ListUsers::deleteUserById(int indexUser)
 {
@@ -176,7 +175,7 @@ void ListUsers::deleteUserById(int indexUser)
 		vr.push_back(row);
 	}
 	WorkWithFiles workWithFile;
-	workWithFile.saveDataFile(vr);
+	workWithFile.saveDataFile(vr, "users");
 }
 void ListUsers::updateUser(User user)
 {
@@ -210,6 +209,6 @@ void ListUsers::updateUser(User user)
 		vr.push_back(row);
 	}
 	WorkWithFiles workWithFile;
-	workWithFile.saveDataFile(vr);
+	workWithFile.saveDataFile(vr, "users");
 }
 

@@ -13,12 +13,12 @@ namespace Project1Git
 		WorkWithFiles();
 		//деструктор
 		~WorkWithFiles();
-		void createFile();
-		bool isExistsFile();
-		void readFile();
-		int countRowInFile();
-		std::vector<std::string> arrString();
-		void saveDataFile(std::vector<std::string>);
+		void createFile(std::string);
+		bool isExistsFile(std::string);
+		void readFile(std::string);
+		int countRowInFile(std::string);
+		std::vector<std::string> arrString(std::string);
+		void saveDataFile(std::vector<std::string>, std::string);
 	};
 
 }
