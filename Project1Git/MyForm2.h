@@ -1,9 +1,10 @@
 #pragma once
+#include <string>
+#include <msclr\marshal_cppstd.h>
+
 #include "MyForm.h"
 #include "MyForm1.h"
 #include "ListUsers.h"
-#include <string>
-#include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
 
@@ -23,9 +24,6 @@ namespace Project1Git {
 		MyForm2(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
 		}
 
 	protected:
@@ -47,8 +45,6 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-
-	protected:
 
 	private:
 		/// <summary>
@@ -74,14 +70,14 @@ namespace Project1Git {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(203, 108);
+			this->textBox2->Location = System::Drawing::Point(233, 106);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(227, 22);
 			this->textBox2->TabIndex = 1;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(203, 164);
+			this->textBox3->Location = System::Drawing::Point(233, 162);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->PasswordChar = '*';
 			this->textBox3->Size = System::Drawing::Size(227, 22);
@@ -90,7 +86,7 @@ namespace Project1Git {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(89, 48);
+			this->label1->Location = System::Drawing::Point(119, 46);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(46, 17);
 			this->label1->TabIndex = 3;
@@ -100,7 +96,7 @@ namespace Project1Git {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(89, 108);
+			this->label2->Location = System::Drawing::Point(119, 106);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(46, 17);
 			this->label2->TabIndex = 4;
@@ -110,7 +106,7 @@ namespace Project1Git {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(86, 164);
+			this->label3->Location = System::Drawing::Point(116, 162);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(46, 17);
 			this->label3->TabIndex = 5;
@@ -119,7 +115,7 @@ namespace Project1Git {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(89, 233);
+			this->button1->Location = System::Drawing::Point(119, 231);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(153, 43);
 			this->button1->TabIndex = 6;
@@ -129,7 +125,7 @@ namespace Project1Git {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(277, 233);
+			this->button2->Location = System::Drawing::Point(307, 231);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(153, 43);
 			this->button2->TabIndex = 7;
@@ -141,7 +137,7 @@ namespace Project1Git {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(519, 328);
+			this->ClientSize = System::Drawing::Size(588, 328);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label3);
@@ -150,41 +146,24 @@ namespace Project1Git {
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Name = L"MyForm2";
-			this->Text = L"MyForm2";
+			this->Text = L"«а€вка на регистрацию нового пользовател€";
 			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm2_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-		private: System::Void MyForm2_Load(System::Object^ sender, System::EventArgs^ e) 
-		{
-			this->Location = Point(20, 20);
-			this->label1->Text = "¬ведите данные (дл€ нового пользовател€)";
-			this->label2->Text = "Login:";
-			this->label3->Text = "Password:";
-			this->BackColor = System::Drawing::Color::Aqua;
-			this->button1->Text = "Sign up";
-			this->button2->Text = "Exit";
-		}
-		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-		{
-			msclr::interop::marshal_context context;
-			ListUsers* listUsers = new ListUsers();
-			int newId = listUsers->getNewId();
-			int id = newId;
-			std::string login = context.marshal_as<std::string>(this->textBox2->Text);
-			int userType = 2;
-			int userRegister = 0;
-			std::string password = context.marshal_as<std::string>(this->textBox3->Text);
-			User user(id, login, userType, userRegister, password);
-			listUsers->addNewUser(user);
-			MessageBox::Show("Ќовый пользователь отправлен на регистрацию.");
-			this->Close();
-		}
-		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
-		{
-			this->Close();
-		}
+		/// <summary>
+		/// загрузка окна формы дл€ формировани€ завки на регистрацию нового пользовател€
+		/// </summary>
+		private: System::Void MyForm2_Load(System::Object^, System::EventArgs^);
+		/// <summary>
+		/// нажатие на кнопку Sign up
+		/// </summary>
+		private: System::Void button1_Click(System::Object^, System::EventArgs^);
+		/// <summary>
+		/// нажатие на кнопку exit
+		/// </summary>
+		private: System::Void button2_Click(System::Object^, System::EventArgs^);
 	};
 }

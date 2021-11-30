@@ -8,53 +8,74 @@
 #include "ListUsers.h"
 #include "Authorization.h"
 
-
 using namespace Project1Git;
 
+/// <summary>
+/// загрузка окна формы с авторизацией
+/// </summary>
+System::Void MyForm1::MyForm1_Load(System::Object^ sender, System::EventArgs^ e)
+{
+	this->Location = Point(100, 100);				//расположение формы
+	this->BackColor = System::Drawing::Color::Aqua;	//цвет фона формы
+	this->button1->Text = "Sign in";				//надпись кнопки Sign in
+	this->button2->Text = "Sign up";				//надпись кнопки Sign up
+	this->button3->Text = "Exit";					//надпись кнопки Exit
+	this->label1->Text = "Login:";					//подпись поля ввода логина
+	this->label2->Text = "Password:";				//подпись поля ввода пароля
+	login = "";										//логин при открытии формы
+	password = "";									//пароль при открытии формы
+}
+/// <summary>
+/// нажатие на кнопку sign in
+/// </summary>
+System::Void MyForm1::button1_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	login = this->textBox1->Text;		//записываем в логин текст из поля textBox1
+	password = this->textBox2->Text;	//записываем в пароль текст из поля textBox2
+	checkUser(login, password);			//
+	this->Close();						//закрываем текущую форму
+}
+/// <summary>
+/// нажатие на кнопку sign up
+/// </summary>
+System::Void MyForm1::button2_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Project1Git::MyForm2^ myForm2 = gcnew Project1Git::MyForm2();
+	myForm2->ShowDialog();
+}
+/// <summary>
+/// нажатие на кнопку exit
+/// </summary>
+System::Void MyForm1::button3_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	this->Close();
+}
+/// <summary>
+/// метод проверки текущего пользователя по переданным логину и паролю
+/// </summary>
+/// <param name="login"></param>
+/// <param name="password"></param>
 void MyForm1::checkUser(System::String^ login, System::String^ password)
 {
-	//вывод сообщения
-	/*std::string message = "after run button1_Click";
-	System::String^ mes = gcnew String(message.data());
-	MessageBox::Show(mes);
-	*/
-
-	//ListUsers *listUsers = new ListUsers();
-
-	msclr::interop::marshal_context context;
-	std::string loginString = context.marshal_as<std::string>(login);
-	std::string passwordString = context.marshal_as<std::string>(password);
-
+	msclr::interop::marshal_context context;	//Используйте класс marshal_context для преобразования данных, требующего контекста.
+	std::string loginString = context.marshal_as<std::string>(login);		//переносим login из поля в переменную
+	std::string passwordString = context.marshal_as<std::string>(password);	//переносим password из поля в переменную
+	//создаем объект авторизации, передаем введенные на форме логин и пароль
 	Authorization authorization(loginString, passwordString);
-
+	//проверяем есть ли данные текущего пользователя в файле пользователей
 	if (authorization.checkCurrentUser())
 	{
-		MessageBox::Show("checkCurrentUser - TRUE");
+		//получаем текущего пользователя (все данные)
 		User currentUser = authorization.getCurrentUser();
-		//std::string curLogin = currentUser->getLogin();
-
-		std::string t = "id=" + std::to_string(currentUser.getId()) + 
-						"; log=" + currentUser.getLogin() + 
-						"; type=" + std::to_string(currentUser.getUserType()) +
-						"; password=" + currentUser.getPassword();
-		System::String^ tt = gcnew System::String(t.data());
-		MessageBox::Show("authorization::tt : " + tt);
+		//записываем в свойства класса данные по текущему пользователю
 		currentLogin = gcnew System::String(currentUser.getLogin().data());
 		currentType = currentUser.getUserType();
-
 	}
 	else
 	{
-		MessageBox::Show("checkCurrentUser - FALSE");
+		//если данные пользователя не найдены выводим сообщение
 		MessageBox::Show("Ваша учетная запись не зарегистрирована.");
 	}
-
-    /*User* user = new User();
-	msclr::interop::marshal_context context;
-	std::string standardString = context.marshal_as<std::string>(login);
-	user->setLogin(standardString);
-	System::String^ t = gcnew String((user->getLogin()).data());
-	MessageBox::Show(t);*/
 }
 
 

@@ -1,8 +1,9 @@
 #pragma once
+#include <string>
+
 #include "MyForm.h"
 #include "MyForm2.h"
 #include "User.h"
-#include <string>
 
 namespace Project1Git {
 
@@ -22,8 +23,6 @@ namespace Project1Git {
 		MyForm1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
 			currentLogin = "";
 			currentType = 0;
 		}
@@ -47,13 +46,11 @@ namespace Project1Git {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	public: System::String^ login;
-	public: System::String^ currentLogin;
 	public: System::String^ password;
+	public: System::String^ currentLogin;
 	public: System::String^ currentPassword;
 	public: int currentType;
-	public: void checkUser(System::String^, System::String^);
-	protected:
-
+	
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -154,53 +151,31 @@ namespace Project1Git {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm1";
-			this->Text = L"MyForm1";
+			this->Text = L"Authorization ";
 			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
 		/// <summary>
-		/// загрузка формы с авторизацией
+		/// загрузка окна формы с авторизацией
 		/// </summary>
-		private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) 
-		{
-			this->Location = Point(20, 20);
-			this->BackColor = System::Drawing::Color::Aqua;
-			this->button1->Text = "Sign in";
-			this->button2->Text = "Sign up";
-			this->button3->Text = "Exit";
-			this->label1->Text = "Login:";
-			this->label2->Text = "Password:";
-			login = "";
-		}
+		private: System::Void MyForm1_Load(System::Object^, System::EventArgs^);
 		/// <summary>
 		/// нажатие на кнопку sign in
 		/// </summary>
-		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
-		{
-			
-			login = this->textBox1->Text;
-			password = this->textBox2->Text;
-			checkUser(login, password);
-			this->Close();
-		}
+		private: System::Void button1_Click(System::Object^, System::EventArgs^);
 		/// <summary>
 		/// нажатие на кнопку sign up
 		/// </summary>
-		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
-		{
-			Project1Git::MyForm2^ myForm2 = gcnew Project1Git::MyForm2();
-			myForm2->ShowDialog();
-		}
+		private: System::Void button2_Click(System::Object^, System::EventArgs^);
 		/// <summary>
 		/// нажатие на кнопку exit
 		/// </summary>
-		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
-		{
-			this->Close();
-		}
-		
+		private: System::Void button3_Click(System::Object^, System::EventArgs^);
+		/// <summary>
+		/// метод проверки текущего пользователя по переданным логину и паролю
+		/// </summary>
+		public: void checkUser(System::String^, System::String^);
 	};
 }
