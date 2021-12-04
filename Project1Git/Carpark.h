@@ -9,7 +9,7 @@ namespace Project1Git
 	public class Carpark
 	{
 	private:
-		int size;	//кол-во запісей в автопарке
+		int size;	//кол-во записей в автопарке
 		Car *car;	//указатель на объекты - авто
 	public:
 		Carpark();					//конструктор

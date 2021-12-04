@@ -150,7 +150,7 @@ void Carpark::addNewCar(Car car)
 	workWithFile.saveDataFile(vr, "carpark");
 }
 /// <summary>
-/// удалить авт из автопарка по id (из файла)
+/// удалить авто из автопарка по id (из файла)
 /// </summary>
 /// <param name="indexCar"></param>
 void Carpark::deleteCarById(int indexCar)

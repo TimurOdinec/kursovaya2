@@ -1,18 +1,21 @@
 #include <fstream> //для работы с файлами
 #include <string>
-#include "WorkWithFiles.h"
 
+#include "WorkWithFiles.h"
 
 using namespace Project1Git;
 
+/// <summary>
+/// конструктор
+/// </summary>
 WorkWithFiles::WorkWithFiles()
 {
 
 }
-WorkWithFiles::~WorkWithFiles()
-{
-
-}
+/// <summary>
+/// метод создания файла с первой записью (в зависимости от параметра - users.txt или carpark.txt)
+/// </summary>
+/// <param name="nameFile"></param>
 void WorkWithFiles::createFile(std::string nameFile)
 {
 	std::ofstream fileOut;
@@ -24,10 +27,15 @@ void WorkWithFiles::createFile(std::string nameFile)
 	if (nameFile == "carpark")
 	{
 		fileOut.open("carpark.txt");	//создание или перезапись существующего файла
-		fileOut << "1;1;MAN;1.5";				//запись строки:id=1;login=admin;
+		fileOut << "1;1;MAN;1.5";		//запись строки:id=1;login=admin;
 	}
 	fileOut.close();
 }
+/// <summary>
+/// метод проверки существования файла (в зависимости от параметра - users.txt или carpark.txt)
+/// </summary>
+/// <param name="nameFile"></param>
+/// <returns></returns>
 bool WorkWithFiles::isExistsFile(std::string nameFile)
 {
 	bool isExistsFile = false;
@@ -48,6 +56,10 @@ bool WorkWithFiles::isExistsFile(std::string nameFile)
 	}
 	return isExistsFile;
 }
+/// <summary>
+/// метод считывания строк из файла (в зависимости от параметра - users.txt или carpark.txt)
+/// </summary>
+/// <param name="nameFile"></param>
 void WorkWithFiles::readFile(std::string nameFile)
 {
 	std::string fileName = "";
@@ -59,19 +71,21 @@ void WorkWithFiles::readFile(std::string nameFile)
 	{
 		fileName = "carpark.txt";
 	}
-	std::ifstream fileIn(fileName);    //открыли файл для чтения повторно
+	std::ifstream fileIn(fileName);	//открыли файл для чтения повторно
 	int i = 0;
-	//while (!fileIn.eof() && i < 3)
 	while (!fileIn.eof())
 	{
 		std::string temp = "";
 		std::getline(fileIn, temp); //считали строку из файла
-		//System::String^ t = gcnew System::String(temp.data());
-		//MessageBox::Show(t);
 		i++;
 	}
 	fileIn.close();
 }
+/// <summary>
+/// метод подсчета строк в файле (в зависимости от параметра - users.txt или carpark.txt)
+/// </summary>
+/// <param name="nameFile"></param>
+/// <returns></returns>
 int WorkWithFiles::countRowInFile(std::string nameFile)
 {
 	int countRowInFile = 0;
@@ -84,7 +98,7 @@ int WorkWithFiles::countRowInFile(std::string nameFile)
 	{
 		fileName = "carpark.txt";
 	}
-	std::ifstream fileIn(fileName);    //открыли файл для чтения повторно
+	std::ifstream fileIn(fileName);	//открыли файл для чтения повторно
 	while (!fileIn.eof())
 	{
 		std::string temp = "";
@@ -94,9 +108,14 @@ int WorkWithFiles::countRowInFile(std::string nameFile)
 	fileIn.close();
 	return countRowInFile;
 }
+/// <summary>
+/// метод заполнения вектора строк данными из файлов (в зависимости от параметра - users.txt или carpark.txt)
+/// </summary>
+/// <param name="nameFile"></param>
+/// <returns></returns>
 std::vector<std::string> WorkWithFiles::arrString(std::string nameFile)
 {
-	std::vector<std::string> r;
+	std::vector<std::string> arrStr;
 	std::string fileName = "";
 	if (nameFile == "users")
 	{
@@ -106,18 +125,22 @@ std::vector<std::string> WorkWithFiles::arrString(std::string nameFile)
 	{
 		fileName = "carpark.txt";
 	}
-	std::ifstream fileIn(fileName);    //открыли файл для чтения повторно
-	//while (!fileIn.eof() && i < 3)
+	std::ifstream fileIn(fileName);	//открыли файл для чтения повторно
 	while (!fileIn.eof())
 	{
 		std::string temp = "";
 		std::getline(fileIn, temp); //считали строку из файла
-		r.push_back(temp);
+		arrStr.push_back(temp);
 	}
 	fileIn.close();
 
-	return r;
+	return arrStr;
 }
+/// <summary>
+/// метод сохранения данных из вектора строк в файл (в зависимости от параметра - users.txt или carpark.txt)
+/// </summary>
+/// <param name="vr"></param>
+/// <param name="nameFile"></param>
 void WorkWithFiles::saveDataFile(std::vector<std::string> vr, std::string nameFile)
 {
 	//запись в файл
@@ -132,7 +155,7 @@ void WorkWithFiles::saveDataFile(std::vector<std::string> vr, std::string nameFi
 	{
 		fileName = "carpark.txt";
 	}
-	fileOut.open(fileName);   //создание или перезапись существующего файла
+	fileOut.open(fileName); //создание или перезапись существующего файла
 	for (std::string rowData : vr)
 	{
 		if (!rowData.empty())
@@ -140,6 +163,12 @@ void WorkWithFiles::saveDataFile(std::vector<std::string> vr, std::string nameFi
 			fileOut << rowData;
 		}
 	}
-	
-	fileOut.close();            //закрываем файл
+	fileOut.close();        //закрываем файл
+}
+/// <summary>
+/// деструктор
+/// </summary>
+WorkWithFiles::~WorkWithFiles()
+{
+
 }
