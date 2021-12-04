@@ -121,7 +121,7 @@ namespace Project1Git {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(80, 75);
+			this->label1->Location = System::Drawing::Point(52, 72);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(46, 17);
 			this->label1->TabIndex = 5;
@@ -155,6 +155,7 @@ namespace Project1Git {
 			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
 		}
 #pragma endregion
 		/// <summary>

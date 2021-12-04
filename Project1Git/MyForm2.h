@@ -96,7 +96,7 @@ namespace Project1Git {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(119, 106);
+			this->label2->Location = System::Drawing::Point(181, 109);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(46, 17);
 			this->label2->TabIndex = 4;
@@ -106,7 +106,7 @@ namespace Project1Git {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(116, 162);
+			this->label3->Location = System::Drawing::Point(152, 165);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(46, 17);
 			this->label3->TabIndex = 5;

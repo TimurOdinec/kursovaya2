@@ -121,7 +121,6 @@
     <ClCompile Include="Authorization.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Carpark.cpp" />
-    <ClCompile Include="ListUniqueCars.cpp" />
     <ClCompile Include="ListUsers.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
@@ -136,7 +135,6 @@
     <ClInclude Include="Authorization.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Carpark.h" />
-    <ClInclude Include="ListUniqueCars .h" />
     <ClInclude Include="ListUsers.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>

@@ -1,12 +1,14 @@
 #pragma once
+
+#include <string>
+#include <msclr\marshal_cppstd.h>
+
 #include "MyForm1.h"
 #include "MyForm2.h"
 #include "MyForm3.h"
 #include "MyForm4.h"
 #include "MyForm5.h"
 #include "ListUsers.h"
-#include <string>
-#include <msclr\marshal_cppstd.h>
 #include "Carpark.h"
 
 namespace Project1Git {
@@ -27,9 +29,6 @@ namespace Project1Git {
 			MyForm(void)
 			{
 				InitializeComponent();
-				//
-				//TODO: добавьте код конструктора
-				//
 			}
 			
 		protected:
@@ -384,6 +383,7 @@ namespace Project1Git {
 			{
 				this->Location = Point(20, 20);					//верхний угол формы
 				this->BackColor = System::Drawing::Color::Aqua;	//цвет фона формы
+				this->Text = "јвтопарк";						//название формы
 				this->button3->Text = "Exit";					//название кнопки
 				this->dataGridView1->Visible = false;			//пр€чем твблицу
 				//создание новой формы авторизации
@@ -672,6 +672,9 @@ namespace Project1Git {
 				this->dataGridView1->Rows->Clear();
 				this->dataGridView1->Columns->Clear();
 			}
+			/// <summary>
+			/// поиск уч.данных по логину
+			/// </summary>
 			private: System::Void p151ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 			{
 				MessageBox::Show("ѕоиск по логину");
@@ -683,7 +686,6 @@ namespace Project1Git {
 				this->dataGridView1->Columns->Clear();
 				this->dataGridView1->Visible = true;
 				
-
 				System::String^ loginSearchUser = myForm4->loginSearchUser;
 				msclr::interop::marshal_context context;
 				std::string loginUserSearch = context.marshal_as<std::string>(loginSearchUser);
@@ -750,6 +752,9 @@ namespace Project1Git {
 				}
 				
 			}
+			/// <summary>
+			/// поиск незарег.пользователей
+			/// </summary>
 			private: System::Void p152ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 			{
 				MessageBox::Show("ѕоиск незарегистр.пользователей");
@@ -781,10 +786,6 @@ namespace Project1Git {
 				{
 					int index = listUsers->getUserIndex(i);
 					User user = listUsers->getUserByIndex(index);
-
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
 
 					System::String^ id = gcnew System::String(std::to_string(user.getId()).data());
 					System::String^ login = gcnew System::String(user.getLogin().data());
@@ -822,14 +823,6 @@ namespace Project1Git {
 						this->dataGridView1->Rows->Add(userRecord);
 					}
 				}
-			}
-				   
-			/// <summary>
-			/// выбор пункта меню "¬ыход"
-			/// </summary>
-			private: System::Void p4ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-			{
-				this->Close();	//закрытие формы
 			}
 			/// <summary>
 			/// просмотр автопарка
@@ -909,7 +902,7 @@ namespace Project1Git {
 			{
 				MessageBox::Show("ƒобавление авто");
 				Project1Git::MyForm5^ myForm5 = gcnew Project1Git::MyForm5();
-				std::string editMode = "add";
+				std::string editMode = "addCar";
 				myForm5->editMode = &editMode;
 				myForm5->ShowDialog();	//передача фокуса форме авторизации
 				this->dataGridView1->Rows->Clear();
@@ -928,6 +921,9 @@ namespace Project1Git {
 				this->dataGridView1->Rows->Clear();
 				this->dataGridView1->Columns->Clear();
 			}
+			/// <summary>
+			/// редактирование данных по автопарку
+			/// </summary>
 			private: System::Void p24ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				MessageBox::Show("–едактирование авто");
@@ -938,6 +934,9 @@ namespace Project1Git {
 				this->dataGridView1->Rows->Clear();
 				this->dataGridView1->Columns->Clear();
 			}
+			/// <summary>
+			/// поиск данных/поиск св.машин
+			/// </summary>
 			private: System::Void p251ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->dataGridView1->Rows->Clear();
@@ -964,10 +963,6 @@ namespace Project1Git {
 				{
 					int index = carpark->getCarIndex(i);
 					Car car = carpark->getCarByIndex(index);
-
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
 
 					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
@@ -1009,6 +1004,9 @@ namespace Project1Git {
 					
 				}
 			}
+			/// <summary>
+			/// поиск данных/поиск зан.машин
+			/// </summary>
 			private: System::Void p252ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->dataGridView1->Rows->Clear();
@@ -1035,10 +1033,6 @@ namespace Project1Git {
 				{
 					int index = carpark->getCarIndex(i);
 					Car car = carpark->getCarByIndex(index);
-
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
 
 					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
@@ -1080,6 +1074,9 @@ namespace Project1Git {
 
 				}
 			}
+			/// <summary>
+			/// поиск данных/поиск рем.машин
+			/// </summary>
 			private: System::Void p253ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->dataGridView1->Rows->Clear();
@@ -1106,10 +1103,6 @@ namespace Project1Git {
 				{
 					int index = carpark->getCarIndex(i);
 					Car car = carpark->getCarByIndex(index);
-
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
 
 					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
@@ -1151,6 +1144,9 @@ namespace Project1Git {
 
 				}
 			}
+			/// <summary>
+			/// поиск данных/поиск спис.машин
+			/// </summary>
 			private: System::Void p254ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->dataGridView1->Rows->Clear();
@@ -1177,10 +1173,6 @@ namespace Project1Git {
 				{
 					int index = carpark->getCarIndex(i);
 					Car car = carpark->getCarByIndex(index);
-
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
 
 					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
@@ -1222,6 +1214,9 @@ namespace Project1Git {
 
 				}
 			}
+			/// <summary>
+			/// сортировка по состо€нию машин
+			/// </summary>
 			private: System::Void p261ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->dataGridView1->Rows->Clear();
@@ -1250,10 +1245,6 @@ namespace Project1Git {
 					int index = carpark->getCarIndex(i);
 					Car car = carpark->getCarByIndex(index);
 
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
-
 					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
 					int conditionCar = car.getConditionCar();
@@ -1290,6 +1281,9 @@ namespace Project1Git {
 					this->dataGridView1->Rows->Add(carRecord);
 				}
 			}
+			/// <summary>
+			/// сортировка по типу машин
+			/// </summary>
 			private: System::Void p262ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				this->dataGridView1->Rows->Clear();
@@ -1318,9 +1312,72 @@ namespace Project1Git {
 					int index = carpark->getCarIndex(i);
 					Car car = carpark->getCarByIndex(index);
 
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
+					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
+					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
+					int conditionCar = car.getConditionCar();
+					System::String^ conditionCarStr = "";
+					//в ремонте, списали, свободна, зан€та
+					if (conditionCar == 1)
+					{
+						conditionCarStr = "в ремонте";
+					}
+					else
+					{
+						if (conditionCar == 2)
+						{
+							conditionCarStr = "списали";
+						}
+						else
+						{
+							if (conditionCar == 3)
+							{
+								conditionCarStr = "свободна";
+							}
+							else
+							{
+								if (conditionCar == 4)
+								{
+									conditionCarStr = "зан€та";
+								}
+							}
+						}
+					}
+					System::String^ carType = gcnew System::String(car.getTypeCar().data());
+					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
+					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
+					this->dataGridView1->Rows->Add(carRecord);
+				}
+			}
+			/// <summary>
+			/// сортировка авто по грузоподъемности
+			/// </summary>
+			private: System::Void p263ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			{
+				this->dataGridView1->Rows->Clear();
+				this->dataGridView1->Columns->Clear();
+				this->dataGridView1->Visible = true;
+
+				//вариант с €чейками столбца и направлением сортировки
+				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
+				colFullName->Name = "id";
+				this->dataGridView1->Columns->Add(colFullName);
+				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
+				colFullName1->Name = "conditionCar";
+				this->dataGridView1->Columns->Add(colFullName1);
+				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
+				colFullName2->Name = "carType";
+				this->dataGridView1->Columns->Add(colFullName2);
+				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
+				colFullName3->Name = "capacityCar";
+				this->dataGridView1->Columns->Add(colFullName3);
+
+				Carpark* carpark = new Carpark();
+				carpark->sortByCapacityCar();
+				int sizeList = carpark->getSize();
+				for (int i = 0; i < sizeList; i++)
+				{
+					int index = carpark->getCarIndex(i);
+					Car car = carpark->getCarByIndex(index);
 
 					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
@@ -1358,73 +1415,12 @@ namespace Project1Git {
 					this->dataGridView1->Rows->Add(carRecord);
 				}
 			}
-			private: System::Void p263ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+			/// <summary>
+			/// выбор пункта меню "¬ыход"
+			/// </summary>
+			private: System::Void p4ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 			{
-				this->dataGridView1->Rows->Clear();
-				this->dataGridView1->Columns->Clear();
-				this->dataGridView1->Visible = true;
-
-				//вариант с €чейками столбца и направлением сортировки
-				DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
-				colFullName->Name = "id";
-				this->dataGridView1->Columns->Add(colFullName);
-				DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
-				colFullName1->Name = "conditionCar";
-				this->dataGridView1->Columns->Add(colFullName1);
-				DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
-				colFullName2->Name = "carType";
-				this->dataGridView1->Columns->Add(colFullName2);
-				DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
-				colFullName3->Name = "capacityCar";
-				this->dataGridView1->Columns->Add(colFullName3);
-
-				Carpark* carpark = new Carpark();
-				carpark->sortByCapacityCar();
-				int sizeList = carpark->getSize();
-				for (int i = 0; i < sizeList; i++)
-				{
-					int index = carpark->getCarIndex(i);
-					Car car = carpark->getCarByIndex(index);
-
-					/*std::string t = "id=" + std::to_string(user.getId()) + "; log=" + user.getLogin();
-					System::String^ tt = gcnew System::String(t.data());
-					MessageBox::Show("tt : " + tt);*/
-
-					System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
-					//System::String^ userType = gcnew System::String(std::to_string(user.getUserType()).data());
-					int conditionCar = car.getConditionCar();
-					System::String^ conditionCarStr = "";
-					//в ремонте, списали, свободна, зан€та
-					if (conditionCar == 1)
-					{
-						conditionCarStr = "в ремонте";
-					}
-					else
-					{
-						if (conditionCar == 2)
-						{
-							conditionCarStr = "списали";
-						}
-						else
-						{
-							if (conditionCar == 3)
-							{
-								conditionCarStr = "свободна";
-							}
-							else
-							{
-								if (conditionCar == 4)
-								{
-									conditionCarStr = "зан€та";
-								}
-							}
-						}
-					}
-					System::String^ carType = gcnew System::String(car.getTypeCar().data());
-					System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
-					array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
-					this->dataGridView1->Rows->Add(carRecord);
-				}
+				this->Close();	//закрытие формы
 			}
 	};
 }

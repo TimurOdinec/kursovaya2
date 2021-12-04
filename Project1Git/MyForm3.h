@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include <msclr\marshal_cppstd.h>
 
@@ -47,7 +48,7 @@ namespace Project1Git {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
-	public: int idRowListUsers;		//
+	public: int idRowListUsers;		//id записи в файле учетных записей
 	public: std::string *editMode;	//режим работы с данными: добавление, редактирование, удаление
 	
 	private:

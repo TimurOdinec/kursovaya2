@@ -45,9 +45,6 @@
     <ClCompile Include="Car.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ListUniqueCars.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Carpark.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="Car.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ListUniqueCars .h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Carpark.h">

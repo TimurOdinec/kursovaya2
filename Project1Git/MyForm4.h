@@ -1,7 +1,9 @@
 #pragma once
+
+#include <msclr\marshal_cppstd.h>
+
 #include "MyForm3.h"
 #include "MyForm5.h"
-#include <msclr\marshal_cppstd.h>
 
 namespace Project1Git {
 
@@ -21,9 +23,6 @@ namespace Project1Git {
 		MyForm4(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
 		}
 
 	protected:
@@ -40,13 +39,11 @@ namespace Project1Git {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox1;
-	public: int idRowListUsers;
-	public: int idRowCars;
-	public: std::string* editMode;
-	//public: std::string* loginSearchUser;
-	public: System::String^ loginSearchUser;
-	protected:
-
+	public: int idRowListUsers;					//id записи в файле учетных записей
+	public: int idRowCars;						//id записи в файле машин автопарка
+	public: std::string* editMode;				//режим работы с данными: добавление, редактирование, удаление
+	public: System::String^ loginSearchUser;	//логин пользователя для поиска
+	
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -104,70 +101,16 @@ namespace Project1Git {
 			this->Load += gcnew System::EventHandler(this, &MyForm4::MyForm4_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
-		private: System::Void MyForm4_Load(System::Object^ sender, System::EventArgs^ e)
-		{
-			this->Location = Point(20, 20);
-			this->BackColor = System::Drawing::Color::Aqua;
-			
-			this->button1->Text = "OK";
-			if (*(this->editMode) == "del")
-			{
-				this->label1->Text = "Укажите id учетной записи для удаления:";
-			}
-			if (*(this->editMode) == "upd")
-			{
-				this->label1->Text = "Укажите id учетной записи для редактирования:";
-			}
-			if (*(this->editMode) == "search")
-			{
-				this->label1->Text = "Укажите login пользователя:";
-			}
-			if (*(this->editMode) == "delCar")
-			{
-				this->label1->Text = "Укажите id авто удаления:";
-			}
-			if (*(this->editMode) == "updCar")
-			{
-				this->label1->Text = "Укажите id авто для редактирования:";
-			}
-		}
-		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-		{
-			if (*(this->editMode) == "search")
-			{
-				loginSearchUser = this->textBox1->Text;
-				//MessageBox::Show("loginSearchUser : "+ loginSearchUser);
-			}
-			if ((*(this->editMode) == "del") || (*(this->editMode) == "upd"))
-			{
-				msclr::interop::marshal_context context;
-				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
-				int id = std::stoi(idStr);
-				//this->idRowListUsers = id - 1;
-				this->idRowListUsers = id;
-				Project1Git::MyForm3^ myForm3 = gcnew Project1Git::MyForm3();
-				myForm3->editMode = this->editMode;
-				myForm3->idRowListUsers = this->idRowListUsers;
-				this->Visible = false;
-				myForm3->ShowDialog();
-			}
-			if ((*(this->editMode) == "delCar") || (*(this->editMode) == "updCar"))
-			{
-				msclr::interop::marshal_context context;
-				std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
-				int id = std::stoi(idStr);
-				//this->idRowListUsers = id - 1;
-				this->idRowCars = id;
-				Project1Git::MyForm5^ myForm5 = gcnew Project1Git::MyForm5();
-				myForm5->editMode = this->editMode;
-				myForm5->idRowCars = this->idRowCars;
-				this->Visible = false;
-				myForm5->ShowDialog();
-			}
-			this->Close();
-		}
+	/// <summary>
+	/// загрузка окна формы для ввода дополнительных данных: id, login (при редактировании, удалении, поиске)
+	/// </summary>
+	private: System::Void MyForm4_Load(System::Object^, System::EventArgs^);
+	/// <summary>
+	/// передача дополнительных данных для выполнения редактирования, удаления, поиска
+	/// </summary>
+	private: System::Void button1_Click(System::Object^, System::EventArgs^);
+		
 	};
 }

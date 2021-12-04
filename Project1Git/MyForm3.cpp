@@ -9,7 +9,7 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 {
 	this->Location = Point(100, 100);					//расположение формы
 	this->BackColor = System::Drawing::Color::Aqua;		//цвет фона формы
-	this->label1->Text = "id";							//подпись поля id 
+	this->label1->Text = "id:";							//подпись поля id 
 	this->label2->Text = "Логин:";						//подпись поля логин 
 	this->label3->Text = "Пароль:";						//подпись поля пароль 
 	this->label4->Text = "Тип пользователя:";			//подпись поля тип пользов. 
@@ -26,6 +26,7 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		ListUsers* listUsers = new ListUsers();	//создадим объект списка пользователей
 		int newId = listUsers->getNewId();		//высчитаем значение нового id для записи пользователя
+		this->Text = "Добавление пользователя"; //название формы
 		this->textBox1->Text = gcnew String(std::to_string(newId).data());	//внесем новый id на поле формы 
 		this->textBox1->ReadOnly = true;		//сделаем id не редактируемым
 	}
@@ -34,12 +35,13 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->button1->Text = "Удалить";		//изменим надпись на кнопке
 		ListUsers* listUsers = new ListUsers();	//создадим объект списка пользователей
-		User user = listUsers->getUserByIndex(this->idRowListUsers);	//получим объект user по id
-		this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());
-		this->textBox2->Text = gcnew String((user.getLogin()).data());
-		this->textBox3->Text = gcnew String((user.getPassword()).data());
-		int userType = user.getUserType();
-		if (userType == 1)
+		User user = listUsers->getUserByIndex(this->idRowListUsers);				//получим объект user по id
+		this->Text = "Удаление пользователя";	//название формы
+		this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());	//заполняем поле id
+		this->textBox2->Text = gcnew String((user.getLogin()).data());				//заполняем поле login
+		this->textBox3->Text = gcnew String((user.getPassword()).data());			//заполняем поле password
+		int userType = user.getUserType();		//получим код типа пользователя
+		if (userType == 1)						//выводим расшифровку кода пользователя
 		{
 			this->comboBox1->Text = "администратор";
 		}
@@ -47,8 +49,8 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 			this->comboBox1->Text = "пользователь";
 		}
-		int userRegister = user.getUserRegister();
-		if (userRegister == 1)
+		int userRegister = user.getUserRegister();	//получим код состояния регистации пользователя
+		if (userRegister == 1)						//ввыводим расшифровку кода регистрации пользователя
 		{
 			this->comboBox2->Text = "зарегистрирован";
 		}
@@ -56,18 +58,24 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 			this->comboBox2->Text = "не зарегистрирован";
 		}
+		this->textBox1->ReadOnly = true;		//сделаем id не редактируемым
+		this->textBox2->ReadOnly = true;		//сделаем login не редактируемым
+		this->textBox3->ReadOnly = true;		//сделаем password не редактируемым
+		this->comboBox1->Enabled = false;		//сделаем type не редактируемым
+		this->comboBox2->Enabled = false;		//сделаем register не редактируемым
 	}
+	//если режим работы с данными - редактирование upd
 	if (*(this->editMode) == "upd")
 	{
-		this->button1->Text = "Редактировать";
-		ListUsers* listUsers = new ListUsers();
-		User user = listUsers->getUserByIndex(this->idRowListUsers);
-
-		this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());
-		this->textBox2->Text = gcnew String((user.getLogin()).data());
-		this->textBox3->Text = gcnew String((user.getPassword()).data());
-		int userType = user.getUserType();
-		if (userType == 1)
+		this->button1->Text = "Редактировать";		//изменим надпись на кнопке
+		ListUsers* listUsers = new ListUsers();		//создадим объект списка пользователей
+		User user = listUsers->getUserByIndex(this->idRowListUsers);				//получим объект user по id
+		this->Text = "Редактирование пользователя"; //название формы
+		this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());	//заполняем поле id
+		this->textBox2->Text = gcnew String((user.getLogin()).data());				//заполняем поле login
+		this->textBox3->Text = gcnew String((user.getPassword()).data());			//заполняем поле password
+		int userType = user.getUserType();			//получим код типа пользователя
+		if (userType == 1)							//выводим расшифровку кода пользователя
 		{
 			this->comboBox1->Text = "администратор";
 		}
@@ -75,8 +83,8 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 			this->comboBox1->Text = "пользователь";
 		}
-		int userRegister = user.getUserRegister();
-		if (userRegister == 1)
+		int userRegister = user.getUserRegister();	//получим код состояния регистации пользователя
+		if (userRegister == 1)						//ввыводим расшифровку кода регистрации пользователя
 		{
 			this->comboBox2->Text = "зарегистрирован";
 		}
@@ -84,6 +92,7 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 			this->comboBox2->Text = "не зарегистрирован";
 		}
+		this->textBox1->ReadOnly = true;		//сделаем id не редактируемым
 	}
 }
 /// <summary>
@@ -92,12 +101,13 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 System::Void MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	msclr::interop::marshal_context context;
-	std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
-	int id = std::stoi(idStr);
-	std::string login = context.marshal_as<std::string>(this->textBox2->Text);
-	std::string userTypeStr = context.marshal_as<std::string>(this->comboBox1->Text);
+	std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);			//получим id из поля формы
+	int id = std::stoi(idStr);	//из строки в число
+	std::string login = context.marshal_as<std::string>(this->textBox2->Text);			//получим логин из поля формы
+	std::string password = context.marshal_as<std::string>(this->textBox3->Text);		//получим пароль из поля формы
+	std::string userTypeStr = context.marshal_as<std::string>(this->comboBox1->Text);	//получим тип пользователя из поля формы
 	int userType = 0;
-	if (userTypeStr == "администратор")
+	if (userTypeStr == "администратор")			//выводим расшифровку кода пользователя
 	{
 		userType = 1;
 	}
@@ -108,9 +118,9 @@ System::Void MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e
 			userType = 2;
 		}
 	}
-	std::string userRegisterStr = context.marshal_as<std::string>(this->comboBox2->Text);
+	std::string userRegisterStr = context.marshal_as<std::string>(this->comboBox2->Text);//получим тип регистрации пользователя из поля формы
 	int userRegister = 0;
-	if (userRegisterStr == "зарегистрирован")
+	if (userRegisterStr == "зарегистрирован") // ввыводим расшифровку кода регистрации пользователя
 	{
 		userRegister = 1;
 	}
@@ -121,32 +131,31 @@ System::Void MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e
 			userRegister = 0;
 		}
 	}
-	std::string password = context.marshal_as<std::string>(this->textBox3->Text);
+	//если выбран режим добавления
 	if (*(this->editMode) == "add")
 	{
-		MessageBox::Show("ДОБАВИТЬ");
-
-		User user(id, login, userType, userRegister, password);
+		//MessageBox::Show("ДОБАВИТЬ");
+		User user(id, login, userType, userRegister, password);	//строим объект пользователя используя данные из формы
 		ListUsers* listUsers = new ListUsers();
-		listUsers->addNewUser(user);
+		listUsers->addNewUser(user);	//добавляем пользователя в список (в файл)
 	}
+	//если выбран режим удаления
 	if (*(this->editMode) == "del")
 	{
-		MessageBox::Show("УДАЛИТЬ");
-
-		User user(id, login, userType, userRegister, password);
+		//MessageBox::Show("УДАЛИТЬ");
+		User user(id, login, userType, userRegister, password);	//строим объект пользователя используя данные из формы
 		ListUsers* listUsers = new ListUsers();
-		listUsers->deleteUserById(id);
+		listUsers->deleteUserById(id);	//удаляем пользователя из списка (из файла)
 	}
+	//если выбран режим редактирования
 	if (*(this->editMode) == "upd")
 	{
-		MessageBox::Show("РЕДАКТИРОВАТЬ");
-
-		User user(id, login, userType, userRegister, password);
+		//MessageBox::Show("РЕДАКТИРОВАТЬ");
+		User user(id, login, userType, userRegister, password);	//строим объект пользователя используя данные из формы
 		ListUsers* listUsers = new ListUsers();
-		listUsers->updateUser(user);
+		listUsers->updateUser(user);	//редактируем пользователя из списка (из файла)
 	}
-	this->Close();
+	this->Close();	//закрываем форму
 }
 /// <summary>
 /// нажатие на кнопку exit
