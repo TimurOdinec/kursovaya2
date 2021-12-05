@@ -47,9 +47,9 @@ void MyForm1::checkUser(System::String^ login, System::String^ password)
 	std::string loginString = context.marshal_as<std::string>(login);		//переносим login из поля в переменную
 	std::string passwordString = context.marshal_as<std::string>(password);	//переносим password из поля в переменную
 	///////////////////////////////////////////////////////////////////////
-	System::String^ t1 = gcnew System::String(loginString.data());
-	System::String^ t2 = gcnew System::String(passwordString.data());
-	MessageBox::Show("MyForm1:" + t1 + ":" + t2);
+	//System::String^ t1 = gcnew System::String(loginString.data());
+	//System::String^ t2 = gcnew System::String(passwordString.data());
+	//MessageBox::Show("MyForm1:" + t1 + ":" + t2);
 	///////////////////////////////////////////////////////////////////////					
 	//создаем объект авторизации, передаем введенные на форме логин и пароль
 	Authorization authorization(loginString, passwordString);

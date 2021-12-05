@@ -18,9 +18,9 @@ Authorization::Authorization()
 Authorization::Authorization(std::string currentLogin, std::string currentPassword)
 {
 	///////////////////////////////////////////////////////////////////////
-	System::String^ t1 = gcnew System::String(currentLogin.data());
-	System::String^ t2 = gcnew System::String(currentPassword.data());
-	MessageBox::Show("Authorization:" + t1 + ":" + t2);
+	//System::String^ t1 = gcnew System::String(currentLogin.data());
+	//System::String^ t2 = gcnew System::String(currentPassword.data());
+	//MessageBox::Show("Authorization:" + t1 + ":" + t2);
 	///////////////////////////////////////////////////////////////////////
 	this->currentLogin = currentLogin;
 	this->currentPassword = currentPassword;
@@ -35,8 +35,8 @@ bool Authorization::checkCurrentUser()
 	ListUsers *listUsers = new ListUsers();	//создаем объект - список пользователей
 	int sizeList = listUsers->getSize();	//получаем кол-во записей в файле пользователей
 	///////////////////////////////////////////////////////////////////////
-	System::String^ t = gcnew System::String(std::to_string(sizeList).data());
-	MessageBox::Show("Authorization:getSize():" + t);
+	//System::String^ t = gcnew System::String(std::to_string(sizeList).data());
+	//MessageBox::Show("Authorization:getSize():" + t);
 	///////////////////////////////////////////////////////////////////////
 	//проходим по всем запис€м и провер€ем совпадение логина и парол€
 	for (int i = 0; i < sizeList; i++)
@@ -45,11 +45,11 @@ bool Authorization::checkCurrentUser()
 		std::string login = user.getLogin();		//получаем логин из записи в файле
 		std::string password = user.getPassword();	//получаем пароль из записи в файле
 		///////////////////////////////////////////////////////////////////////
-		System::String^ t1 = gcnew System::String(currentLogin.data());
-		System::String^ t2 = gcnew System::String(currentPassword.data());
-		System::String^ t3 = gcnew System::String(login.data());
-		System::String^ t4 = gcnew System::String(password.data());
-		MessageBox::Show("Authorization:" + t1 + ":" + t2 + "\n" + t3 + ":" + t4);
+		//System::String^ t1 = gcnew System::String(currentLogin.data());
+		//System::String^ t2 = gcnew System::String(currentPassword.data());
+		//System::String^ t3 = gcnew System::String(login.data());
+		//System::String^ t4 = gcnew System::String(password.data());
+		//MessageBox::Show("Authorization:" + t1 + ":" + t2 + "\n" + t3 + ":" + t4);
 		///////////////////////////////////////////////////////////////////////
 		//провер€ем совпадение логина и парол€ текущего пользовател€ и записи в файле
 		if (login == currentLogin && password == currentPassword)
