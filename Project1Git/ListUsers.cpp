@@ -131,6 +131,11 @@ User ListUsers::getUserByIndex(int index)
 	for (int i = 0; i < this->size; i++)
 	{
 		int idRow = this->user[i].getId();
+		///////////////////////////////////////////////////////////////////////
+		System::String^ t = gcnew System::String(std::to_string(index).data());
+		System::String^ t1 = gcnew System::String(std::to_string(idRow).data());
+		MessageBox::Show("getUserByIndex:idRow():" + t1 + "\n index:" + t);
+		///////////////////////////////////////////////////////////////////////
 		//если id пользователя из массива совпадает с переданным, то возвращаем этого пользователя
 		if (idRow == index)
 		{

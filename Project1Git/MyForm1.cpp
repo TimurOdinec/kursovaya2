@@ -46,6 +46,11 @@ void MyForm1::checkUser(System::String^ login, System::String^ password)
 	msclr::interop::marshal_context context;	//»спользуйте класс marshal_context дл€ преобразовани€ данных, требующего контекста.
 	std::string loginString = context.marshal_as<std::string>(login);		//переносим login из пол€ в переменную
 	std::string passwordString = context.marshal_as<std::string>(password);	//переносим password из пол€ в переменную
+	///////////////////////////////////////////////////////////////////////
+	System::String^ t1 = gcnew System::String(loginString.data());
+	System::String^ t2 = gcnew System::String(passwordString.data());
+	MessageBox::Show("MyForm1:" + t1 + ":" + t2);
+	///////////////////////////////////////////////////////////////////////					
 	//создаем объект авторизации, передаем введенные на форме логин и пароль
 	Authorization authorization(loginString, passwordString);
 	//провер€ем есть ли данные текущего пользовател€ в файле пользователей
