@@ -25,6 +25,7 @@ System::Void MyForm1::MyForm1_Load(System::Object^ sender, System::EventArgs^ e)
 	this->label2->Text = "Пароль:";					//подпись поля ввода пароля
 	login = "";										//логин при открытии формы
 	password = "";									//пароль при открытии формы
+	currentType = 0;
 }
 /// <summary>
 /// нажатие на кнопку sign in
@@ -46,11 +47,6 @@ void MyForm1::checkUser(System::String^ login, System::String^ password)
 	msclr::interop::marshal_context context;	//Используйте класс marshal_context для преобразования данных, требующего контекста.
 	std::string loginString = context.marshal_as<std::string>(login);		//переносим login из поля в переменную
 	std::string passwordString = context.marshal_as<std::string>(password);	//переносим password из поля в переменную
-	///////////////////////////////////////////////////////////////////////
-	//System::String^ t1 = gcnew System::String(loginString.data());
-	//System::String^ t2 = gcnew System::String(passwordString.data());
-	//MessageBox::Show("MyForm1:" + t1 + ":" + t2);
-	///////////////////////////////////////////////////////////////////////					
 	//создаем объект авторизации, передаем введенные на форме логин и пароль
 	Authorization authorization(loginString, passwordString);
 	//проверяем есть ли данные текущего пользователя в файле пользователей

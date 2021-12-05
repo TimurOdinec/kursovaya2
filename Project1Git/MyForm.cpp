@@ -26,6 +26,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 /// <returns></returns>
 System::Void MyForm::CreateMenuAdministrator()
 {
+	
 	this->toolStripMenuItem1->Text = "Меню администратора";
 	this->p1ToolStripMenuItem->Text = "Работа с учетными данными";
 	this->p11ToolStripMenuItem->Text = "Просмотр учетных данных";
@@ -35,6 +36,12 @@ System::Void MyForm::CreateMenuAdministrator()
 	this->p15ToolStripMenuItem->Text = "Поиск учетных данных";
 	this->p151ToolStripMenuItem->Text = "Поиск по логину";
 	this->p152ToolStripMenuItem->Text = "Поиск незарегистрированных пользователей";
+	this->p1ToolStripMenuItem->Available = true;
+	this->p11ToolStripMenuItem->Available = true;
+	this->p12ToolStripMenuItem->Available = true;
+	this->p13ToolStripMenuItem->Available = true;
+	this->p14ToolStripMenuItem->Available = true;
+	this->p15ToolStripMenuItem->Available = true;
 
 	this->p2ToolStripMenuItem->Text = "Работа с данными по автопарку";
 	this->p21ToolStripMenuItem->Text = "Просмотр данных";
@@ -52,6 +59,9 @@ System::Void MyForm::CreateMenuAdministrator()
 	this->p263ToolStripMenuItem->Text = "Сортировка по грузоподъемности";
 	this->p3ToolStripMenuItem->Text = "Сменить пользователя";
 	this->p4ToolStripMenuItem->Text = "Выход";
+	this->p22ToolStripMenuItem->Available = true;
+	this->p23ToolStripMenuItem->Available = true;
+	this->p24ToolStripMenuItem->Available = true;
 }
 /// <summary>
 /// метод формирует меню пользователя
@@ -297,12 +307,6 @@ void MyForm::DataGridViewRowsAdd(std::string nameSorted)
 		this->dataGridView1->Rows->Add(carRecord);
 	}
 }
-
-
-
-
-
-
 /// <summary>
 /// загрузка основной формы
 /// </summary>
@@ -313,7 +317,6 @@ System::Void MyForm::MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	this->Text = "Автопарк";											//название формы
 	this->button3->Text = "Выход";										//название кнопки
 	this->dataGridView1->Visible = false;								//прячем твблицу
-	//this->pictureBox1->Load(L"D:\\ADZINETS\\ODM_C++\\docs\\docsKursWork2\\20210906kurs\\usedInformation\\logo.jpg");
 	//создание новой формы авторизации
 	Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 	myForm1->ShowDialog();	//передача фокуса форме авторизации
@@ -360,6 +363,12 @@ System::Void  MyForm::p3ToolStripMenuItem_Click(System::Object^ sender, System::
 	myForm1->ShowDialog();			//передача фокуса форме авторизации
 	this->SetVisibleCore(true);		//скрытие формы
 	int currentTypeTest = myForm1->currentType;
+	DataGridView1Clear();
+
+	this->label1->Text = "Добро пожаловать!  " + (myForm1->login);
+	System::String^ test = myForm1->currentLogin;
+	msclr::interop::marshal_context context;
+	std::string loginTest = context.marshal_as<std::string>(test);
 
 	if (currentTypeTest == 1)
 	{
