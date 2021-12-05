@@ -130,7 +130,10 @@ std::vector<std::string> WorkWithFiles::arrString(std::string nameFile)
 	{
 		std::string temp = "";
 		std::getline(fileIn, temp); //считали строку из файла
-		arrStr.push_back(temp);
+		if (!temp.empty())
+		{
+			arrStr.push_back(temp);
+		}
 	}
 	fileIn.close();
 
