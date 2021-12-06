@@ -35,6 +35,13 @@ System::Void MyForm1::button1_Click(System::Object^ sender, System::EventArgs^ e
 	login = this->textBox1->Text;		//записываем в логин текст из поля textBox1
 	password = this->textBox2->Text;	//записываем в пароль текст из поля textBox2
 	checkUser(login, password);			//проверка текущего пользователя (наличие записи в базе/файле)
+	//если после проверки логин обнулилися => пользователь не найден
+	//возвращаемся на форму ввода логина и пароля
+	if (this->login->Length == 0)
+	{
+		return;
+	}
+	//если пользователь найден закрываем форму логина/пароля
 	this->Close();						//закрываем текущую форму
 }
 /// <summary>
@@ -62,6 +69,11 @@ void MyForm1::checkUser(System::String^ login, System::String^ password)
 	{
 		//если данные пользователя не найдены выводим сообщение
 		MessageBox::Show("Ваша учетная запись не зарегистрирована.");
+		//обнуляем неверный ввод
+		this->textBox1->Text = "";
+		this->textBox2->Text = "";
+		this->login = "";
+		this->password = "";
 	}
 }
 /// <summary>

@@ -216,6 +216,10 @@ namespace Project1Git {
 		/// нажатие на кнопку exit
 		/// </summary>
 		private: System::Void button2_Click(System::Object^, System::EventArgs^);
+		/// <summary>
+		/// метод проверяет заполнение всех полей
+		/// </summary>
+		private: bool validValuesMyForm3();
 	};
 
 }

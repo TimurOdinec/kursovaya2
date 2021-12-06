@@ -96,6 +96,12 @@ System::Void MyForm5::MyForm5_Load(System::Object^ sender, System::EventArgs^ e)
 /// </summary>
 System::Void MyForm5::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	if (!validValuesMyForm5())
+	{
+		MessageBox::Show("Не все поля заполнены.");
+		return;
+	}
+
 	msclr::interop::marshal_context context;
 	std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);				//получим id из поля формы
 	int id = std::stoi(idStr);						//из строки в число
@@ -103,6 +109,7 @@ System::Void MyForm5::button1_Click(System::Object^ sender, System::EventArgs^ e
 	std::string capacityCarStr = context.marshal_as<std::string>(this->textBox3->Text);		//получим грузоподъемность из поля формы
 	double capacityCar = std::stod(capacityCarStr);	//из строки в число
 	std::string conditionCarStr = context.marshal_as<std::string>(this->comboBox1->Text);	//получим код состояния авто из поля формы
+		
 	int conditionCar = 0;
 	if (conditionCarStr == "в ремонте")	//выводим расшифровку кода состояния авто
 	{
@@ -161,4 +168,26 @@ System::Void MyForm5::button1_Click(System::Object^ sender, System::EventArgs^ e
 System::Void MyForm5::button2_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	this->Close();	//закроем текущую форму
+}
+/// <summary>
+/// метод проверяет заполнение всех полей
+/// </summary>
+/// <returns></returns>
+bool MyForm5::validValuesMyForm5()
+{
+	bool isValid = false;
+	if (this->textBox1->Text->Length != 0)
+	{
+		if (this->textBox2->Text->Length != 0)
+		{
+			if (this->textBox3->Text->Length != 0)
+			{
+				if (this->comboBox1->Text->Length != 0)
+				{
+					isValid = true;
+				}
+			}
+		}
+	}
+	return isValid;
 }

@@ -106,6 +106,14 @@ System::Void MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e
 	std::string login = context.marshal_as<std::string>(this->textBox2->Text);			//получим логин из пол€ формы
 	std::string password = context.marshal_as<std::string>(this->textBox3->Text);		//получим пароль из пол€ формы
 	std::string userTypeStr = context.marshal_as<std::string>(this->comboBox1->Text);	//получим тип пользовател€ из пол€ формы
+	std::string userRegisterStr = context.marshal_as<std::string>(this->comboBox2->Text);//получим тип регистрации пользовател€ из пол€ формы
+
+	if (!validValuesMyForm3())
+	{
+		MessageBox::Show("Ќе все пол€ заполнены.");
+		return;
+	}
+	
 	int userType = 0;
 	if (userTypeStr == "администратор")			//выводим расшифровку кода пользовател€
 	{
@@ -118,7 +126,6 @@ System::Void MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e
 			userType = 2;
 		}
 	}
-	std::string userRegisterStr = context.marshal_as<std::string>(this->comboBox2->Text);//получим тип регистрации пользовател€ из пол€ формы
 	int userRegister = 0;
 	if (userRegisterStr == "зарегистрирован") // ввыводим расшифровку кода регистрации пользовател€
 	{
@@ -164,4 +171,30 @@ System::Void MyForm3::button2_Click(System::Object^ sender, System::EventArgs^ e
 {
 	this->Close();	//закроем текущую форму
 }
+/// <summary>
+/// метод провер€ет заполнение всех полей
+/// </summary>
+/// <returns></returns>
+bool MyForm3::validValuesMyForm3()
+{
+	bool isValid = false;
+	if (this->textBox1->Text->Length != 0)
+	{
+		if (this->textBox2->Text->Length != 0)
+		{
+			if (this->textBox3->Text->Length != 0)
+			{
+				if (this->comboBox1->Text->Length != 0)
+				{
+					if (this->comboBox2->Text->Length != 0)
+					{
+						isValid = true;
+					}
+				}
+			}
+		}
+	}
+	return isValid;
+}
+
 

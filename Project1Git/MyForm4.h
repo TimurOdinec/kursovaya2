@@ -111,6 +111,10 @@ namespace Project1Git {
 	/// передача дополнительных данных для выполнения редактирования, удаления, поиска
 	/// </summary>
 	private: System::Void button1_Click(System::Object^, System::EventArgs^);
+	/// <summary>
+	/// метод проверяет заполнение всех полей
+	/// </summary>
+	private: bool validValuesMyForm4();
 		
 	};
 }

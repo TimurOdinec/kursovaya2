@@ -329,18 +329,14 @@ System::Void MyForm::MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	else
 	{
 		this->label1->Text = "ƒобро пожаловать!  " + (myForm1->login);
-		System::String^ test = myForm1->currentLogin;
-		msclr::interop::marshal_context context;
-		std::string loginTest = context.marshal_as<std::string>(test);
-
-		int currentTypeTest = myForm1->currentType;
-		if (currentTypeTest == 1)
+		int currentTypeInt = myForm1->currentType;
+		if (currentTypeInt == 1)
 		{
 			CreateMenuAdministrator();
 		}
 		else
 		{
-			if (currentTypeTest == 2)
+			if (currentTypeInt == 2)
 			{
 				CreateMenuUser();
 			}
@@ -362,30 +358,55 @@ System::Void  MyForm::p3ToolStripMenuItem_Click(System::Object^ sender, System::
 	Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 	myForm1->ShowDialog();			//передача фокуса форме авторизации
 	this->SetVisibleCore(true);		//скрытие формы
-	int currentTypeTest = myForm1->currentType;
-	DataGridView1Clear();
-
-	this->label1->Text = "ƒобро пожаловать!  " + (myForm1->login);
-	System::String^ test = myForm1->currentLogin;
-	msclr::interop::marshal_context context;
-	std::string loginTest = context.marshal_as<std::string>(test);
-
-	if (currentTypeTest == 1)
+	//провер€ем была ли введена строка в поле login
+	if ((myForm1->login)->Length == 0)
 	{
-		CreateMenuAdministrator();
+		this->label1->Text = "јвторизаци€ не прошла";
+		this->Close();
 	}
 	else
 	{
-		if (currentTypeTest == 2)
+		this->label1->Text = "ƒобро пожаловать!  " + (myForm1->login);
+		int currentTypeInt = myForm1->currentType;
+		if (currentTypeInt == 1)
 		{
-			CreateMenuUser();
+			CreateMenuAdministrator();
 		}
 		else
 		{
-			MessageBox::Show("¬ы не авторизированы.");
-			myForm1->ShowDialog();	//передача фокуса форме авторизации
+			if (currentTypeInt == 2)
+			{
+				CreateMenuUser();
+			}
+			else
+			{
+				MessageBox::Show("¬ы не авторизированы.");
+				myForm1->ShowDialog();	//передача фокуса форме авторизации
+			}
 		}
+		DataGridView1Clear();
 	}
+	//this->label1->Text = "ƒобро пожаловать!  " + (myForm1->login);
+	//System::String^ test = myForm1->currentLogin;
+	//msclr::interop::marshal_context context;
+	//std::string loginTest = context.marshal_as<std::string>(test);
+
+	//if (currentTypeTest == 1)
+	//{
+	//	CreateMenuAdministrator();
+	//}
+	//else
+	//{
+	//	if (currentTypeTest == 2)
+	//	{
+	//		CreateMenuUser();
+	//	}
+	//	else
+	//	{
+	//		MessageBox::Show("¬ы не авторизированы.");
+	//		myForm1->ShowDialog();	//передача фокуса форме авторизации
+	//	}
+	//}
 }
 /// <summary>
 /// просмотр учетных записей

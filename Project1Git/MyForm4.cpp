@@ -44,6 +44,11 @@ System::Void MyForm4::MyForm4_Load(System::Object^ sender, System::EventArgs^ e)
 /// <returns></returns>
 System::Void MyForm4::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	if (!validValuesMyForm4())
+	{
+		MessageBox::Show("Поле не заполнено.");
+		return;
+	}
 	//для поиска забираем из формы логин пользователя
 	if (*(this->editMode) == "search")
 	{
@@ -79,4 +84,17 @@ System::Void MyForm4::button1_Click(System::Object^ sender, System::EventArgs^ e
 		myForm5->ShowDialog();					//открываем форму с данными о пользователе
 	}
 	this->Close();	//закрываем текущую форму
+}
+/// <summary>
+/// метод проверяет заполнение всех полей
+/// </summary>
+/// <returns></returns>
+bool MyForm4::validValuesMyForm4()
+{
+	bool isValid = false;
+	if (this->textBox1->Text->Length != 0)
+	{
+		isValid = true;
+	}
+	return isValid;
 }
