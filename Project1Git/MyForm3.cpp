@@ -1,4 +1,5 @@
 #include "MyForm3.h"
+#include "WorkWithFiles.h"
 
 using namespace Project1Git;
 
@@ -38,6 +39,11 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 		User user = listUsers->getUserByIndex(this->idRowListUsers);				//получим объект user по id
 		this->Text = "Удаление пользователя";	//название формы
 		this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());	//заполняем поле id
+		if (user.getId() == -1)
+		{
+			MessageBox::Show("Учетной записи с таким id не существует.");
+			this->Close();	//закрываем форму
+		}
 		this->textBox2->Text = gcnew String((user.getLogin()).data());				//заполняем поле login
 		this->textBox3->Text = gcnew String((user.getPassword()).data());			//заполняем поле password
 		int userType = user.getUserType();		//получим код типа пользователя
@@ -72,6 +78,11 @@ System::Void MyForm3::MyForm3_Load(System::Object^ sender, System::EventArgs^ e)
 		User user = listUsers->getUserByIndex(this->idRowListUsers);				//получим объект user по id
 		this->Text = "Редактирование пользователя"; //название формы
 		this->textBox1->Text = gcnew String(std::to_string(user.getId()).data());	//заполняем поле id
+		if (user.getId() == -1)
+		{
+			MessageBox::Show("Учетной записи с таким id не существует.");
+			this->Close();	//закрываем форму
+		}
 		this->textBox2->Text = gcnew String((user.getLogin()).data());				//заполняем поле login
 		this->textBox3->Text = gcnew String((user.getPassword()).data());			//заполняем поле password
 		int userType = user.getUserType();			//получим код типа пользователя
@@ -138,6 +149,8 @@ System::Void MyForm3::button1_Click(System::Object^ sender, System::EventArgs^ e
 			userRegister = 0;
 		}
 	}
+	WorkWithFiles *workWithFiles = new WorkWithFiles();
+	workWithFiles->createAndSaveTempFile("users");
 	//если выбран режим добавления
 	if (*(this->editMode) == "add")
 	{

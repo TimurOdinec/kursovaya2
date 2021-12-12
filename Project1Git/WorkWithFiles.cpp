@@ -125,6 +125,14 @@ std::vector<std::string> WorkWithFiles::arrString(std::string nameFile)
 	{
 		fileName = "carpark.txt";
 	}
+	if (nameFile == "usersTemp")
+	{
+		fileName = "usersTemp.txt";
+	}
+	if (nameFile == "carparkTemp")
+	{
+		fileName = "carparkTemp.txt";
+	}
 	std::ifstream fileIn(fileName);	//открыли файл для чтения повторно
 	while (!fileIn.eof())
 	{
@@ -168,6 +176,46 @@ void WorkWithFiles::saveDataFile(std::vector<std::string> vr, std::string nameFi
 	}
 	fileOut.close();        //закрываем файл
 }
+void WorkWithFiles::createAndSaveTempFile(std::string nameFile)
+{
+	std::vector<std::string> arrStr = arrString(nameFile);
+	int sizeArrStr = arrStr.size();
+	//создаем объект для записи в файл
+	std::ofstream fileOut;
+	std::string fileName = "";
+	if (nameFile == "users")
+	{
+		fileName = "usersTemp.txt";
+	}
+	if (nameFile == "carpark")
+	{
+		fileName = "carparkTemp.txt";
+	}
+	if (nameFile == "usersTemp")
+	{
+		fileName = "users.txt";
+	}
+	if (nameFile == "carparkTemp")
+	{
+		fileName = "carpark.txt";
+	}
+	fileOut.open(fileName); //создание или перезапись существующего файла
+	int countRow = 0;
+	for (std::string rowData : arrStr)
+	{
+		if (!rowData.empty())
+		{
+			countRow ++;
+			if (countRow < sizeArrStr)
+			{
+				rowData += "\n";
+			}
+			fileOut << rowData;
+		}
+	}
+	fileOut.close();        //закрываем файл
+}
+
 /// <summary>
 /// деструктор
 /// </summary>

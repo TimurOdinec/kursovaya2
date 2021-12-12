@@ -19,6 +19,7 @@ namespace Project1Git
 		int countRowInFile(std::string);							//метод подсчета строк в файле (в зависимости от параметра - users.txt или carpark.txt)
 		std::vector<std::string> arrString(std::string);			//метод заполнения вектора строк данными из файлов (в зависимости от параметра - users.txt или carpark.txt)
 		void saveDataFile(std::vector<std::string>, std::string);	//метод сохранения данных из вектора строк в файл (в зависимости от параметра - users.txt или carpark.txt)
+		void createAndSaveTempFile(std::string);
 		~WorkWithFiles();											//деструктор
 	};
 }

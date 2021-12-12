@@ -64,7 +64,7 @@ namespace Project1Git {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(137, 183);
+			this->button1->Location = System::Drawing::Point(146, 183);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(95, 42);
 			this->button1->TabIndex = 0;
@@ -101,6 +101,7 @@ namespace Project1Git {
 			this->Load += gcnew System::EventHandler(this, &MyForm4::MyForm4_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
 		}
 #pragma endregion
 	/// <summary>
@@ -115,6 +116,10 @@ namespace Project1Git {
 	/// метод проверяет заполнение всех полей
 	/// </summary>
 	private: bool validValuesMyForm4();
-		
+	/// <summary>
+	/// метод проверяет указано ли число в окне ввода id
+	/// </summary>
+	private: bool validValuesIntMyForm4();
 	};
+	
 }

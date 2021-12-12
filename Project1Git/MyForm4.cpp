@@ -49,6 +49,10 @@ System::Void MyForm4::button1_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Поле не заполнено.");
 		return;
 	}
+	if (!validValuesIntMyForm4())
+	{
+		return;
+	}
 	//для поиска забираем из формы логин пользователя
 	if (*(this->editMode) == "search")
 	{
@@ -60,6 +64,11 @@ System::Void MyForm4::button1_Click(System::Object^ sender, System::EventArgs^ e
 	{
 		msclr::interop::marshal_context context;
 		std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+		if (idStr == "1")
+		{
+			MessageBox::Show("Нельзя редактировать(удалять) данную запись.");
+			return;
+		}
 		int id = std::stoi(idStr);
 		this->idRowListUsers = id;
 		//создаем форму с данными о пользователе
@@ -95,6 +104,27 @@ bool MyForm4::validValuesMyForm4()
 	if (this->textBox1->Text->Length != 0)
 	{
 		isValid = true;
+	}
+	return isValid;
+}
+/// <summary>
+/// метод проверяет указано ли число в окне ввода id
+/// </summary>
+/// <returns></returns>
+bool MyForm4::validValuesIntMyForm4()
+{
+	bool isValid = false;
+	if (this->textBox1->Text->Length != 0)
+	{
+		msclr::interop::marshal_context context;
+		std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+		try {
+			int i = std::stoi(idStr);
+			isValid = true;
+		}
+		catch (...) {
+			MessageBox::Show("Введите целое число.");
+		}
 	}
 	return isValid;
 }

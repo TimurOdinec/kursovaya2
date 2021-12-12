@@ -74,7 +74,24 @@ namespace Project1Git {
 		private: System::Windows::Forms::ToolStripMenuItem^ p262ToolStripMenuItem;
 		private: System::Windows::Forms::ToolStripMenuItem^ p263ToolStripMenuItem;
 		private: System::Windows::Forms::PictureBox^ pictureBox1;
-
+		private: System::Windows::Forms::Label^ label2;
+		private: System::Windows::Forms::TextBox^ textBox1;
+		private: System::Windows::Forms::Label^ label3;
+		private: System::Windows::Forms::Label^ label4;
+		private: System::Windows::Forms::Label^ label5;
+		private: System::Windows::Forms::Label^ label6;
+		private: System::Windows::Forms::TextBox^ textBox2;
+		private: System::Windows::Forms::TextBox^ textBox3;
+		private: System::Windows::Forms::TextBox^ textBox4;
+		private: System::Windows::Forms::TextBox^ textBox5;
+		private: System::Windows::Forms::GroupBox^ groupBox1;
+		private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator1;
+		private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator2;
+		private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem2;
+		private: System::Windows::Forms::ToolStripMenuItem^ pp1ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ pp11ToolStripMenuItem;
+		private: System::Windows::Forms::ToolStripMenuItem^ pp12ToolStripMenuItem;
+		
 		private:
 			/// <summary>
 			/// ќб€зательна€ переменна€ конструктора.
@@ -116,12 +133,30 @@ namespace Project1Git {
 				this->p261ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->p262ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->p263ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 				this->p3ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
 				this->p4ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->toolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->pp1ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->pp11ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->pp12ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+				this->label2 = (gcnew System::Windows::Forms::Label());
+				this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+				this->label3 = (gcnew System::Windows::Forms::Label());
+				this->label4 = (gcnew System::Windows::Forms::Label());
+				this->label5 = (gcnew System::Windows::Forms::Label());
+				this->label6 = (gcnew System::Windows::Forms::Label());
+				this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+				this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+				this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+				this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+				this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 				this->menuStrip1->SuspendLayout();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+				this->groupBox1->SuspendLayout();
 				this->SuspendLayout();
 				// 
 				// button3
@@ -153,13 +188,16 @@ namespace Project1Git {
 				this->dataGridView1->ReadOnly = true;
 				this->dataGridView1->RowHeadersWidth = 51;
 				this->dataGridView1->RowTemplate->Height = 24;
-				this->dataGridView1->Size = System::Drawing::Size(1018, 271);
+				this->dataGridView1->Size = System::Drawing::Size(728, 271);
 				this->dataGridView1->TabIndex = 6;
 				// 
 				// menuStrip1
 				// 
 				this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-				this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripMenuItem1 });
+				this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+					this->toolStripMenuItem1,
+						this->toolStripMenuItem2
+				});
 				this->menuStrip1->Location = System::Drawing::Point(0, 0);
 				this->menuStrip1->Name = L"menuStrip1";
 				this->menuStrip1->Size = System::Drawing::Size(1135, 28);
@@ -168,9 +206,9 @@ namespace Project1Git {
 				// 
 				// toolStripMenuItem1
 				// 
-				this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 					this->p1ToolStripMenuItem,
-						this->p2ToolStripMenuItem, this->p3ToolStripMenuItem, this->p4ToolStripMenuItem
+						this->p2ToolStripMenuItem, this->toolStripSeparator1, this->p3ToolStripMenuItem, this->toolStripSeparator2, this->p4ToolStripMenuItem
 				});
 				this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
 				this->toolStripMenuItem1->Size = System::Drawing::Size(156, 24);
@@ -183,7 +221,7 @@ namespace Project1Git {
 						this->p12ToolStripMenuItem, this->p13ToolStripMenuItem, this->p14ToolStripMenuItem, this->p15ToolStripMenuItem
 				});
 				this->p1ToolStripMenuItem->Name = L"p1ToolStripMenuItem";
-				this->p1ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p1ToolStripMenuItem->Size = System::Drawing::Size(109, 26);
 				this->p1ToolStripMenuItem->Text = L"p1";
 				// 
 				// p11ToolStripMenuItem
@@ -245,7 +283,7 @@ namespace Project1Git {
 						this->p22ToolStripMenuItem, this->p23ToolStripMenuItem, this->p24ToolStripMenuItem, this->p25ToolStripMenuItem, this->p26ToolStripMenuItem
 				});
 				this->p2ToolStripMenuItem->Name = L"p2ToolStripMenuItem";
-				this->p2ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p2ToolStripMenuItem->Size = System::Drawing::Size(109, 26);
 				this->p2ToolStripMenuItem->Text = L"p2";
 				// 
 				// p21ToolStripMenuItem
@@ -345,19 +383,60 @@ namespace Project1Git {
 				this->p263ToolStripMenuItem->Text = L"p263";
 				this->p263ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p263ToolStripMenuItem_Click);
 				// 
+				// toolStripSeparator1
+				// 
+				this->toolStripSeparator1->Name = L"toolStripSeparator1";
+				this->toolStripSeparator1->Size = System::Drawing::Size(106, 6);
+				// 
 				// p3ToolStripMenuItem
 				// 
 				this->p3ToolStripMenuItem->Name = L"p3ToolStripMenuItem";
-				this->p3ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p3ToolStripMenuItem->Size = System::Drawing::Size(109, 26);
 				this->p3ToolStripMenuItem->Text = L"p3";
 				this->p3ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p3ToolStripMenuItem_Click);
+				// 
+				// toolStripSeparator2
+				// 
+				this->toolStripSeparator2->Name = L"toolStripSeparator2";
+				this->toolStripSeparator2->Size = System::Drawing::Size(106, 6);
 				// 
 				// p4ToolStripMenuItem
 				// 
 				this->p4ToolStripMenuItem->Name = L"p4ToolStripMenuItem";
-				this->p4ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->p4ToolStripMenuItem->Size = System::Drawing::Size(109, 26);
 				this->p4ToolStripMenuItem->Text = L"p4";
 				this->p4ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::p4ToolStripMenuItem_Click);
+				// 
+				// toolStripMenuItem2
+				// 
+				this->toolStripMenuItem2->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->pp1ToolStripMenuItem });
+				this->toolStripMenuItem2->Name = L"toolStripMenuItem2";
+				this->toolStripMenuItem2->Size = System::Drawing::Size(156, 24);
+				this->toolStripMenuItem2->Text = L"toolStripMenuItem2";
+				// 
+				// pp1ToolStripMenuItem
+				// 
+				this->pp1ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+					this->pp11ToolStripMenuItem,
+						this->pp12ToolStripMenuItem
+				});
+				this->pp1ToolStripMenuItem->Name = L"pp1ToolStripMenuItem";
+				this->pp1ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->pp1ToolStripMenuItem->Text = L"pp1";
+				// 
+				// pp11ToolStripMenuItem
+				// 
+				this->pp11ToolStripMenuItem->Name = L"pp11ToolStripMenuItem";
+				this->pp11ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->pp11ToolStripMenuItem->Text = L"pp11";
+				this->pp11ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::pp11ToolStripMenuItem_Click);
+				// 
+				// pp12ToolStripMenuItem
+				// 
+				this->pp12ToolStripMenuItem->Name = L"pp12ToolStripMenuItem";
+				this->pp12ToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+				this->pp12ToolStripMenuItem->Text = L"pp12";
+				this->pp12ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::pp12ToolStripMenuItem_Click);
 				// 
 				// pictureBox1
 				// 
@@ -369,6 +448,105 @@ namespace Project1Git {
 				this->pictureBox1->TabIndex = 8;
 				this->pictureBox1->TabStop = false;
 				// 
+				// label2
+				// 
+				this->label2->AutoSize = true;
+				this->label2->Location = System::Drawing::Point(12, 48);
+				this->label2->Name = L"label2";
+				this->label2->Size = System::Drawing::Size(46, 17);
+				this->label2->TabIndex = 9;
+				this->label2->Text = L"label2";
+				// 
+				// textBox1
+				// 
+				this->textBox1->Location = System::Drawing::Point(246, 45);
+				this->textBox1->Name = L"textBox1";
+				this->textBox1->Size = System::Drawing::Size(45, 22);
+				this->textBox1->TabIndex = 10;
+				// 
+				// label3
+				// 
+				this->label3->AutoSize = true;
+				this->label3->Location = System::Drawing::Point(12, 92);
+				this->label3->Name = L"label3";
+				this->label3->Size = System::Drawing::Size(46, 17);
+				this->label3->TabIndex = 11;
+				this->label3->Text = L"label3";
+				// 
+				// label4
+				// 
+				this->label4->AutoSize = true;
+				this->label4->Location = System::Drawing::Point(12, 135);
+				this->label4->Name = L"label4";
+				this->label4->Size = System::Drawing::Size(46, 17);
+				this->label4->TabIndex = 12;
+				this->label4->Text = L"label4";
+				// 
+				// label5
+				// 
+				this->label5->AutoSize = true;
+				this->label5->Location = System::Drawing::Point(12, 177);
+				this->label5->Name = L"label5";
+				this->label5->Size = System::Drawing::Size(46, 17);
+				this->label5->TabIndex = 13;
+				this->label5->Text = L"label5";
+				// 
+				// label6
+				// 
+				this->label6->AutoSize = true;
+				this->label6->Location = System::Drawing::Point(12, 219);
+				this->label6->Name = L"label6";
+				this->label6->Size = System::Drawing::Size(46, 17);
+				this->label6->TabIndex = 14;
+				this->label6->Text = L"label6";
+				// 
+				// textBox2
+				// 
+				this->textBox2->Location = System::Drawing::Point(246, 89);
+				this->textBox2->Name = L"textBox2";
+				this->textBox2->Size = System::Drawing::Size(45, 22);
+				this->textBox2->TabIndex = 15;
+				// 
+				// textBox3
+				// 
+				this->textBox3->Location = System::Drawing::Point(246, 132);
+				this->textBox3->Name = L"textBox3";
+				this->textBox3->Size = System::Drawing::Size(45, 22);
+				this->textBox3->TabIndex = 16;
+				// 
+				// textBox4
+				// 
+				this->textBox4->Location = System::Drawing::Point(246, 174);
+				this->textBox4->Name = L"textBox4";
+				this->textBox4->Size = System::Drawing::Size(45, 22);
+				this->textBox4->TabIndex = 17;
+				// 
+				// textBox5
+				// 
+				this->textBox5->Location = System::Drawing::Point(246, 216);
+				this->textBox5->Name = L"textBox5";
+				this->textBox5->Size = System::Drawing::Size(45, 22);
+				this->textBox5->TabIndex = 18;
+				// 
+				// groupBox1
+				// 
+				this->groupBox1->Controls->Add(this->textBox5);
+				this->groupBox1->Controls->Add(this->textBox4);
+				this->groupBox1->Controls->Add(this->label2);
+				this->groupBox1->Controls->Add(this->textBox3);
+				this->groupBox1->Controls->Add(this->textBox1);
+				this->groupBox1->Controls->Add(this->textBox2);
+				this->groupBox1->Controls->Add(this->label3);
+				this->groupBox1->Controls->Add(this->label6);
+				this->groupBox1->Controls->Add(this->label4);
+				this->groupBox1->Controls->Add(this->label5);
+				this->groupBox1->Location = System::Drawing::Point(792, 174);
+				this->groupBox1->Name = L"groupBox1";
+				this->groupBox1->Size = System::Drawing::Size(306, 271);
+				this->groupBox1->TabIndex = 19;
+				this->groupBox1->TabStop = false;
+				this->groupBox1->Text = L"groupBox1";
+				// 
 				// MyForm
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -379,6 +557,7 @@ namespace Project1Git {
 				this->Controls->Add(this->label1);
 				this->Controls->Add(this->button3);
 				this->Controls->Add(this->menuStrip1);
+				this->Controls->Add(this->groupBox1);
 				this->MainMenuStrip = this->menuStrip1;
 				this->Name = L"MyForm";
 				this->Text = L"MyForm";
@@ -387,6 +566,8 @@ namespace Project1Git {
 				this->menuStrip1->ResumeLayout(false);
 				this->menuStrip1->PerformLayout();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+				this->groupBox1->ResumeLayout(false);
+				this->groupBox1->PerformLayout();
 				this->ResumeLayout(false);
 				this->PerformLayout();
 
@@ -404,6 +585,10 @@ namespace Project1Git {
 			/// метод очищает grid таблицу данных
 			/// </summary>
 			private: System::Void MyForm::DataGridView1Clear();
+			/// <summary>
+			/// метод скрывает надипси и окна с данными по машинам
+			/// </summary>
+			private: System::Void MyForm::HideLabelsAndTextBoxes();
 			/// <summary>
 			/// метод формировани€ названий столбцов дл€ вывода данных о пользовател€х
 			/// </summary>
@@ -516,5 +701,13 @@ namespace Project1Git {
 			/// выбор пункта меню "¬ыход"
 			/// </summary>
 			private: System::Void p4ToolStripMenuItem_Click(System::Object^, System::EventArgs^);
+			/// <summary>
+			/// выбор пункта меню - отмены последних действий с учетными данными
+			/// </summary>
+			private: System::Void pp11ToolStripMenuItem_Click(System::Object^, System::EventArgs^);
+			/// <summary>
+			/// выбор пункта меню - отмены последних действий с данными автопарка
+			/// </summary>
+			private: System::Void pp12ToolStripMenuItem_Click(System::Object^, System::EventArgs^);
 	};
 }

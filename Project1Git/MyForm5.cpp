@@ -1,4 +1,5 @@
 #include "MyForm5.h"
+#include "WorkWithFiles.h"
 
 using namespace Project1Git;
 
@@ -37,6 +38,11 @@ System::Void MyForm5::MyForm5_Load(System::Object^ sender, System::EventArgs^ e)
 		Car car = carpark->getCarByIndex(this->idRowCars);									//получим объект car по id
 		this->Text = "Удаление авто";		//название формы
 		this->textBox1->Text = gcnew String(std::to_string(car.getId()).data());			//заполняем поле id
+		if (car.getId() == -1)
+		{
+			MessageBox::Show("Учетной записи с таким id не существует.");
+			this->Close();	//закрываем форму
+		}
 		this->textBox2->Text = gcnew String(car.getTypeCar().data());						//заполняем поле typrCar
 		this->textBox3->Text = gcnew String(std::to_string(car.getCapacityCar()).data());	//заполняем поле capacity
 		int conditionCar = car.getConditionCar();
@@ -69,6 +75,11 @@ System::Void MyForm5::MyForm5_Load(System::Object^ sender, System::EventArgs^ e)
 		Car car = carpark->getCarByIndex(this->idRowCars);	//получим объект car по id
 		this->Text = "Редактирование авто";		//название формы
 		this->textBox1->Text = gcnew String(std::to_string(car.getId()).data());			//заполняем поле id
+		if (car.getId() == -1)
+		{
+			MessageBox::Show("Учетной записи с таким id не существует.");
+			this->Close();	//закрываем форму
+		}
 		this->textBox2->Text = gcnew String(car.getTypeCar().data());						//заполняем поле typeCar
 		this->textBox3->Text = gcnew String(std::to_string(car.getCapacityCar()).data());	//заполняем поле capacity
 		int conditionCar = car.getConditionCar();			//получим код состояния авто
@@ -136,6 +147,8 @@ System::Void MyForm5::button1_Click(System::Object^ sender, System::EventArgs^ e
 			}
 		}
 	}
+	WorkWithFiles* workWithFiles = new WorkWithFiles();
+	workWithFiles->createAndSaveTempFile("carpark");
 	//если выбран режим добавления
 	if (*(this->editMode) == "addCar")
 	{

@@ -1,6 +1,7 @@
 #include <Windows.h>
 
 #include "MyForm.h"
+#include "WorkWithFiles.h"
 
 using namespace Project1Git;
 
@@ -26,7 +27,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 /// <returns></returns>
 System::Void MyForm::CreateMenuAdministrator()
 {
-	
 	this->toolStripMenuItem1->Text = "Меню администратора";
 	this->p1ToolStripMenuItem->Text = "Работа с учетными данными";
 	this->p11ToolStripMenuItem->Text = "Просмотр учетных данных";
@@ -62,6 +62,17 @@ System::Void MyForm::CreateMenuAdministrator()
 	this->p22ToolStripMenuItem->Available = true;
 	this->p23ToolStripMenuItem->Available = true;
 	this->p24ToolStripMenuItem->Available = true;
+
+	this->toolStripMenuItem2->Text = "Правка";
+	this->pp1ToolStripMenuItem->Text = "Отменить последнее действие (добавление/удаление/редактирование)";
+	this->pp11ToolStripMenuItem->Text = "для учетных данных";
+	this->pp12ToolStripMenuItem->Text = "для данных автопарка";
+	this->toolStripMenuItem2->Available = true;
+	this->pp1ToolStripMenuItem->Available = true;
+	this->pp11ToolStripMenuItem->Available = true;
+	this->pp12ToolStripMenuItem->Available = true;
+	this->pp11ToolStripMenuItem->Enabled = false;
+	this->pp12ToolStripMenuItem->Enabled = false;
 }
 /// <summary>
 /// метод формирует меню пользователя
@@ -93,6 +104,11 @@ System::Void MyForm::CreateMenuUser()
 	this->p263ToolStripMenuItem->Text = "Сортировка по грузоподъемности";
 	this->p3ToolStripMenuItem->Text = "Сменить пользователя";
 	this->p4ToolStripMenuItem->Text = "Выход";
+
+	this->toolStripMenuItem2->Available = false;
+	this->pp1ToolStripMenuItem->Available = false;
+	this->pp11ToolStripMenuItem->Available = false;
+	this->pp12ToolStripMenuItem->Available = false;
 }
 /// <summary>
 /// метод очищает grid таблицу данных
@@ -105,6 +121,29 @@ System::Void MyForm::DataGridView1Clear()
 	this->dataGridView1->Visible = true;
 }
 /// <summary>
+/// метод скрывает надипси и окна с данными по машинам
+/// </summary>
+/// <returns></returns>
+System::Void MyForm::HideLabelsAndTextBoxes()
+{
+	this->textBox1->ReadOnly = true;									//делаем кол-во всех авто не редактируемым
+	this->textBox1->Visible = false;									//прячем кол-во всех авто
+	this->textBox2->ReadOnly = true;									//делаем кол-во в ремонте не редактируемым
+	this->textBox2->Visible = false;									//прячем кол-во в ремонте
+	this->textBox3->ReadOnly = true;									//делаем кол-во списаных не редактируемым
+	this->textBox3->Visible = false;									//прячем кол-во списаных
+	this->textBox4->ReadOnly = true;									//делаем кол-во свободных не редактируемым
+	this->textBox4->Visible = false;									//прячем кол-во свободных
+	this->textBox5->ReadOnly = true;									//делаем кол-во занятых не редактируемым
+	this->textBox5->Visible = false;									//прячем кол-во занятых
+	this->label2->Visible = false;										//прячем надпись кол-во всех авто
+	this->label3->Visible = false;										//прячем надпись Кол-во машин (в ремонте)
+	this->label4->Visible = false;										//прячем надпись Кол-во машин (списаных)
+	this->label5->Visible = false;										//прячем надпись Кол-во машин (свободных)
+	this->label6->Visible = false;										//прячем надпись Кол-во машин (занятых)
+	this->groupBox1->Visible = false;									//прячем рамку
+}
+/// <summary>
 /// метод формирования названий столбцов для вывода данных о пользователях
 /// </summary>
 /// <returns></returns>
@@ -113,18 +152,22 @@ System::Void MyForm::DataGridViewTextBoxColumnAddUsers()
 	//вариант с ячейками столбца и направлением сортировки
 	DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
 	colFullName->Name = "id";
+	colFullName->Width = 30;
 	this->dataGridView1->Columns->Add(colFullName);
 	DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
-	colFullName1->Name = "Login";
+	colFullName1->Name = "ЛОГИН";
+	colFullName1->Width = 80;
 	this->dataGridView1->Columns->Add(colFullName1);
 	DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
-	colFullName2->Name = "User type";
+	colFullName2->Name = "ТИП ПОЛЬЗОВАТЕЛЯ";
+	colFullName2->Width = 110;
 	this->dataGridView1->Columns->Add(colFullName2);
 	DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
-	colFullName3->Name = "User registered";
+	colFullName3->Name = "ТИП РЕГИСТРАЦИИ";
+	colFullName3->Width = 120;
 	this->dataGridView1->Columns->Add(colFullName3);
 	DataGridViewTextBoxColumn^ colFullName4 = gcnew DataGridViewTextBoxColumn;
-	colFullName4->Name = "Password";
+	colFullName4->Name = "ПАРОЛЬ";
 	this->dataGridView1->Columns->Add(colFullName4);
 }
 /// <summary>
@@ -136,15 +179,17 @@ System::Void MyForm::DataGridViewTextBoxColumnAddCars()
 	//вариант с ячейками столбца и направлением сортировки
 	DataGridViewTextBoxColumn^ colFullName = gcnew DataGridViewTextBoxColumn;
 	colFullName->Name = "id";
+	colFullName->Width = 30;
 	this->dataGridView1->Columns->Add(colFullName);
 	DataGridViewTextBoxColumn^ colFullName1 = gcnew DataGridViewTextBoxColumn;
-	colFullName1->Name = "conditionCar";
+	colFullName1->Name = "СОСТОЯНИЕ АВТО";
 	this->dataGridView1->Columns->Add(colFullName1);
 	DataGridViewTextBoxColumn^ colFullName2 = gcnew DataGridViewTextBoxColumn;
-	colFullName2->Name = "carType";
+	colFullName2->Name = "ТИП АВТО";
 	this->dataGridView1->Columns->Add(colFullName2);
 	DataGridViewTextBoxColumn^ colFullName3 = gcnew DataGridViewTextBoxColumn;
-	colFullName3->Name = "capacityCar";
+	colFullName3->Name = "ГРУЗПОДЪЕМНОСТЬ (Т)";
+	colFullName3->Width = 140;
 	this->dataGridView1->Columns->Add(colFullName3);
 }
 /// <summary>
@@ -233,6 +278,10 @@ void MyForm::FindDataCar(std::string typeConditionCar)
 {
 	Carpark* carpark = new Carpark();
 	int sizeList = carpark->getSize();
+	int countCarRepair = 0;
+	int countCarWriteOff = 0;
+	int countCarFree = 0;
+	int countCarBusy = 0;
 	for (int i = 0; i < sizeList; i++)
 	{
 		int index = carpark->getCarIndex(i);
@@ -240,6 +289,22 @@ void MyForm::FindDataCar(std::string typeConditionCar)
 
 		System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 		int conditionCar = car.getConditionCar();
+		if (conditionCar == 1)
+		{
+			countCarRepair++;
+		}
+		if (conditionCar == 2)
+		{
+			countCarWriteOff++;
+		}
+		if (conditionCar == 3)
+		{
+			countCarFree++;
+		}
+		if (conditionCar == 4)
+		{
+			countCarBusy++;
+		}
 		System::String^ conditionCarStr = GetNameConditionByCode(conditionCar);
 		System::String^ carType = gcnew System::String(car.getTypeCar().data());
 		System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
@@ -273,6 +338,22 @@ void MyForm::FindDataCar(std::string typeConditionCar)
 			}
 		}
 	}
+	this->label2->Visible = true;
+	this->textBox1->Visible = true;
+	this->textBox1->Text = gcnew System::String(std::to_string(sizeList).data());
+	this->label3->Visible = true;
+	this->textBox2->Visible = true;
+	this->textBox2->Text = gcnew System::String(std::to_string(countCarRepair).data());
+	this->label4->Visible = true;
+	this->textBox3->Visible = true;
+	this->textBox3->Text = gcnew System::String(std::to_string(countCarWriteOff).data());
+	this->label5->Visible = true;
+	this->textBox4->Visible = true;
+	this->textBox4->Text = gcnew System::String(std::to_string(countCarFree).data());
+	this->label6->Visible = true;
+	this->textBox5->Visible = true;
+	this->textBox5->Text = gcnew System::String(std::to_string(countCarBusy).data());
+	this->groupBox1->Visible = true;
 }
 /// <summary>
 /// метод сортирует строки данных для авто по переданному прарметру (состоянию, типу, грузоподъемности)
@@ -316,7 +397,15 @@ System::Void MyForm::MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	this->BackColor = System::Drawing::Color::FromArgb(60, 160, 208);	//цвет фона формы
 	this->Text = "Автопарк";											//название формы
 	this->button3->Text = "Выход";										//название кнопки
-	this->dataGridView1->Visible = false;								//прячем твблицу
+	this->dataGridView1->Visible = false;								//прячем таблицу
+	this->label2->Text = "Кол-во всех машин в автопарке:";
+	this->label3->Text = "Кол-во машин (в ремонте):";
+	this->label4->Text = "Кол-во машин (списаных):";
+	this->label5->Text = "Кол-во машин (свободных):";
+	this->label6->Text = "Кол-во машин (занятых):";
+	this->groupBox1->Text = "Информация о машинах:";					
+	HideLabelsAndTextBoxes();
+	
 	//создание новой формы авторизации
 	Project1Git::MyForm1^ myForm1 = gcnew Project1Git::MyForm1();
 	myForm1->ShowDialog();	//передача фокуса форме авторизации
@@ -385,28 +474,8 @@ System::Void  MyForm::p3ToolStripMenuItem_Click(System::Object^ sender, System::
 			}
 		}
 		DataGridView1Clear();
+		HideLabelsAndTextBoxes();
 	}
-	//this->label1->Text = "Добро пожаловать!  " + (myForm1->login);
-	//System::String^ test = myForm1->currentLogin;
-	//msclr::interop::marshal_context context;
-	//std::string loginTest = context.marshal_as<std::string>(test);
-
-	//if (currentTypeTest == 1)
-	//{
-	//	CreateMenuAdministrator();
-	//}
-	//else
-	//{
-	//	if (currentTypeTest == 2)
-	//	{
-	//		CreateMenuUser();
-	//	}
-	//	else
-	//	{
-	//		MessageBox::Show("Вы не авторизированы.");
-	//		myForm1->ShowDialog();	//передача фокуса форме авторизации
-	//	}
-	//}
 }
 /// <summary>
 /// просмотр учетных записей
@@ -416,6 +485,7 @@ System::Void  MyForm::p11ToolStripMenuItem_Click(System::Object^ sender, System:
 	//MessageBox::Show("Просомтр уч.данных.");
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddUsers();
+	HideLabelsAndTextBoxes();
 	
 	//берем список пользователей
 	ListUsers* listUsers = new ListUsers();
@@ -447,6 +517,8 @@ System::Void  MyForm::p12ToolStripMenuItem_Click(System::Object^ sender, System:
 	myForm3->editMode = &editMode;
 	myForm3->ShowDialog();	//передача фокуса форме авторизации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+	this->pp11ToolStripMenuItem->Enabled = true;
 }
 /// <summary>
 /// удаление уч.записи
@@ -459,6 +531,8 @@ System::Void  MyForm::p13ToolStripMenuItem_Click(System::Object^ sender, System:
 	myForm4->editMode = &editMode;
 	myForm4->ShowDialog();	//передача фокуса форме идентификации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+	this->pp11ToolStripMenuItem->Enabled = true;
 }
 /// <summary>
 /// редактирование уч.записи
@@ -471,6 +545,8 @@ System::Void  MyForm::p14ToolStripMenuItem_Click(System::Object^ sender, System:
 	myForm4->editMode = &editMode;
 	myForm4->ShowDialog();	//передача фокуса форме идентификации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+	this->pp11ToolStripMenuItem->Enabled = true;
 }
 /// <summary>
 /// поиск уч.данных по логину
@@ -483,21 +559,21 @@ System::Void  MyForm::p151ToolStripMenuItem_Click(System::Object^ sender, System
 	myForm4->editMode = &editMode;
 	myForm4->ShowDialog();	//передача фокуса форме идентификации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
 
 	System::String^ loginSearchUser = myForm4->loginSearchUser;
 	msclr::interop::marshal_context context;
 	std::string loginUserSearch = context.marshal_as<std::string>(loginSearchUser);
-	MessageBox::Show("loginSearchUser:" + loginSearchUser);
+	//MessageBox::Show("loginSearchUser:" + loginSearchUser);
 
 	ListUsers* listUsers = new ListUsers();
 	User user = listUsers->getUserByLogin(loginUserSearch);
 	if (user.getId() == -1)
 	{
-		MessageBox::Show("User not found");
+		MessageBox::Show("Пользователь не найден.");
 	}
 	else
 	{
-		MessageBox::Show("testing2");
 		DataGridViewTextBoxColumnAddUsers();
 		
 		System::String^ id = gcnew System::String(std::to_string(user.getId()).data());
@@ -520,6 +596,7 @@ System::Void  MyForm::p152ToolStripMenuItem_Click(System::Object^ sender, System
 	MessageBox::Show("Поиск незарегистр.пользователей");
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddUsers();
+	HideLabelsAndTextBoxes();
 	
 	//берем список пользователей
 	ListUsers* listUsers = new ListUsers();
@@ -550,10 +627,15 @@ System::Void  MyForm::p21ToolStripMenuItem_Click(System::Object^ sender, System:
 {
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
-
+	HideLabelsAndTextBoxes();
+	
 	//берем список auto
 	Carpark* carpark = new Carpark();
 	int sizeList = carpark->getSize();
+	int countCarRepair = 0;
+	int countCarWriteOff = 0;
+	int countCarFree = 0;
+	int countCarBusy = 0;
 	for (int i = 0; i < sizeList; i++)
 	{
 		int index = carpark->getCarIndex(i);
@@ -561,12 +643,45 @@ System::Void  MyForm::p21ToolStripMenuItem_Click(System::Object^ sender, System:
 
 		System::String^ id = gcnew System::String(std::to_string(car.getId()).data());
 		int conditionCar = car.getConditionCar();
+		if (conditionCar == 1)
+		{
+			countCarRepair ++;
+		}
+		if (conditionCar == 2)
+		{
+			countCarWriteOff ++;
+		}
+		if (conditionCar == 3)
+		{
+			countCarFree ++;
+		}
+		if (conditionCar == 4)
+		{
+			countCarBusy ++;
+		}
 		System::String^ conditionCarStr = GetNameConditionByCode(conditionCar);
 		System::String^ carType = gcnew System::String(car.getTypeCar().data());
 		System::String^ capacityCar = gcnew System::String(std::to_string(car.getCapacityCar()).data());
 		array<String^>^ carRecord = { id, conditionCarStr, carType, capacityCar };
 		this->dataGridView1->Rows->Add(carRecord);
 	}
+	this->label2->Visible = true;
+	this->textBox1->Visible = true;
+	this->textBox1->Text = gcnew System::String(std::to_string(sizeList).data());
+	this->label3->Visible = true;
+	this->textBox2->Visible = true;
+	this->textBox2->Text = gcnew System::String(std::to_string(countCarRepair).data());
+	this->label4->Visible = true;
+	this->textBox3->Visible = true;
+	this->textBox3->Text = gcnew System::String(std::to_string(countCarWriteOff).data());
+	this->label5->Visible = true;
+	this->textBox4->Visible = true;
+	this->textBox4->Text = gcnew System::String(std::to_string(countCarFree).data());
+	this->label6->Visible = true;
+	this->textBox5->Visible = true;
+	this->textBox5->Text = gcnew System::String(std::to_string(countCarBusy).data());
+	this->groupBox1->Visible = true;
+
 }
 /// <summary>
 /// добавление авто
@@ -579,6 +694,8 @@ System::Void  MyForm::p22ToolStripMenuItem_Click(System::Object^ sender, System:
 	myForm5->editMode = &editMode;
 	myForm5->ShowDialog();	//передача фокуса форме авторизации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+	this->pp12ToolStripMenuItem->Enabled = true;
 }
 /// <summary>
 /// удаление авто
@@ -591,6 +708,8 @@ System::Void  MyForm::p23ToolStripMenuItem_Click(System::Object^ sender, System:
 	myForm4->editMode = &editMode;
 	myForm4->ShowDialog();	//передача фокуса форме идентификации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+	this->pp12ToolStripMenuItem->Enabled = true;
 }
 /// <summary>
 /// редактирование данных по автопарку
@@ -603,6 +722,8 @@ System::Void  MyForm::p24ToolStripMenuItem_Click(System::Object^ sender, System:
 	myForm4->editMode = &editMode;
 	myForm4->ShowDialog();	//передача фокуса форме идентификации
 	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+	this->pp12ToolStripMenuItem->Enabled = true;
 }
 /// <summary>
 /// поиск данных/поиск св.машин
@@ -611,6 +732,7 @@ System::Void  MyForm::p251ToolStripMenuItem_Click(System::Object^ sender, System
 {
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
+	HideLabelsAndTextBoxes();
 	FindDataCar("freeСar");
 }
 /// <summary>
@@ -620,6 +742,7 @@ System::Void  MyForm::p252ToolStripMenuItem_Click(System::Object^ sender, System
 {
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
+	HideLabelsAndTextBoxes();
 	FindDataCar("busyСar");
 }
 /// <summary>
@@ -629,6 +752,7 @@ System::Void  MyForm::p253ToolStripMenuItem_Click(System::Object^ sender, System
 {
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
+	HideLabelsAndTextBoxes();
 	FindDataCar("repairedСar");
 }
 /// <summary>
@@ -638,6 +762,7 @@ System::Void  MyForm::p254ToolStripMenuItem_Click(System::Object^ sender, System
 {
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
+	HideLabelsAndTextBoxes();
 	FindDataCar("decommissionedСar");
 }
 /// <summary>
@@ -648,6 +773,7 @@ System::Void  MyForm::p261ToolStripMenuItem_Click(System::Object^ sender, System
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
 	DataGridViewRowsAdd("sortByConditionCar");
+	HideLabelsAndTextBoxes();
 }
 /// <summary>
 /// сортировка по типу машин
@@ -657,6 +783,7 @@ System::Void  MyForm::p262ToolStripMenuItem_Click(System::Object^ sender, System
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
 	DataGridViewRowsAdd("sortByTypeCar");
+	HideLabelsAndTextBoxes();
 }
 /// <summary>
 /// сортировка авто по грузоподъемности
@@ -666,6 +793,33 @@ System::Void  MyForm::p263ToolStripMenuItem_Click(System::Object^ sender, System
 	DataGridView1Clear();
 	DataGridViewTextBoxColumnAddCars();
 	DataGridViewRowsAdd("sortByCapacityCar");
+	HideLabelsAndTextBoxes();
+}
+/// <summary>
+/// выбор пункта меню - отмены последних действий с учетными данными
+/// </summary>
+/// <param name=""></param>
+/// <param name=""></param>
+/// <returns></returns>
+System::Void MyForm::pp11ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	WorkWithFiles* workWithFiles = new WorkWithFiles();
+	workWithFiles->createAndSaveTempFile("usersTemp");
+	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
+}
+/// <summary>
+/// выбор пункта меню - отмены последних действий с данными автопарка
+/// </summary>
+/// <param name="sender"></param>
+/// <param name="e"></param>
+/// <returns></returns>
+System::Void MyForm::pp12ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	WorkWithFiles* workWithFiles = new WorkWithFiles();
+	workWithFiles->createAndSaveTempFile("carparkTemp");
+	DataGridView1Clear();
+	HideLabelsAndTextBoxes();
 }
 /// <summary>
 /// нажатие на кнопку Выход
