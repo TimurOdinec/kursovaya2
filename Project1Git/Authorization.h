@@ -7,7 +7,7 @@ namespace Project1Git
 	/// <summary>
 	/// класс для создания объекта авторизации
 	/// </summary>
-	class Authorization
+	public class Authorization
 	{
 	private:
 		std::string currentLogin;	//логин текущего пользователя

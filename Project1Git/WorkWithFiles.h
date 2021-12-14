@@ -9,7 +9,7 @@ namespace Project1Git
 	/// <summary>
 	/// класс для создания объекта - для работы с файлами
 	/// </summary>
-	class WorkWithFiles
+	public class WorkWithFiles
 	{
 	public:
 		WorkWithFiles();											//конструктор
