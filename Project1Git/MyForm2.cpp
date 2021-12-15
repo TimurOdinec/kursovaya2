@@ -14,10 +14,10 @@ System::Void MyForm2::MyForm2_Load(System::Object^ sender, System::EventArgs^ e)
 	this->Location = Point(100, 100);									//расположение формы
 	this->BackColor = System::Drawing::Color::Aqua;						//цвет фона формы
 	this->button1->Text = "Sign up";									//надпись кнопки Sign up
-	this->button2->Text = "Back";										//надпись кнопки Exit
+	this->button2->Text = "Назад";										//надпись кнопки Exit
 	this->label1->Text = "Введите данные (для нового пользователя)";	//подпись на форме
-	this->label2->Text = "Login:";										//подпись поля ввода логина
-	this->label3->Text = "Password:";									//подпись поля ввода пароля
+	this->label2->Text = "Логин:";										//подпись поля ввода логина
+	this->label3->Text = "Пароль:";										//подпись поля ввода пароля
 }
 /// <summary>
 /// нажатие на кнопку Sign up

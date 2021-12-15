@@ -114,17 +114,25 @@ bool MyForm4::validValuesMyForm4()
 bool MyForm4::validValuesIntMyForm4()
 {
 	bool isValid = false;
-	if (this->textBox1->Text->Length != 0)
+	if (*(this->editMode) == "search")
 	{
-		msclr::interop::marshal_context context;
-		std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
-		try {
-			int i = std::stoi(idStr);
-			isValid = true;
-		}
-		catch (...) {
-			MessageBox::Show("¬ведите целое число.");
+		isValid = true;
+	}
+	else
+	{
+		if (this->textBox1->Text->Length != 0)
+		{
+			msclr::interop::marshal_context context;
+			std::string idStr = context.marshal_as<std::string>(this->textBox1->Text);
+			try {
+				int i = std::stoi(idStr);
+				isValid = true;
+			}
+			catch (...) {
+				MessageBox::Show("¬ведите целое число.");
+			}
 		}
 	}
+	
 	return isValid;
 }
